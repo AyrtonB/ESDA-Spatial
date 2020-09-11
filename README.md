@@ -1,4 +1,4 @@
-# ESDA-Spatial
+# UCL Energy Systems & Data Analytics - Spatial Module
  
 test for multiple server nbs
 
