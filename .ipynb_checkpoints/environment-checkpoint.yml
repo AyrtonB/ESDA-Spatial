@@ -1,0 +1,12 @@
+name: ESDA-Spatial
+
+channels:
+    - r
+    - conda-forge
+
+dependencies:
+    - jupyterlab
+    - r-essentials
+    - r-sf
+    - r-raster
+    - r-spatstat
