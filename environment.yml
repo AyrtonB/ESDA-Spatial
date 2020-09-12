@@ -1,34 +1,15 @@
 name: ESDA-Spatial
 
 channels:
-  - conda-forge
-  - anaconda-fusion
-  - defaults
+    - r
+    - conda-forge
 
 dependencies:
-  # core
-  - jupyterlab
-  - pip
-  - pandas
-  - numpy
-  - seaborn
-  - matplotlib
-
-  # ipython
-  - ipywidgets
-
-  # spatial
-  - geopandas
-  - descartes
-  - shapely
-  - xarray
-  - rasterio
-  - ipyleaflet
-
-  # extensions
-  - jupyterlab-git
-
-  # pip
-  - pip:
-      - black
-      - ipypb
+    - jupyterlab
+    - r-essentials
+    - r-sf
+    - r-raster
+    - r-spatstat
+    - r-geojsonio
+    - r-leaflet
+    - r-gsubfn
