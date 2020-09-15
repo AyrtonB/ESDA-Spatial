@@ -13,3 +13,5 @@ dependencies:
     - r-geojsonio
     - r-leaflet
     - r-gsubfn
+    - r-zeallot
+    - r-tmap
