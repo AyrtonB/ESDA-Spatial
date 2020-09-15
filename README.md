@@ -1,6 +1,6 @@
 # UCL Energy Systems & Data Analytics - Spatial Module
  
-This repository contains set-up instructions, code, and general resources for the spatial module included in the UCL ESDA masters course. These materials have been rewritten and reformatted in order to make them as accessible as possible for remote teaching during the Coronavirus lockdown. We have endeavoured to ensure the set-up is as easy as possible but for anyone who has problems please post in the Moodle forum or alternatively in the Github Issues for this repository.
+This repository contains set-up instructions, code, and general resources for the spatial module included in the UCL ESDA masters course. These materials have been rewritten and reformatted in order to make them as accessible as possible for remote teaching during lockdown. We have endeavoured to ensure the set-up is as easy as possible but for anyone who has problems please post in the Moodle forum or alternatively in the Github Issues for this repository.
 
 <br>
 
@@ -9,7 +9,7 @@ This repository contains set-up instructions, code, and general resources for th
 - [x] Finish conversion from QGIS to R for tutorial 3
 - [ ] Export all notebooks to RMarkdown as well - https://rmarkdown.rstudio.com/docs/reference/convert_ipynb.html
 - [x] Create a JupyterBook from the markdown and notebooks
-- [ ] Launch the book as a website on Github pages
+- [x] Launch the book as a website on Github pages
 - [ ] Add a forum to the website so students can comment on tutorials - https://jupyterbook.org/interactive/comments/utterances.html
 
 <br>
