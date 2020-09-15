@@ -1,0 +1,4 @@
+- file: README.md
+  sections:
+  - file: tutorials/03) Working with Vector Data
+  - file: extensions/1) Mapping with ggplot

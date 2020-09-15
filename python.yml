@@ -1,0 +1,43 @@
+name: Spatial-Py
+channels:
+  - conda-forge
+  - anaconda-fusion
+  - defaults
+dependencies:
+  # core
+  - python=3.7
+  - jupyterlab
+  - pip
+  - pandas
+  - numpy
+  - seaborn
+  - matplotlib
+
+  # ipython
+  - ipywidgets
+  - ipyvuetify
+
+  # spatial
+  - geopandas
+  - descartes
+  - shapely
+  - xarray
+  - rasterio
+  
+  # cloud/devops
+  - python-dotenv
+
+  # web scraping
+  - lxml
+  - html5lib
+  - beautifulsoup4
+
+  # misc
+  - pylint
+  - xlrd
+
+  # pip
+  - pip:
+      - black
+      - ipypb
+      - jupyter-book
