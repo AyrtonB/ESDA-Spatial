@@ -6,9 +6,9 @@ This repository contains set-up instructions, code, and general resources for th
 
 ##### To Do
 
-- [ ] Finish conversion from QGIS to R for tutorial 3
+- [x] Finish conversion from QGIS to R for tutorial 3
 - [ ] Export all notebooks to RMarkdown as well - https://rmarkdown.rstudio.com/docs/reference/convert_ipynb.html
-- [ ] Create a JupyterBook from the markdown and notebooks
+- [x] Create a JupyterBook from the markdown and notebooks
 - [ ] Launch the book as a website on Github pages
 - [ ] Add a forum to the website so students can comment on tutorials - https://jupyterbook.org/interactive/comments/utterances.html
 
