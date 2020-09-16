@@ -4,6 +4,8 @@ This repository contains set-up instructions, code, and general resources for th
 
 The course materials can also be seen in book form <a href="https://ayrtonb.github.io/ESDA-Spatial">here</a>
 
+<img src="img/md/site_example.jpg" width="75%"></img>
+
 <br>
 
 ##### To Do
