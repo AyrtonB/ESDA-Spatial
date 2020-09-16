@@ -2,6 +2,8 @@
  
 This repository contains set-up instructions, code, and general resources for the spatial module included in the UCL ESDA masters course. These materials have been rewritten and reformatted in order to make them as accessible as possible for remote teaching during lockdown. We have endeavoured to ensure the set-up is as easy as possible but for anyone who has problems please post in the Moodle forum or alternatively in the Github Issues for this repository.
 
+The course materials can also be seen in book form <a href="https://ayrtonb.github.io/ESDA-Spatial">here</a>
+
 <br>
 
 ##### To Do
@@ -11,6 +13,7 @@ This repository contains set-up instructions, code, and general resources for th
 - [x] Create a JupyterBook from the markdown and notebooks
 - [x] Launch the book as a website on Github pages
 - [ ] Add a forum to the website so students can comment on tutorials - https://jupyterbook.org/interactive/comments/utterances.html
+- [ ] Write a script for changing the image directory after the Jupyter Book has been built
 
 <br>
 <br>
@@ -81,7 +84,7 @@ A Jupyter Lab session should now open up automatically in your default browser, 
 
 The browser should look similar to the display shown below.
 
-<center><img src="img/md/jupyter-lab-home.jpg" width="75%"></img></center>
+<img src="img/md/jupyter-lab-home.jpg" width="75%"></img>
 
 <br>
 

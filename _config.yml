@@ -12,3 +12,7 @@ html:
   comments:
     utterances:
       repo: 'https://github.com/AyrtonB/ESDA-Spatial'
+      
+sphinx:
+  config:
+    timeout: 300
