@@ -16,3 +16,4 @@ dependencies:
     - r-zeallot
     - r-tmap
     - r-rgdal
+    - r-kernsmooth
