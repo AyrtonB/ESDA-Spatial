@@ -4,6 +4,8 @@ This repository contains set-up instructions, code, and general resources for th
 
 The course materials can also be seen in book form <a href="https://ayrtonb.github.io/ESDA-Spatial">here</a>
 
+<img src="img/md/site_example.jpg" width="75%"></img>
+
 <br>
 
 ##### To Do
@@ -34,7 +36,13 @@ Firstly we need to open the command line, then we must move to the directory tha
 cd path/to/this/directory
 ```
 
-Next we'll create the ESDA-Spatial programming environment using 
+At this stage you can either run the command below (where `path/to/anaconda3` is the absolute filepath for your anaconda directory) which will complete all of the remaining steps, or you can continue with the manual set-up.
+
+```bash
+setup.bat path/to/anaconda3
+```
+
+For the manual set-up we'll now create the ESDA-Spatial programming environment using:
 
 ```bash
 conda env create -f environment.yml
@@ -85,6 +93,8 @@ A Jupyter Lab session should now open up automatically in your default browser, 
 The browser should look similar to the display shown below.
 
 <img src="img/md/jupyter-lab-home.jpg" width="75%"></img>
+
+https://ciakovx.github.io/using_jupyter_notebooks.html
 
 <br>
 

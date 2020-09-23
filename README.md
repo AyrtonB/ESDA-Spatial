@@ -36,7 +36,13 @@ Firstly we need to open the command line, then we must move to the directory tha
 cd path/to/this/directory
 ```
 
-Next we'll create the ESDA-Spatial programming environment using 
+At this stage you can either run the command below (where `path/to/anaconda3` is the absolute filepath for your anaconda directory) which will complete all of the remaining steps, or you can continue with the manual set-up.
+
+```bash
+setup.bat path/to/anaconda3
+```
+
+For the manual set-up we'll now create the ESDA-Spatial programming environment using:
 
 ```bash
 conda env create -f environment.yml
