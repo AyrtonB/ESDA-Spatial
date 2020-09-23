@@ -6,6 +6,7 @@ channels:
 
 dependencies:
     - jupyterlab
+    - r-base
     - r-essentials
     - r-sf
     - r-raster
