@@ -83,3 +83,47 @@ get_geo_df_plot_lims <- function(df, crs_out=NA){
     
     return(coord_lims)
 }
+
+get_data_dir <- function(){
+    cwd <- getwd()
+    repo_root_dir <- gsub('(ESDA-Spatial).*', '\\1', cwd)
+    data_dir <- paste(repo_root_dir, 'data', sep='/')
+
+    return(data_dir)    
+}
+
+retrieve_zip <- function(url, dir){
+    temp_shapefile <- tempfile()
+    download.file(url, temp_shapefile)
+    unzip(temp_shapefile, exdir=dir)
+}
+
+get_path_to_obj <- function(data_dir){
+    # make it so auto gen from passed list, keep to zipped folders in s3
+    path_to_obj <- vector(mode='list', length=2)
+    
+    names(path_to_obj) <- c(
+        paste(data_dir, 'zambia', sep='/'),
+        paste(data_dir, 'africa', sep='/')
+    )
+
+    path_to_obj[[1]] <- 'https://esda-spatial.s3.eu-west-2.amazonaws.com/zambia.zip'
+    path_to_obj[[2]] <- 'https://esda-spatial.s3.eu-west-2.amazonaws.com/africa.zip'
+    
+    return(path_to_obj)
+}
+
+download_data <- function(data_dir){
+    data_dir <- get_data_dir()
+    path_to_obj <- get_path_to_obj(data_dir)
+    filepaths <- names(path_to_obj)
+
+    for(i in seq_along(path_to_obj)) {
+        dir <- filepaths[i]
+        obj <- toString(path_to_obj[i])
+
+        if (!dir.exists(dir)) {
+            retrieve_zip(obj, dir)
+        }
+    }
+}
