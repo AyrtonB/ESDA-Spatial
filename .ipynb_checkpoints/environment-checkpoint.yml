@@ -6,6 +6,8 @@ channels:
 
 dependencies:
     - jupyterlab
+    - nbclient
+    - r-base
     - r-essentials
     - r-sf
     - r-raster
@@ -16,3 +18,7 @@ dependencies:
     - r-zeallot
     - r-tmap
     - r-rgdal
+    - r-kernsmooth
+    
+    - pip:
+        - sphinx-thebe

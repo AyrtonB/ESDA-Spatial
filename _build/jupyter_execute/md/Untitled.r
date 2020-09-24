@@ -1,9 +1,3 @@
-# Why Jupyter for Teaching?
-
-
-Useful Resources:
-* https://jupyter4edu.github.io/jupyter-edu-book/getting-going.html
-
 # About
 
 ### What is Jupyter/Anaconda?
@@ -25,3 +19,4 @@ This advanced degree programme is designed to provide a broad understanding of e
 Further information on the course can be found <a href="https://www.ucl.ac.uk/bartlett/energy/study/energy-systems-and-data-analytics-msc">here</a>
 
 <video controls src="https://esda-spatial.s3.eu-west-2.amazonaws.com/Studying+Energy+Systems+and+Data+Analytics+at+UCL.mp4" />
+

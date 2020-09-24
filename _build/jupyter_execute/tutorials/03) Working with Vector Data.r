@@ -8,6 +8,7 @@ The tutorial’s objectives include learning how to:
 * Execute spatial queries
 * Merge geometries
 * Create and use buffers
+* Apply spatial overlays
 * Use nearest neighbour analysis
 
 These tools will be applied to a typical spatial analysis you might encounter in the energy field – power plant siting. We will work towards establishing the best locations for a solar power plant in the country you have chosen last time.
@@ -48,7 +49,13 @@ source('../scripts/helpers.R') # helper script, note that '../' is used to chang
 
 ### Loading Data
 
-We'll start by reading in the country border
+We'll start by downloading the necessary data, note that if you have already downloaded this data it will not be over-written
+
+download_data()
+
+<br>
+
+Now we can read in the country border
 
 df_country <- read_sf('../data/zambia/zambia.shp')
 
@@ -520,6 +527,7 @@ We're now ready to ask the question we were interested in, namely what areas are
 <font color='red'>N.b. Depending on the size of your country and how many roads it contains this may take up to a few minutes</font>
 
 df_roads <- st_union(df_country_roads)
+# identify the bottleneck, simplify the geom
 df_buffered_roads <- st_buffer(df_roads, dist=5000)
 
 ggplot() +
@@ -537,7 +545,7 @@ df_buffered_cities <- st_buffer(df_country_cities, dist=50000)
 ggplot() +
     geom_sf(data=df_country, fill='antiquewhite') +
     geom_sf(data=df_buffered_cities, fill='orange') + 
-    geom_sf(data=df_cities, color='blue') + 
+    geom_sf(data=df_country_cities, color='blue') + 
     transparent_theme
 
 <br>
@@ -551,7 +559,7 @@ df_buffered_cities_comb <- st_union(df_buffered_cities)
 ggplot() +
     geom_sf(data=df_country, fill='antiquewhite') +
     geom_sf(data=df_buffered_cities_comb, fill='orange') + 
-    geom_sf(data=df_cities, color='blue') + 
+    geom_sf(data=df_country_cities, color='blue') + 
     transparent_theme
 
 <br>

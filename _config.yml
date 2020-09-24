@@ -16,3 +16,9 @@ html:
 sphinx:
   config:
     timeout: 300
+    myst_amsmath_enable: true
+  extra_extensions:
+    - "sphinx_thebe"
+
+launch_buttons:
+  thebe: true
