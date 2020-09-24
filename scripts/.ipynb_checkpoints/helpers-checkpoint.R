@@ -88,6 +88,12 @@ get_data_dir <- function(){
     cwd <- getwd()
     repo_root_dir <- gsub('(ESDA-Spatial).*', '\\1', cwd)
     data_dir <- paste(repo_root_dir, 'data', sep='/')
+    
+    using_binder <- grepl('/home/jovyan', data_dir, fixed=TRUE)
+    
+    if (using_binder) {
+        data_dir <- '/home/jovyan/data'
+    }
 
     return(data_dir)    
 }
