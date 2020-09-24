@@ -18,7 +18,7 @@ Traceback (most recent call last):
     return just_run(coro(*args, **kwargs))
   File "c:\users\ayrto\anaconda3\envs\esda-spatial\lib\site-packages\nbclient\util.py", line 53, in just_run
     return loop.run_until_complete(coro)
-  File "c:\users\ayrto\anaconda3\envs\esda-spatial\lib\asyncio\base_events.py", line 573, in run_until_complete
+  File "c:\users\ayrto\anaconda3\envs\esda-spatial\lib\asyncio\base_events.py", line 587, in run_until_complete
     return future.result()
   File "c:\users\ayrto\anaconda3\envs\esda-spatial\lib\site-packages\nbclient\client.py", line 536, in async_execute
     cell, index, execution_count=self.code_cells_executed + 1
@@ -33,6 +33,7 @@ The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
 df_roads <- st_union(df_country_roads)
+# identify the bottleneck, simplify the geom
 df_buffered_roads <- st_buffer(df_roads, dist=5000)
 
 ggplot() +

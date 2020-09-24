@@ -1,0 +1,523 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Working with Raster Data &#8212; Spatial Analysis for Energy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-dropdown.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "https://github.com/AyrtonB/ESDA-Spatial");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Mapping with ggplot" href="../extensions/1%29%20Mapping%20with%20Ggplot.html" />
+    <link rel="prev" title="Working with Vector Data" href="03%29%20Working%20with%20Vector%20Data.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.svg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Spatial Analysis for Energy</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../md/Intro.html">
+   UCL Energy Systems &amp; Data Analytics - Spatial Module
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="03%29%20Working%20with%20Vector%20Data.html">
+   Working with Vector Data
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Working with Raster Data
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Extensions
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../extensions/1%29%20Mapping%20with%20Ggplot.html">
+   Mapping with ggplot
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  About
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../md/Setup.html">
+   Set-Up Instructions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../md/Jupyter-Anaconda.html">
+   What is Jupyter/Anaconda?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../md/ESDA%20Course.html">
+   ESDA Course
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/tutorials/04) Working with Raster Data.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/AyrtonB/ESDA-Spatial"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/AyrtonB/ESDA-Spatial/edit/master/tutorials/04) Working with Raster Data.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/AyrtonB/ESDA-Spatial/master?urlpath=tree/tutorials/04) Working with Raster Data.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/AyrtonB/ESDA-Spatial/blob/master/tutorials/04) Working with Raster Data.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analysis-preparation">
+   Analysis Preparation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#imports">
+     Imports
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#loading-data">
+     Loading Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#raster-pre-processing">
+     Raster Pre-Processing
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="working-with-raster-data">
+<h1>Working with Raster Data<a class="headerlink" href="#working-with-raster-data" title="Permalink to this headline">¶</a></h1>
+<br>
+<p>In this tutorial you will learn raster-specific pre-processing and analysis steps such as resampling  and reclassification. You will learn how to execute local operations of map algebra in raster calculator and how to summarise raster data using zonal statistics. You will also learn how to create distance, slope and aspect rasters.</p>
+<p>We will keep working on siting a solar power station in Zambia, this time using raster data – including the solar power potential.</p>
+<p>We will use land cover, and elevation to further optimise the location of the facility: we’d like to avoid cutting trees or building in a swamp. We’d also like to avoid the steepest slopes.</p>
+<p>Finally, using solar potential raster (Global Horizontal Irradiance in kWh/m2/year) we will be able to estimate the power which may be available in our selected zones.</p>
+<br>
+<div class="section" id="analysis-preparation">
+<h2>Analysis Preparation<a class="headerlink" href="#analysis-preparation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="imports">
+<h3>Imports<a class="headerlink" href="#imports" title="Permalink to this headline">¶</a></h3>
+<p>All of these libraries should have been previously installed during the environment set-up, if they have not been installed already you can use <code class="docutils literal notranslate"><span class="pre">install.packages(c(&quot;sf&quot;,</span> <span class="pre">&quot;ggplot2&quot;))</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">sf</span><span class="p">)</span> <span class="c1"># for handling spatial features</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span> <span class="c1"># used for data manipulation</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">raster</span><span class="p">)</span> <span class="c1"># useful in some spatial operations</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span> <span class="c1"># for plotting</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">zeallot</span><span class="p">)</span> <span class="c1"># used for unpacking variables</span>
+
+<span class="nf">source</span><span class="p">(</span><span class="s">&#39;../scripts/helpers.R&#39;</span><span class="p">)</span> <span class="c1"># helper script, note that &#39;../&#39; is used to change into the directory above the directory this notebook is in</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
+&quot;package &#39;sf&#39; was built under R version 3.6.3&quot;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linking to GEOS 3.8.0, GDAL 3.0.4, PROJ 6.3.1
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: &#39;dplyr&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from &#39;package:stats&#39;:
+
+    filter, lag
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from &#39;package:base&#39;:
+
+    intersect, setdiff, setequal, union
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: sp
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: &#39;raster&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following object is masked from &#39;package:dplyr&#39;:
+
+    select
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Registered S3 methods overwritten by &#39;ggplot2&#39;:
+  method         from 
+  [.quosures     rlang
+  c.quosures     rlang
+  print.quosures rlang
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
+&quot;package &#39;zeallot&#39; was built under R version 3.6.3&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+</div>
+<div class="section" id="loading-data">
+<h3>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this headline">¶</a></h3>
+<p>We’ll start by again checking to see if we need to download any data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">download_data</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+<p>Then by reading in a shapefile for Zambia</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_zambia</span> <span class="o">&lt;-</span> <span class="nf">read_sf</span><span class="p">(</span><span class="s">&#39;../data/zambia/zambia.shp&#39;</span><span class="p">)</span>
+
+<span class="n">df_zambia</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<thead><tr><th scope=col>ID</th><th scope=col>CODE</th><th scope=col>COUNTRY</th><th scope=col>areaQ</th><th scope=col>geometry</th></tr></thead>
+<tbody>
+	<tr><td>761                           </td><td>ZAM                           </td><td>Zambia                        </td><td>777795418089                  </td><td>POLYGON ((716452.6 8516873,...</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<br>
+<p>We’ll also load land cover, solar radiance, and elevation raster data from .tif files</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">land_cover</span> <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&#39;../data/africa/land_cover.tif&#39;</span><span class="p">)</span>
+<span class="c1">#solar &lt;- raster(&#39;../data/africa/solar.tif&#39;)</span>
+<span class="c1">#elevation &lt;- raster(&#39;../data/africa/elevation.tif&#39;)</span>
+
+<span class="nf">plot</span><span class="p">(</span><span class="n">land_cover</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span> <span class="ow">in</span> <span class="o">.</span><span class="n">rasterObjectFromFile</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">band</span> <span class="o">=</span> <span class="n">band</span><span class="p">,</span> <span class="n">objecttype</span> <span class="o">=</span> <span class="s2">&quot;RasterLayer&quot;</span><span class="p">,</span> <span class="p">:</span> <span class="n">Cannot</span> <span class="n">create</span> <span class="n">RasterLayer</span> <span class="nb">object</span> <span class="kn">from</span> <span class="nn">this</span> <span class="n">file</span><span class="p">;</span> <span class="n">perhaps</span> <span class="n">you</span> <span class="n">need</span> <span class="n">to</span> <span class="n">install</span> <span class="n">rgdal</span> <span class="n">first</span>
+<span class="ne">Traceback</span>:
+
+<span class="mi">1</span><span class="o">.</span> <span class="n">raster</span><span class="p">(</span><span class="s2">&quot;../data/africa/land_cover.tif&quot;</span><span class="p">)</span>
+<span class="mi">2</span><span class="o">.</span> <span class="n">raster</span><span class="p">(</span><span class="s2">&quot;../data/africa/land_cover.tif&quot;</span><span class="p">)</span>
+<span class="mi">3</span><span class="o">.</span> <span class="o">.</span><span class="n">local</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+<span class="mi">4</span><span class="o">.</span> <span class="o">.</span><span class="n">rasterObjectFromFile</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">band</span> <span class="o">=</span> <span class="n">band</span><span class="p">,</span> <span class="n">objecttype</span> <span class="o">=</span> <span class="s2">&quot;RasterLayer&quot;</span><span class="p">,</span> 
+ <span class="o">.</span>     <span class="o">...</span><span class="p">)</span>
+<span class="mi">5</span><span class="o">.</span> <span class="n">stop</span><span class="p">(</span><span class="s2">&quot;Cannot create RasterLayer object from this file; perhaps you need to install rgdal first&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+</div>
+<div class="section" id="raster-pre-processing">
+<h3>Raster Pre-Processing<a class="headerlink" href="#raster-pre-processing" title="Permalink to this headline">¶</a></h3>
+<p>In the same way you can clip vectors with a “cookie cutter” outline you can also clip rasters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_zambia_4326</span> <span class="o">&lt;-</span> <span class="nf">st_transform</span><span class="p">(</span><span class="n">df_zambia</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="m">4326</span><span class="p">)</span>
+<span class="n">solar_zambia</span> <span class="o">&lt;-</span> <span class="nf">crop</span><span class="p">(</span><span class="n">solar</span><span class="p">,</span> <span class="n">df_zambia_4326</span><span class="p">)</span>
+
+<span class="nf">plot</span><span class="p">(</span><span class="n">solar_zambia</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">df_zambia_4326</span><span class="p">,</span> <span class="n">add</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">st_crs</span><span class="p">(</span><span class="n">solar</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://stackoverflow.com/questions/41529731/how-to-crop-raster-based-on-spatialpolygons-in-r</span>
+<span class="n">solar_zambia</span> <span class="o">&lt;-</span> <span class="nf">mask</span><span class="p">(</span><span class="n">solar</span><span class="p">,</span> <span class="n">df_zambia_4326</span><span class="p">)</span>
+
+<span class="nf">plot</span><span class="p">(</span><span class="n">solar_zambia</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">df_zambia_4326</span><span class="p">,</span> <span class="n">add</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "AyrtonB/ESDA-Spatial",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./tutorials"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="03%29%20Working%20with%20Vector%20Data.html" title="previous page">Working with Vector Data</a>
+    <a class='right-next' id="next-link" href="../extensions/1%29%20Mapping%20with%20Ggplot.html" title="next page">Mapping with ggplot</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Ayrton Bourn, Santiago De La Fuente, Clem Attwood, Joanna Kuleszo, Camilo Perico<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>
