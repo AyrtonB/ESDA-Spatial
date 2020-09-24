@@ -19,6 +19,7 @@ The course materials can also be seen in book form <a href="https://ayrtonb.gith
 - [x] Launch the book as a website on Github pages
 - [ ] Add a forum to the website so students can comment on tutorials - https://jupyterbook.org/interactive/comments/utterances.html
 - [ ] Write a script for changing the image directory after the Jupyter Book has been built
+- [ ] Add a wiki dir - https://github.com/marketplace/actions/github-wiki-action
 
 <br>
 <br>
