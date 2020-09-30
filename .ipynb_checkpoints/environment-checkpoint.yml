@@ -10,6 +10,7 @@ dependencies:
     - r-base
     - r-essentials
     - r-sf
+    - r-sp
     - r-raster
     - r-spatstat
     - r-geojsonio
@@ -19,6 +20,7 @@ dependencies:
     - r-tmap
     - r-rgdal
     - r-kernsmooth
+    - pip
     
     - pip:
         - sphinx-thebe
