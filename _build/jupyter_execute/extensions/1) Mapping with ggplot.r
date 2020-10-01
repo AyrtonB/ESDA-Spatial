@@ -1,33 +1,11 @@
-<br>
-
-# Mapping with ggplot
-
-This document outlines a number of extension areas related to plotting spatial data in ggplot.
-
-### Imports
-
 library(sf)
 library(ggplot2)
 library(zeallot)
 
 source('../scripts/helpers.R') 
 
-<br>
-
-### Loading Example Data
-
-
-
 df_country <- read_sf('../data/zambia/zambia.shp')
 df_africa_cities <- read_sf('../data/africa/cities.shp')
-
-<br>
-
-### Identifying Spatial Plotting Limits
-
-Earlier in this tutorial we had to specify axis limits in order to reduce the area of Africa plotted. In that example we hardcoded the values, but how did we arrive at those values? and how could we automate this process in the future?
-
-First we'll create a function that takes a spatial dataframe and returns the min and max values from the x and y coordinates.
 
 get_geo_df_limits <- function(df){
     # Extracting x/y coordinates
@@ -52,21 +30,9 @@ geo_df_limits <- get_geo_df_limits(df_country)
 
 geo_df_limits
 
-<br>
-
-But what should we do when we want to use the limits from one dataframe, whilst plotting it alongside another dataframe that's in a different coordinate system?
-
-We'll start by extracting the limits again.
-
 geo_df_limits <- get_geo_df_limits(df_africa_cities)
 
 geo_df_limits
-
-<br>
-
-Then we can write another function that will convert these limit coordinates from one crs into another.
-
-N.b. normally a bounding box (bbox) refers to a Polygon or Linestring where the vertices are the corners of the bbox. In this example we refer to bbox corners as only the top right and bottom left corners, this is because for a rectangular bbox they can be used to define the full shape.
 
 transform_bbox_corner_crs <- function(min_x_in, max_x_in, 
                                       min_y_in, max_y_in, 
@@ -99,20 +65,12 @@ out_coords <- transform_bbox_corner_crs(min_x_in, max_x_in,
 
 out_coords
 
-<br>
-
-We can now use these coordinates to define the ggplot plotting limits
-
 c(min_x_out, max_x_out, min_y_out, max_y_out) %<-% out_coords
 
 coord_lims <- coord_sf(xlim=c(min_x_out, max_x_out), 
                        ylim=c(min_y_out, max_y_out))
 
 coord_lims
-
-<br>
-
-Putting this all together we'll write a single function that accepts a dataframe, extracts its x/y limits, optionally converts them into a new CRS, then finally generates ggplot coordinate limits from them.
 
 get_geo_df_plot_lims <- function(df, crs_out=NA){
     # Identify limits
@@ -153,10 +111,6 @@ ggplot() +
     geom_sf(data=df_africa_cities, color='orange') + 
     coord_lims + 
     transparent_theme
-
-<br>
-
-We can now very quickly switch between different plotting views
 
 coord_lims <- get_geo_df_plot_lims(df_africa_cities, crs_out=20935)
 

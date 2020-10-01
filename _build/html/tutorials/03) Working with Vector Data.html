@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 
 <html>
@@ -7,15 +6,36 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Working with Vector Data &#8212; Spatial Analysis for Energy</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
-    <link href="../_static/css/index.css" rel="stylesheet">
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    
+  <link rel="stylesheet" href="../_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.bfb7730f9caf2ec0b46a44615585038c.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-dropdown.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.30270b6e4c972e43c488.js">
+
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
@@ -24,7 +44,6 @@
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/sphinx-book-theme.js"></script>
     <script kind="utterances">
 
     var commentsRunWhenDOMLoaded = cb => {
@@ -60,6 +79,7 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
@@ -74,8 +94,8 @@ commentsRunWhenDOMLoaded(addUtterances);
     <link rel="next" title="Working with Raster Data" href="04%29%20Working%20with%20Raster%20Data.html" />
     <link rel="prev" title="UCL Energy Systems &amp; Data Analytics - Spatial Module" href="../md/Intro.html" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="docsearch:language" content="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
 
 
 
@@ -128,16 +148,14 @@ commentsRunWhenDOMLoaded(addUtterances);
    Working with Raster Data
   </a>
  </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Extensions
- </span>
-</p>
-<ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../extensions/1%29%20Mapping%20with%20Ggplot.html">
-   Mapping with ggplot
+  <a class="reference internal" href="05%29%20Spatial%20Interpolation.html">
+   Spatial Statistics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04%29%20Working%20with%20Raster%20Data.html">
+   Working with Raster Data
   </a>
  </li>
 </ul>
@@ -267,6 +285,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
+        
         <div class="tocsection onthispage pt-5 pb-3">
             <i class="fas fa-list"></i> Contents
         </div>
@@ -401,6 +420,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </ul>
 
         </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -441,7 +461,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <h2>Analysis Preparation<a class="headerlink" href="#analysis-preparation" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="imports">
 <h3>Imports<a class="headerlink" href="#imports" title="Permalink to this headline">¶</a></h3>
-<p>All of these libraries should have been previously installed during the environment set-up, if they have not been installed already you can use <code class="docutils literal notranslate"><span class="pre">install.packages(c(&quot;sf&quot;,</span> <span class="pre">&quot;ggplot2&quot;))</span></code></p>
+<p>All of these libraries should have been previously installed during the environment set-up, if they have not been installed already you can use <code class="docutils literal notranslate"><span class="pre">install.packages(c(&quot;sf&quot;,</span> <span class="pre">&quot;ggplot2&quot;))</span></code>. We’ll also get back some information about the packages and any potential issues.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">sf</span><span class="p">)</span> <span class="c1"># for handling spatial features</span>
@@ -455,22 +475,18 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
-&quot;package &#39;sf&#39; was built under R version 3.6.3&quot;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linking to GEOS 3.8.1, GDAL 3.1.2, PROJ 7.1.0
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linking to GEOS 3.8.0, GDAL 3.0.4, PROJ 6.3.1
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘dplyr’
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: &#39;dplyr&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from &#39;package:stats&#39;:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:stats’:
 
     filter, lag
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from &#39;package:base&#39;:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:base’:
 
     intersect, setdiff, setequal, union
 </pre></div>
@@ -478,23 +494,12 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: sp
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: &#39;raster&#39;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘raster’
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following object is masked from &#39;package:dplyr&#39;:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following object is masked from ‘package:dplyr’:
 
     select
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Registered S3 methods overwritten by &#39;ggplot2&#39;:
-  method         from 
-  [.quosures     rlang
-  c.quosures     rlang
-  print.quosures rlang
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
-&quot;package &#39;zeallot&#39; was built under R version 3.6.3&quot;
 </pre></div>
 </div>
 </div>
@@ -523,9 +528,13 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><table>
-<thead><tr><th scope=col>ID</th><th scope=col>CODE</th><th scope=col>COUNTRY</th><th scope=col>areaQ</th><th scope=col>geometry</th></tr></thead>
+<caption>A sf: 1 × 5</caption>
+<thead>
+	<tr><th scope=col>ID</th><th scope=col>CODE</th><th scope=col>COUNTRY</th><th scope=col>areaQ</th><th scope=col>geometry</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;POLYGON [m]&gt;</th></tr>
+</thead>
 <tbody>
-	<tr><td>761                           </td><td>ZAM                           </td><td>Zambia                        </td><td>777795418089                  </td><td>POLYGON ((716452.6 8516873,...</td></tr>
+	<tr><td>761</td><td>ZAM</td><td>Zambia</td><td>777795418089</td><td>POLYGON ((716452.6 8516873,...</td></tr>
 </tbody>
 </table>
 </div></div>
@@ -589,7 +598,7 @@ PROJCRS[&quot;Arc 1950 / UTM zone 35S&quot;,
             LENGTHUNIT[&quot;metre&quot;,1]],
     USAGE[
         SCOPE[&quot;unknown&quot;],
-        AREA[&quot;Africa - Botswana, Zambia and Zimbabwe - 24Â°E to 30Â°E&quot;],
+        AREA[&quot;Africa - Botswana, Zambia and Zimbabwe - 24°E to 30°E&quot;],
         BBOX[-25.84,24,-8.31,30]],
     ID[&quot;EPSG&quot;,20935]]
 </pre></div>
@@ -772,6 +781,7 @@ PROJCRS[&quot;Arc 1950 / UTM zone 35S&quot;,
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><table>
+<caption>A matrix: 6 × 1 of type lgl</caption>
 <tbody>
 	<tr><td>FALSE</td></tr>
 	<tr><td>FALSE</td></tr>
@@ -794,14 +804,12 @@ PROJCRS[&quot;Arc 1950 / UTM zone 35S&quot;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><ol class=list-inline>
-	<li>4254</li>
-	<li>4255</li>
-	<li>4256</li>
-	<li>4257</li>
-	<li>4258</li>
-	<li>4259</li>
-</ol>
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>4254</li><li>4255</li><li>4256</li><li>4257</li><li>4258</li><li>4259</li></ol>
 </div></div>
 </div>
 <br>
@@ -816,9 +824,13 @@ PROJCRS[&quot;Arc 1950 / UTM zone 35S&quot;,
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><table>
-<thead><tr><th scope=col>COUNTRY</th><th scope=col>geometry</th></tr></thead>
+<caption>A sf: 1 × 2</caption>
+<thead>
+	<tr><th scope=col>COUNTRY</th><th scope=col>geometry</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;POINT [m]&gt;</th></tr>
+</thead>
 <tbody>
-	<tr><td>Zambia                  </td><td>POINT (617646.2 8601614)</td></tr>
+	<tr><td>Zambia</td><td>POINT (617646.2 8601614)</td></tr>
 </tbody>
 </table>
 </div></div>
@@ -916,7 +928,7 @@ PROJCRS[&quot;Arc 1950 / UTM zone 35S&quot;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">119</div></div>
+<div class="output text_html">118</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -925,7 +937,7 @@ PROJCRS[&quot;Arc 1950 / UTM zone 35S&quot;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">129</div></div>
+<div class="output text_html">130</div></div>
 </div>
 <br>
 <p>We can then use <code class="docutils literal notranslate"><span class="pre">setdiff(a,</span> <span class="pre">b)</span></code> to identify the elements inside <code class="docutils literal notranslate"><span class="pre">a</span></code> that aren’t in <code class="docutils literal notranslate"><span class="pre">b</span></code>, in our case the extra indexes included after using <code class="docutils literal notranslate"><span class="pre">st_intersects</span></code></p>
@@ -941,18 +953,12 @@ PROJCRS[&quot;Arc 1950 / UTM zone 35S&quot;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><ol class=list-inline>
-	<li>9005</li>
-	<li>9052</li>
-	<li>9299</li>
-	<li>9400</li>
-	<li>9534</li>
-	<li>9708</li>
-	<li>9724</li>
-	<li>10596</li>
-	<li>11463</li>
-	<li>14205</li>
-</ol>
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>9005</li><li>9052</li><li>9299</li><li>9400</li><li>9534</li><li>9657</li><li>9670</li><li>9708</li><li>10596</li><li>11463</li><li>14205</li><li>15918</li></ol>
 </div></div>
 </div>
 <br>
@@ -981,17 +987,20 @@ PROJCRS[&quot;Arc 1950 / UTM zone 35S&quot;,
 <div class="section" id="how-many-cities-are-there-in-tanzania">
 <h5>How many Cities are there in Tanzania?<a class="headerlink" href="#how-many-cities-are-there-in-tanzania" title="Permalink to this headline">¶</a></h5>
 <p>Count the number of cities that are inside Tanzanian borders</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_tanzania</span> <span class="o">&lt;-</span> <span class="n">df_africa_countries</span><span class="p">[</span><span class="n">df_africa_countries</span><span class="o">$</span><span class="n">NAME</span> <span class="o">==</span> <span class="s">&#39;Tanzania&#39;</span><span class="p">,</span> <span class="p">]</span>
 <span class="n">df_tanzania_cities</span> <span class="o">&lt;-</span> <span class="n">df_africa_cities</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="nf">st_within</span><span class="p">(</span><span class="n">df_africa_cities</span><span class="p">,</span> <span class="n">df_tanzania</span><span class="p">,</span> <span class="n">sparse</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)),</span> <span class="p">]</span>
 
-<span class="c1"># print(nrow(df_tanzania_cities))</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">df_tanzania_cities</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>although coordinates are longitude/latitude, st_within assumes that they are planar
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] 55
 </pre></div>
 </div>
 </div>
@@ -1001,7 +1010,7 @@ PROJCRS[&quot;Arc 1950 / UTM zone 35S&quot;,
 <div class="section" id="interconnector-identification">
 <h5>Interconnector Identification<a class="headerlink" href="#interconnector-identification" title="Permalink to this headline">¶</a></h5>
 <p>When we determined the difference between the geometries returned by <code class="docutils literal notranslate"><span class="pre">st_intersects</span></code> and <code class="docutils literal notranslate"><span class="pre">st_within</span></code> we effectively found interconnectors between our country and others. Rather than calculating both of these we could use a single binary predicate function that was mentioned earlier, can you identify which one and then plot the interconnectors?</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_crosses_grid</span> <span class="o">&lt;-</span> <span class="nf">filter_geo_predicate</span><span class="p">(</span><span class="n">st_crosses</span><span class="p">,</span> <span class="n">df_africa_grid_UTM35S</span><span class="p">,</span> <span class="n">df_country</span><span class="p">)</span>
 
@@ -1042,15 +1051,15 @@ PROJCRS[&quot;Arc 1950 / UTM zone 35S&quot;,
 </div>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
-&quot;attribute variables are assumed to be spatially constant throughout all geometries&quot;
+“attribute variables are assumed to be spatially constant throughout all geometries”
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
-&quot;attribute variables are assumed to be spatially constant throughout all geometries&quot;
+“attribute variables are assumed to be spatially constant throughout all geometries”
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
-&quot;attribute variables are assumed to be spatially constant throughout all geometries&quot;
+“attribute variables are assumed to be spatially constant throughout all geometries”
 </pre></div>
 </div>
 <img alt="../_images/03) Working with Vector Data_51_3.png" src="../_images/03) Working with Vector Data_51_3.png" />
@@ -1103,13 +1112,13 @@ PROJCRS[&quot;Arc 1950 / UTM zone 35S&quot;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MULTILINESTRING ((588362.5 8644618, 588359.9 86...
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MULTILINESTRING ((588362.5 8644618, 588361.1 86...
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Geometry set for 1 feature 
 geometry type:  MULTILINESTRING
 dimension:      XY
-bbox:           xmin: 34584.09 ymin: 8016767 xmax: 1176674 ymax: 9047022
+bbox:           xmin: 34584.09 ymin: 8017022 xmax: 1135935 ymax: 9047022
 projected CRS:  Arc 1950 / UTM zone 35S
 </pre></div>
 </div>
@@ -1132,17 +1141,25 @@ projected CRS:  Arc 1950 / UTM zone 35S
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`summarise()` ungrouping output (override with `.groups` argument)
+</pre></div>
+</div>
 <div class="output text_html"><table>
-<thead><tr><th scope=col>voltage_kV</th><th scope=col>length_km</th><th scope=col>geometry</th></tr></thead>
+<caption>A sf: 9 × 3</caption>
+<thead>
+	<tr><th scope=col>voltage_kV</th><th scope=col>length_km</th><th scope=col>geometry</th></tr>
+	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;GEOMETRY [m]&gt;</th></tr>
+</thead>
 <tbody>
-	<tr><td>  0                           </td><td>   0                          </td><td>MULTILINESTRING ((237074.3 ...</td></tr>
-	<tr><td> 33                           </td><td> 986                          </td><td>MULTILINESTRING ((1041836 8...</td></tr>
-	<tr><td> 66                           </td><td>3718                          </td><td>MULTILINESTRING ((994361.7 ...</td></tr>
-	<tr><td> 88                           </td><td> 462                          </td><td>MULTILINESTRING ((662447.9 ...</td></tr>
-	<tr><td>132                           </td><td> 287                          </td><td>MULTILINESTRING ((589924.9 ...</td></tr>
-	<tr><td>220                           </td><td> 737                          </td><td>MULTILINESTRING ((588362.5 ...</td></tr>
-	<tr><td>330                           </td><td>2755                          </td><td>MULTILINESTRING ((662611.6 ...</td></tr>
-	<tr><td>400                           </td><td> 218                          </td><td>LINESTRING (1114177 8424246...</td></tr>
+	<tr><td>  0</td><td>   0</td><td>MULTILINESTRING ((237074.3 ...</td></tr>
+	<tr><td> 33</td><td> 986</td><td>MULTILINESTRING ((1041836 8...</td></tr>
+	<tr><td> 66</td><td>3718</td><td>MULTILINESTRING ((994361.7 ...</td></tr>
+	<tr><td> 88</td><td> 462</td><td>MULTILINESTRING ((662447.9 ...</td></tr>
+	<tr><td>132</td><td> 287</td><td>MULTILINESTRING ((589924.9 ...</td></tr>
+	<tr><td>220</td><td> 737</td><td>MULTILINESTRING ((588362.5 ...</td></tr>
+	<tr><td>330</td><td>2755</td><td>MULTILINESTRING ((662611.6 ...</td></tr>
+	<tr><td>350</td><td> 993</td><td>LINESTRING (176705.4 805910...</td></tr>
+	<tr><td>400</td><td> 218</td><td>LINESTRING (1114177 8424246...</td></tr>
 </tbody>
 </table>
 </div></div>
@@ -1163,7 +1180,7 @@ projected CRS:  Arc 1950 / UTM zone 35S
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LINESTRING (588362.5 8644618, 588359.9 8644620)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LINESTRING (588362.5 8644618, 588361.1 8644620)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LINESTRING (589924.9 8648093, 589932.7 8648079)
@@ -1175,13 +1192,13 @@ projected CRS:  Arc 1950 / UTM zone 35S
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LINESTRING (1114177 8424246, 1111893 8485588)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LINESTRING (994361.7 9037434, 994374 9037451)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LINESTRING (994361.7 9037434, 994367.3 9037461)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Geometry set for 423 features 
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Geometry set for 280 features 
 geometry type:  LINESTRING
 dimension:      XY
-bbox:           xmin: 34584.09 ymin: 8016767 xmax: 1176674 ymax: 9047022
+bbox:           xmin: 34584.09 ymin: 8017022 xmax: 1135935 ymax: 9047022
 projected CRS:  Arc 1950 / UTM zone 35S
 First 5 geometries:
 </pre></div>
@@ -1197,7 +1214,7 @@ First 5 geometries:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8500258 [m]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7917725 [m]
 </pre></div>
 </div>
 </div>
@@ -1208,6 +1225,13 @@ First 5 geometries:
 <div class="section" id="east-african-community-high-voltage-length">
 <h5>East African Community High Voltage Length<a class="headerlink" href="#east-african-community-high-voltage-length" title="Permalink to this headline">¶</a></h5>
 <p>What is the total length of power cable across the East African Community (EAC) that has a voltage of 132 kV or higher? The 6 members of the EAC are Burundi, Kenya, Rwanda, South Sudan, Tanzania, and Uganda.</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># </span>
+</pre></div>
+</div>
+</div>
+</div>
 <br>
 </div>
 <div class="section" id="space-saving">
@@ -1215,6 +1239,13 @@ First 5 geometries:
 <p>Another important reason for aggregating spatial data is to reduce its size, by which we mean the amount of storage required to hold the data (nothing to do with spatial size). For example in our grid dataframe each of the 400+ geometries contains information on the CRS, despite them all being the same.</p>
 <p>In this task you should identify the reduction in data size between the merged and unmerged road data. You can use <code class="docutils literal notranslate"><span class="pre">object.size(x)</span></code> determine the size (in bytes) of any R object.</p>
 <p>As an extension task investigate the effects of simplifying your geometries with <code class="docutils literal notranslate"><span class="pre">st_simplify</span></code>, and how this impacts the object size.</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># </span>
+</pre></div>
+</div>
+</div>
+</div>
 <br>
 </div>
 </div>
@@ -1259,7 +1290,7 @@ First 5 geometries:
 </div>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in st_buffer.sfc(st_geometry(x), dist, nQuadSegs, endCapStyle = endCapStyle, :
-&quot;st_buffer does not correctly buffer longitude/latitude data&quot;
+“st_buffer does not correctly buffer longitude/latitude data”
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dist is assumed to be in decimal degrees (arc_degrees).
@@ -1284,7 +1315,7 @@ First 5 geometries:
 </div>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in st_buffer.sfc(st_geometry(x), dist, nQuadSegs, endCapStyle = endCapStyle, :
-&quot;st_buffer does not correctly buffer longitude/latitude data&quot;
+“st_buffer does not correctly buffer longitude/latitude data”
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dist is assumed to be in decimal degrees (arc_degrees).
@@ -1298,17 +1329,18 @@ First 5 geometries:
 <p><font color='red'>N.b. Depending on the size of your country and how many roads it contains this may take up to a few minutes</font></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_roads</span> <span class="o">&lt;-</span> <span class="nf">st_union</span><span class="p">(</span><span class="n">df_country_roads</span><span class="p">)</span>
-<span class="c1"># identify the bottleneck, simplify the geom</span>
-<span class="n">df_buffered_roads</span> <span class="o">&lt;-</span> <span class="nf">st_buffer</span><span class="p">(</span><span class="n">df_roads</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="m">5000</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_buffered_roads</span> <span class="o">&lt;-</span> <span class="nf">st_buffer</span><span class="p">(</span><span class="n">df_country_roads</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="m">5000</span><span class="p">)</span>
 
 <span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
     <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;antiquewhite&#39;</span><span class="p">)</span> <span class="o">+</span>
     <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_buffered_roads</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;orange&#39;</span><span class="p">)</span> <span class="o">+</span> 
-    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_roads</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country_roads</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span> <span class="o">+</span> 
     <span class="n">transparent_theme</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03) Working with Vector Data_73_0.png" src="../_images/03) Working with Vector Data_73_0.png" />
 </div>
 </div>
 <br>
@@ -1425,7 +1457,7 @@ operation.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
-&quot;attribute variables are assumed to be spatially constant throughout all geometries&quot;
+“attribute variables are assumed to be spatially constant throughout all geometries”
 </pre></div>
 </div>
 <img alt="../_images/03) Working with Vector Data_85_1.png" src="../_images/03) Working with Vector Data_85_1.png" />
@@ -1446,7 +1478,7 @@ operation.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
-&quot;attribute variables are assumed to be spatially constant throughout all geometries&quot;
+“attribute variables are assumed to be spatially constant throughout all geometries”
 </pre></div>
 </div>
 <img alt="../_images/03) Working with Vector Data_87_1.png" src="../_images/03) Working with Vector Data_87_1.png" />
@@ -1468,9 +1500,13 @@ operation.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><table>
-<thead><tr><th scope=col>ID</th><th scope=col>CODE</th><th scope=col>COUNTRY</th><th scope=col>areaQ</th><th scope=col>LATLONGID</th><th scope=col>LATITUDE</th><th scope=col>LONGITUDE</th><th scope=col>URBORRUR</th><th scope=col>YEAR</th><th scope=col>ES90POP</th><th scope=col>geometry</th><th scope=col>...</th><th scope=col>SCHADMNM</th><th scope=col>ADMNM1</th><th scope=col>ADMNM2</th><th scope=col>TYPE</th><th scope=col>SRCTYP</th><th scope=col>COORDSRCE</th><th scope=col>DATSRC</th><th scope=col>LOCNDATSRC</th><th scope=col>NOTES</th><th scope=col>geometry</th></tr></thead>
+<caption>A sf: 1 × 33</caption>
+<thead>
+	<tr><th scope=col>ID</th><th scope=col>CODE</th><th scope=col>COUNTRY</th><th scope=col>areaQ</th><th scope=col>LATLONGID</th><th scope=col>LATITUDE</th><th scope=col>LONGITUDE</th><th scope=col>URBORRUR</th><th scope=col>YEAR</th><th scope=col>ES90POP</th><th scope=col>geometry</th><th scope=col>⋯</th><th scope=col>SCHADMNM</th><th scope=col>ADMNM1</th><th scope=col>ADMNM2</th><th scope=col>TYPE</th><th scope=col>SRCTYP</th><th scope=col>COORDSRCE</th><th scope=col>DATSRC</th><th scope=col>LOCNDATSRC</th><th scope=col>NOTES</th><th scope=col>geometry</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>⋯</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;POINT [m]&gt;</th></tr>
+</thead>
 <tbody>
-	<tr><td>761                                                                     </td><td>ZAM                                                                     </td><td>Zambia                                                                  </td><td>777795418089                                                            </td><td>46                                                                      </td><td>-15.433                                                                 </td><td>28.333                                                                  </td><td>U                                                                       </td><td>1990                                                                    </td><td>709353                                                                  </td><td>POINT (643025.5 8293627)                                                </td><td>...                                                                     </td><td>LUSAKA                                                                  </td><td>Lusaka                                                                  </td><td>Lusaka Urban                                                            </td><td>UA                                                                      </td><td>Published                                                               </td><td>UNSD                                                                    </td><td>Census of Population, Housing &amp; Argriculture 1990 Descriptive Tables</td><td>UN Statistical Library                                                  </td><td>NA                                                                      </td><td>POINT (643025.5 8293627)                                                </td></tr>
+	<tr><td>761</td><td>ZAM</td><td>Zambia</td><td>777795418089</td><td>46</td><td>-15.433</td><td>28.333</td><td>U</td><td>1990</td><td>709353</td><td>POINT (643025.5 8293627)</td><td>⋯</td><td>LUSAKA</td><td>Lusaka</td><td>Lusaka Urban</td><td>UA</td><td>Published</td><td>UNSD</td><td>Census of Population, Housing &amp; Argriculture 1990 Descriptive Tables</td><td>UN Statistical Library</td><td>NA</td><td>POINT (643025.5 8293627)</td></tr>
 </tbody>
 </table>
 </div></div>
@@ -1564,9 +1600,13 @@ operation.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><table>
-<thead><tr><th scope=col>NAME1</th><th scope=col>geometry</th></tr></thead>
+<caption>A sf: 1 × 2</caption>
+<thead>
+	<tr><th scope=col>NAME1</th><th scope=col>geometry</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;POINT [m]&gt;</th></tr>
+</thead>
 <tbody>
-	<tr><td>Kafue                   </td><td>POINT (626780.8 8256818)</td></tr>
+	<tr><td>Kafue</td><td>POINT (626780.8 8256818)</td></tr>
 </tbody>
 </table>
 </div></div>
@@ -1585,16 +1625,37 @@ operation.</p>
 <li><p>Within 50 km of the nearest town with a population between 10,000 and 25,000</p></li>
 <li><p>Within a maximum distance from existing or planned electric grid proportional to 25x the line’s voltage.</p></li>
 </ul>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># </span>
+</pre></div>
+</div>
+</div>
+</div>
 <br>
 </div>
 <div class="section" id="suitable-land-near-the-capital">
 <h5>Suitable Land Near the Capital<a class="headerlink" href="#suitable-land-near-the-capital" title="Permalink to this headline">¶</a></h5>
 <p>We want to produce our power as close to population centers as possible, what area of suitable land is situated within 100km of the capital of your country?</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># </span>
+</pre></div>
+</div>
+</div>
+</div>
 <br>
 </div>
 <div class="section" id="most-central-city">
 <h5>Most Central City<a class="headerlink" href="#most-central-city" title="Permalink to this headline">¶</a></h5>
 <p>Your final task is to identify the city that is closest to the center of your country. To determine the center of a vector object you can use <code class="docutils literal notranslate"><span class="pre">st_centroid(x)</span></code>.</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># </span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1649,7 +1710,10 @@ operation.</p>
       </div>
     </div>
 
-    <script src="../_static/js/index.js"></script>
+    
+  <script src="../_static/js/index.30270b6e4c972e43c488.js"></script>
+
+
     
   </body>
 </html>
