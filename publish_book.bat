@@ -1,3 +1,4 @@
+REM https://gist.github.com/cobyism/4730490
 #!/bin/sh
 if [ -z "$1" ]
 then
