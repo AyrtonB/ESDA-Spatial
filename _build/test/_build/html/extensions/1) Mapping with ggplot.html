@@ -1,0 +1,633 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mapping with ggplot &#8212; Spatial Analysis for Energy</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.bfb7730f9caf2ec0b46a44615585038c.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.30270b6e4c972e43c488.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "https://github.com/AyrtonB/ESDA-Spatial");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.svg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Spatial Analysis for Energy</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../md/Intro.html">
+   UCL Energy Systems &amp; Data Analytics - Spatial Module
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tutorials/03%29%20Working%20with%20Vector%20Data.html">
+   Working with Vector Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tutorials/04%29%20Working%20with%20Raster%20Data.html">
+   Working with Raster Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tutorials/05%29%20Spatial%20Interpolation.html">
+   Spatial Statistics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tutorials/04%29%20Working%20with%20Raster%20Data.html">
+   Working with Raster Data
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  About
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../md/Setup.html">
+   Set-Up Instructions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../md/Jupyter-Anaconda.html">
+   What is Jupyter/Anaconda?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../md/ESDA%20Course.html">
+   ESDA Course
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/extensions/1) Mapping with ggplot.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/AyrtonB/ESDA-Spatial"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/AyrtonB/ESDA-Spatial/edit/master/extensions/1) Mapping with ggplot.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/AyrtonB/ESDA-Spatial/master?urlpath=tree/extensions/1) Mapping with ggplot.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/AyrtonB/ESDA-Spatial/blob/master/extensions/1) Mapping with ggplot.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imports">
+   Imports
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-example-data">
+   Loading Example Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#identifying-spatial-plotting-limits">
+   Identifying Spatial Plotting Limits
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <br>
+<div class="section" id="mapping-with-ggplot">
+<h1>Mapping with ggplot<a class="headerlink" href="#mapping-with-ggplot" title="Permalink to this headline">¶</a></h1>
+<p>This document outlines a number of extension areas related to plotting spatial data in ggplot.</p>
+<div class="section" id="imports">
+<h2>Imports<a class="headerlink" href="#imports" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">sf</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">zeallot</span><span class="p">)</span>
+
+<span class="nf">source</span><span class="p">(</span><span class="s">&#39;../scripts/helpers.R&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linking to GEOS 3.8.1, GDAL 3.1.2, PROJ 7.1.0
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+</div>
+<div class="section" id="loading-example-data">
+<h2>Loading Example Data<a class="headerlink" href="#loading-example-data" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_country</span> <span class="o">&lt;-</span> <span class="nf">read_sf</span><span class="p">(</span><span class="s">&#39;../data/zambia/zambia.shp&#39;</span><span class="p">)</span>
+<span class="n">df_africa_cities</span> <span class="o">&lt;-</span> <span class="nf">read_sf</span><span class="p">(</span><span class="s">&#39;../data/africa/cities.shp&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+</div>
+<div class="section" id="identifying-spatial-plotting-limits">
+<h2>Identifying Spatial Plotting Limits<a class="headerlink" href="#identifying-spatial-plotting-limits" title="Permalink to this headline">¶</a></h2>
+<p>Earlier in this tutorial we had to specify axis limits in order to reduce the area of Africa plotted. In that example we hardcoded the values, but how did we arrive at those values? and how could we automate this process in the future?</p>
+<p>First we’ll create a function that takes a spatial dataframe and returns the min and max values from the x and y coordinates.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">get_geo_df_limits</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">df</span><span class="p">){</span>
+    <span class="c1"># Extracting x/y coordinates</span>
+    <span class="n">df_coords</span> <span class="o">&lt;-</span> <span class="nf">st_coordinates</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    
+    <span class="c1"># Separating x/y coordinates</span>
+    <span class="n">x_vals</span> <span class="o">&lt;-</span> <span class="n">df_coords</span><span class="p">[,</span> <span class="m">1</span><span class="p">]</span>
+    <span class="n">y_vals</span> <span class="o">&lt;-</span> <span class="n">df_coords</span><span class="p">[,</span> <span class="m">2</span><span class="p">]</span>
+
+    <span class="c1"># Identifying the limits of x/y</span>
+    <span class="n">min_x</span> <span class="o">&lt;-</span> <span class="nf">min</span><span class="p">(</span><span class="n">x_vals</span><span class="p">)</span>
+    <span class="n">max_x</span> <span class="o">&lt;-</span> <span class="nf">max</span><span class="p">(</span><span class="n">x_vals</span><span class="p">)</span>
+    <span class="n">min_y</span> <span class="o">&lt;-</span> <span class="nf">min</span><span class="p">(</span><span class="n">y_vals</span><span class="p">)</span>
+    <span class="n">max_y</span> <span class="o">&lt;-</span> <span class="nf">max</span><span class="p">(</span><span class="n">y_vals</span><span class="p">)</span>
+    
+    <span class="n">limits</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="n">min_x</span><span class="p">,</span> <span class="n">max_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">,</span> <span class="n">max_y</span><span class="p">)</span>
+    
+    <span class="nf">return</span><span class="p">(</span><span class="n">limits</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">geo_df_limits</span> <span class="o">&lt;-</span> <span class="nf">get_geo_df_limits</span><span class="p">(</span><span class="n">df_country</span><span class="p">)</span>
+
+<span class="n">geo_df_limits</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>-42815.5985999211</li><li>1235177.17306073</li><li>8001294.45875233</li><li>9089236.26327303</li></ol>
+</div></div>
+</div>
+<br>
+<p>But what should we do when we want to use the limits from one dataframe, whilst plotting it alongside another dataframe that’s in a different coordinate system?</p>
+<p>We’ll start by extracting the limits again.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">geo_df_limits</span> <span class="o">&lt;-</span> <span class="nf">get_geo_df_limits</span><span class="p">(</span><span class="n">df_africa_cities</span><span class="p">)</span>
+
+<span class="n">geo_df_limits</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>-25.1000003814124</li><li>63.4700012209796</li><li>-34.5333328250498</li><li>37.2744445798535</li></ol>
+</div></div>
+</div>
+<br>
+<p>Then we can write another function that will convert these limit coordinates from one crs into another.</p>
+<p>N.b. normally a bounding box (bbox) refers to a Polygon or Linestring where the vertices are the corners of the bbox. In this example we refer to bbox corners as only the top right and bottom left corners, this is because for a rectangular bbox they can be used to define the full shape.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">transform_bbox_corner_crs</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">min_x_in</span><span class="p">,</span> <span class="n">max_x_in</span><span class="p">,</span> 
+                                      <span class="n">min_y_in</span><span class="p">,</span> <span class="n">max_y_in</span><span class="p">,</span> 
+                                      <span class="n">crs_in</span><span class="p">,</span> <span class="n">crs_out</span><span class="p">)</span> <span class="p">{</span>
+    
+    <span class="n">bottom_left</span> <span class="o">&lt;-</span> <span class="nf">st_point</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">min_x_in</span><span class="p">,</span> <span class="n">min_y_in</span><span class="p">))</span>
+    <span class="n">top_right</span> <span class="o">&lt;-</span> <span class="nf">st_point</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">max_x_in</span><span class="p">,</span> <span class="n">max_y_in</span><span class="p">))</span>
+
+    <span class="n">bbox_corners_in</span> <span class="o">&lt;-</span> <span class="nf">st_sfc</span><span class="p">(</span><span class="n">bottom_left</span><span class="p">,</span> <span class="n">top_right</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">crs_in</span><span class="p">)</span>
+    <span class="n">bbox_corners_out</span> <span class="o">&lt;-</span> <span class="nf">st_transform</span><span class="p">(</span><span class="n">bbox_corners_in</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">crs_out</span><span class="p">)</span>
+    
+    <span class="n">df_bbox_out</span> <span class="o">&lt;-</span> <span class="nf">st_coordinates</span><span class="p">(</span><span class="n">bbox_corners_out</span><span class="p">)</span>
+
+    <span class="n">min_x_out</span> <span class="o">&lt;-</span> <span class="n">df_bbox_out</span><span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">]</span>
+    <span class="n">max_x_out</span> <span class="o">&lt;-</span> <span class="n">df_bbox_out</span><span class="p">[</span><span class="m">2</span><span class="p">,</span> <span class="m">1</span><span class="p">]</span>
+    <span class="n">min_y_out</span> <span class="o">&lt;-</span> <span class="n">df_bbox_out</span><span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">]</span>
+    <span class="n">max_y_out</span> <span class="o">&lt;-</span> <span class="n">df_bbox_out</span><span class="p">[</span><span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">]</span>
+    
+    <span class="nf">return</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">min_x_out</span><span class="p">,</span> <span class="n">max_x_out</span><span class="p">,</span> <span class="n">min_y_out</span><span class="p">,</span> <span class="n">max_y_out</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="nf">c</span><span class="p">(</span><span class="n">min_x_in</span><span class="p">,</span> <span class="n">max_x_in</span><span class="p">,</span> <span class="n">min_y_in</span><span class="p">,</span> <span class="n">max_y_in</span><span class="p">)</span> <span class="o">%&lt;-%</span> <span class="n">geo_df_limits</span>
+
+<span class="n">crs_in</span> <span class="o">&lt;-</span> <span class="m">4326</span>
+<span class="n">crs_out</span> <span class="o">&lt;-</span> <span class="m">20935</span>
+    
+<span class="n">out_coords</span> <span class="o">&lt;-</span> <span class="nf">transform_bbox_corner_crs</span><span class="p">(</span><span class="n">min_x_in</span><span class="p">,</span> <span class="n">max_x_in</span><span class="p">,</span> 
+                                        <span class="n">min_y_in</span><span class="p">,</span> <span class="n">max_y_in</span><span class="p">,</span> 
+                                        <span class="n">crs_in</span><span class="p">,</span> <span class="n">crs_out</span><span class="p">)</span>
+
+<span class="n">out_coords</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>-4449293.37107226</li><li>3780758.55048383</li><li>4648881.200218</li><li>14811141.9057182</li></ol>
+</div></div>
+</div>
+<br>
+<p>We can now use these coordinates to define the ggplot plotting limits</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">c</span><span class="p">(</span><span class="n">min_x_out</span><span class="p">,</span> <span class="n">max_x_out</span><span class="p">,</span> <span class="n">min_y_out</span><span class="p">,</span> <span class="n">max_y_out</span><span class="p">)</span> <span class="o">%&lt;-%</span> <span class="n">out_coords</span>
+
+<span class="n">coord_lims</span> <span class="o">&lt;-</span> <span class="nf">coord_sf</span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="n">min_x_out</span><span class="p">,</span> <span class="n">max_x_out</span><span class="p">),</span> 
+                       <span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="n">min_y_out</span><span class="p">,</span> <span class="n">max_y_out</span><span class="p">))</span>
+
+<span class="n">coord_lims</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggproto object: Class CoordSf, CoordCartesian, Coord, gg&gt;
+    aspect: function
+    backtransform_range: function
+    clip: on
+    crs: NULL
+    datum: crs
+    default: FALSE
+    distance: function
+    expand: TRUE
+    fixup_graticule_labels: function
+    is_free: function
+    is_linear: function
+    label_axes: list
+    label_graticule: 
+    labels: function
+    limits: list
+    modify_scales: function
+    ndiscr: 100
+    range: function
+    render_axis_h: function
+    render_axis_v: function
+    render_bg: function
+    render_fg: function
+    setup_data: function
+    setup_layout: function
+    setup_panel_guides: function
+    setup_panel_params: function
+    setup_params: function
+    train_panel_guides: function
+    transform: function
+    super:  &lt;ggproto object: Class CoordSf, CoordCartesian, Coord, gg&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+<p>Putting this all together we’ll write a single function that accepts a dataframe, extracts its x/y limits, optionally converts them into a new CRS, then finally generates ggplot coordinate limits from them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">get_geo_df_plot_lims</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">crs_out</span><span class="o">=</span><span class="kc">NA</span><span class="p">){</span>
+    <span class="c1"># Identify limits</span>
+    <span class="n">geo_df_limits</span> <span class="o">&lt;-</span> <span class="nf">get_geo_df_limits</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="nf">c</span><span class="p">(</span><span class="n">min_x_out</span><span class="p">,</span> <span class="n">max_x_out</span><span class="p">,</span> <span class="n">min_y_out</span><span class="p">,</span> <span class="n">max_y_out</span><span class="p">)</span> <span class="o">%&lt;-%</span> <span class="n">geo_df_limits</span>
+
+    <span class="c1"># Optionally convert to new crs</span>
+    <span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">crs_out</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">crs_in</span> <span class="o">&lt;-</span> <span class="nf">extract_epsg_from_df</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">%&gt;%</span>
+                    <span class="nf">strtoi</span><span class="p">()</span> <span class="o">%&gt;%</span>
+                    <span class="n">st_crs</span>
+
+        <span class="n">out_coords</span> <span class="o">&lt;-</span> <span class="nf">transform_bbox_corner_crs</span><span class="p">(</span><span class="n">min_x_in</span><span class="p">,</span> <span class="n">max_x_in</span><span class="p">,</span> 
+                                                <span class="n">min_y_in</span><span class="p">,</span> <span class="n">max_y_in</span><span class="p">,</span> 
+                                                <span class="n">crs_in</span><span class="p">,</span> <span class="n">crs_out</span><span class="p">)</span>
+
+        <span class="nf">c</span><span class="p">(</span><span class="n">min_x_out</span><span class="p">,</span> <span class="n">max_x_out</span><span class="p">,</span> <span class="n">min_y_out</span><span class="p">,</span> <span class="n">max_y_out</span><span class="p">)</span> <span class="o">%&lt;-%</span> <span class="n">out_coords</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Convert to ggplot2 coordinate limits</span>
+    <span class="n">coord_lims</span> <span class="o">&lt;-</span> <span class="nf">coord_sf</span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="n">min_x_out</span><span class="p">,</span> <span class="n">max_x_out</span><span class="p">),</span> 
+                           <span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="n">min_y_out</span><span class="p">,</span> <span class="n">max_y_out</span><span class="p">))</span>
+    
+    <span class="nf">return</span><span class="p">(</span><span class="n">coord_lims</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">coord_lims</span> <span class="o">&lt;-</span> <span class="nf">get_geo_df_plot_lims</span><span class="p">(</span><span class="n">df_country</span><span class="p">)</span>
+
+<span class="n">transparent_theme</span> <span class="o">&lt;-</span> <span class="nf">theme</span><span class="p">(</span>
+    <span class="n">panel.grid.major</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span> 
+    <span class="n">panel.grid.minor</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
+    <span class="n">panel.background</span> <span class="o">=</span> <span class="nf">element_rect</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s">&#39;transparent&#39;</span><span class="p">,</span> <span class="n">colour</span><span class="o">=</span><span class="kc">NA</span><span class="p">),</span>
+    <span class="n">plot.background</span> <span class="o">=</span> <span class="nf">element_rect</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s">&#39;transparent&#39;</span><span class="p">,</span> <span class="n">colour</span><span class="o">=</span><span class="kc">NA</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;antiquewhite&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_africa_cities</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;orange&#39;</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="n">coord_lims</span> <span class="o">+</span> 
+    <span class="n">transparent_theme</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/1) Mapping with ggplot_13_0.png" src="../_images/1) Mapping with ggplot_13_0.png" />
+</div>
+</div>
+<br>
+<p>We can now very quickly switch between different plotting views</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">coord_lims</span> <span class="o">&lt;-</span> <span class="nf">get_geo_df_plot_lims</span><span class="p">(</span><span class="n">df_africa_cities</span><span class="p">,</span> <span class="n">crs_out</span><span class="o">=</span><span class="m">20935</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;green&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_africa_cities</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;orange&#39;</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="n">coord_lims</span> <span class="o">+</span> 
+    <span class="n">transparent_theme</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/1) Mapping with ggplot_15_0.png" src="../_images/1) Mapping with ggplot_15_0.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "AyrtonB/ESDA-Spatial",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./extensions"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Ayrton Bourn, Santiago De La Fuente, Clem Attwood, Joanna Kuleszo, Camilo Perico<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.30270b6e4c972e43c488.js"></script>
+
+
+    
+  </body>
+</html>
