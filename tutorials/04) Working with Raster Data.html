@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 
 <html>
@@ -7,15 +6,36 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Working with Raster Data &#8212; Spatial Analysis for Energy</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
-    <link href="../_static/css/index.css" rel="stylesheet">
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    
+  <link rel="stylesheet" href="../_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.bfb7730f9caf2ec0b46a44615585038c.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-dropdown.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.30270b6e4c972e43c488.js">
+
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
@@ -24,7 +44,6 @@
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/sphinx-book-theme.js"></script>
     <script kind="utterances">
 
     var commentsRunWhenDOMLoaded = cb => {
@@ -60,6 +79,7 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
@@ -71,11 +91,11 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Mapping with ggplot" href="../extensions/1%29%20Mapping%20with%20Ggplot.html" />
+    <link rel="next" title="Spatial Statistics" href="05%29%20Spatial%20Interpolation.html" />
     <link rel="prev" title="Working with Vector Data" href="03%29%20Working%20with%20Vector%20Data.html" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="docsearch:language" content="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
 
 
 
@@ -128,16 +148,14 @@ commentsRunWhenDOMLoaded(addUtterances);
    Working with Raster Data
   </a>
  </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Extensions
- </span>
-</p>
-<ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../extensions/1%29%20Mapping%20with%20Ggplot.html">
-   Mapping with ggplot
+  <a class="reference internal" href="05%29%20Spatial%20Interpolation.html">
+   Spatial Statistics
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Working with Raster Data
   </a>
  </li>
 </ul>
@@ -267,6 +285,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
+        
         <div class="tocsection onthispage pt-5 pb-3">
             <i class="fas fa-list"></i> Contents
         </div>
@@ -297,6 +316,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </ul>
 
         </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -320,6 +340,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">sf</span><span class="p">)</span> <span class="c1"># for handling spatial features</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">stars</span><span class="p">)</span> <span class="c1"># for converting between raster and vector data</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span> <span class="c1"># used for data manipulation</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">raster</span><span class="p">)</span> <span class="c1"># useful in some spatial operations</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span> <span class="c1"># for plotting</span>
@@ -330,46 +351,36 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
-&quot;package &#39;sf&#39; was built under R version 3.6.3&quot;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linking to GEOS 3.8.1, GDAL 3.1.2, PROJ 7.1.0
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linking to GEOS 3.8.0, GDAL 3.0.4, PROJ 6.3.1
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: abind
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: &#39;dplyr&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from &#39;package:stats&#39;:
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">Error</span>: package or namespace load failed for ‘stars’ in dyn.load(file, DLLpath = DLLpath, ...):
+ <span class="n">unable</span> <span class="n">to</span> <span class="n">load</span> <span class="n">shared</span> <span class="nb">object</span> <span class="s1">&#39;/srv/conda/envs/notebook/lib/R/library/lwgeom/libs/lwgeom.so&#39;</span><span class="p">:</span>
+  <span class="n">libproj</span><span class="o">.</span><span class="n">so</span><span class="o">.</span><span class="mi">15</span><span class="p">:</span> <span class="n">cannot</span> <span class="nb">open</span> <span class="n">shared</span> <span class="nb">object</span> <span class="n">file</span><span class="p">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span>
+<span class="ne">Traceback</span>:
 
-    filter, lag
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from &#39;package:base&#39;:
-
-    intersect, setdiff, setequal, union
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: sp
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: &#39;raster&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following object is masked from &#39;package:dplyr&#39;:
-
-    select
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Registered S3 methods overwritten by &#39;ggplot2&#39;:
-  method         from 
-  [.quosures     rlang
-  c.quosures     rlang
-  print.quosures rlang
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
-&quot;package &#39;zeallot&#39; was built under R version 3.6.3&quot;
+<span class="mi">1</span><span class="o">.</span> <span class="n">library</span><span class="p">(</span><span class="n">stars</span><span class="p">)</span>
+<span class="mi">2</span><span class="o">.</span> <span class="n">tryCatch</span><span class="p">({</span>
+ <span class="o">.</span>     <span class="n">attr</span><span class="p">(</span><span class="n">package</span><span class="p">,</span> <span class="s2">&quot;LibPath&quot;</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="n">which</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">loc</span>
+ <span class="o">.</span>     <span class="n">ns</span> <span class="o">&lt;-</span> <span class="n">loadNamespace</span><span class="p">(</span><span class="n">package</span><span class="p">,</span> <span class="n">lib</span><span class="o">.</span><span class="n">loc</span><span class="p">)</span>
+ <span class="o">.</span>     <span class="n">env</span> <span class="o">&lt;-</span> <span class="n">attachNamespace</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">pos</span><span class="p">,</span> <span class="n">deps</span><span class="p">,</span> <span class="n">exclude</span><span class="p">,</span> <span class="n">include</span><span class="o">.</span><span class="n">only</span><span class="p">)</span>
+ <span class="o">.</span> <span class="p">},</span> <span class="n">error</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+ <span class="o">.</span>     <span class="n">P</span> <span class="o">&lt;-</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span>is.null<span class="o">(</span>cc &lt;- conditionCall<span class="o">(</span>e<span class="o">)))</span> 
+ <span class="o">.</span>         <span class="n">paste</span><span class="p">(</span><span class="s2">&quot; in&quot;</span><span class="p">,</span> <span class="n">deparse</span><span class="p">(</span><span class="n">cc</span><span class="p">)[</span><span class="mi">1</span><span class="n">L</span><span class="p">])</span>
+ <span class="o">.</span>     <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+ <span class="o">.</span>     <span class="n">msg</span> <span class="o">&lt;-</span> <span class="n">gettextf</span><span class="p">(</span><span class="s2">&quot;package or namespace load failed for </span><span class="si">%s%s</span><span class="s2">:</span><span class="se">\n</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> 
+ <span class="o">.</span>         <span class="n">sQuote</span><span class="p">(</span><span class="n">package</span><span class="p">),</span> <span class="n">P</span><span class="p">,</span> <span class="n">conditionMessage</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+ <span class="o">.</span>     <span class="k">if</span> <span class="p">(</span><span class="n">logical</span><span class="o">.</span><span class="k">return</span><span class="p">)</span> 
+ <span class="o">.</span>         <span class="n">message</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">&quot;Error:&quot;</span><span class="p">,</span> <span class="n">msg</span><span class="p">),</span> <span class="n">domain</span> <span class="o">=</span> <span class="n">NA</span><span class="p">)</span>
+ <span class="o">.</span>     <span class="k">else</span> <span class="n">stop</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">call</span><span class="o">.</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">,</span> <span class="n">domain</span> <span class="o">=</span> <span class="n">NA</span><span class="p">)</span>
+ <span class="o">.</span> <span class="p">})</span>
+<span class="mi">3</span><span class="o">.</span> <span class="n">tryCatchList</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">parentenv</span><span class="p">,</span> <span class="n">handlers</span><span class="p">)</span>
+<span class="mi">4</span><span class="o">.</span> <span class="n">tryCatchOne</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">names</span><span class="p">,</span> <span class="n">parentenv</span><span class="p">,</span> <span class="n">handlers</span><span class="p">[[</span><span class="mi">1</span><span class="n">L</span><span class="p">]])</span>
+<span class="mi">5</span><span class="o">.</span> <span class="n">value</span><span class="p">[[</span><span class="mi">3</span><span class="n">L</span><span class="p">]](</span><span class="n">cond</span><span class="p">)</span>
+<span class="mi">6</span><span class="o">.</span> <span class="n">stop</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">call</span><span class="o">.</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">,</span> <span class="n">domain</span> <span class="o">=</span> <span class="n">NA</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -409,26 +420,16 @@ commentsRunWhenDOMLoaded(addUtterances);
 <p>We’ll also load land cover, solar radiance, and elevation raster data from .tif files</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">land_cover</span> <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&#39;../data/africa/land_cover.tif&#39;</span><span class="p">)</span>
-<span class="c1">#solar &lt;- raster(&#39;../data/africa/solar.tif&#39;)</span>
-<span class="c1">#elevation &lt;- raster(&#39;../data/africa/elevation.tif&#39;)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">solar</span> <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&#39;../data/africa/solar.tif&#39;</span><span class="p">)</span>
+<span class="n">land_cover</span> <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&#39;../data/africa/land_cover.tif&#39;</span><span class="p">)</span>
+<span class="n">elevation</span> <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&#39;../data/africa/elevation.tif&#39;</span><span class="p">)</span>
 
-<span class="nf">plot</span><span class="p">(</span><span class="n">land_cover</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">solar</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span> <span class="ow">in</span> <span class="o">.</span><span class="n">rasterObjectFromFile</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">band</span> <span class="o">=</span> <span class="n">band</span><span class="p">,</span> <span class="n">objecttype</span> <span class="o">=</span> <span class="s2">&quot;RasterLayer&quot;</span><span class="p">,</span> <span class="p">:</span> <span class="n">Cannot</span> <span class="n">create</span> <span class="n">RasterLayer</span> <span class="nb">object</span> <span class="kn">from</span> <span class="nn">this</span> <span class="n">file</span><span class="p">;</span> <span class="n">perhaps</span> <span class="n">you</span> <span class="n">need</span> <span class="n">to</span> <span class="n">install</span> <span class="n">rgdal</span> <span class="n">first</span>
-<span class="ne">Traceback</span>:
-
-<span class="mi">1</span><span class="o">.</span> <span class="n">raster</span><span class="p">(</span><span class="s2">&quot;../data/africa/land_cover.tif&quot;</span><span class="p">)</span>
-<span class="mi">2</span><span class="o">.</span> <span class="n">raster</span><span class="p">(</span><span class="s2">&quot;../data/africa/land_cover.tif&quot;</span><span class="p">)</span>
-<span class="mi">3</span><span class="o">.</span> <span class="o">.</span><span class="n">local</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
-<span class="mi">4</span><span class="o">.</span> <span class="o">.</span><span class="n">rasterObjectFromFile</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">band</span> <span class="o">=</span> <span class="n">band</span><span class="p">,</span> <span class="n">objecttype</span> <span class="o">=</span> <span class="s2">&quot;RasterLayer&quot;</span><span class="p">,</span> 
- <span class="o">.</span>     <span class="o">...</span><span class="p">)</span>
-<span class="mi">5</span><span class="o">.</span> <span class="n">stop</span><span class="p">(</span><span class="s2">&quot;Cannot create RasterLayer object from this file; perhaps you need to install rgdal first&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
+<img alt="../_images/04) Working with Raster Data_7_0.png" src="../_images/04) Working with Raster Data_7_0.png" />
 </div>
 </div>
 <br>
@@ -438,31 +439,63 @@ commentsRunWhenDOMLoaded(addUtterances);
 <p>In the same way you can clip vectors with a “cookie cutter” outline you can also clip rasters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_zambia_4326</span> <span class="o">&lt;-</span> <span class="nf">st_transform</span><span class="p">(</span><span class="n">df_zambia</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="m">4326</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_zambia_4326</span> <span class="o">&lt;-</span> <span class="nf">st_transform</span><span class="p">(</span><span class="n">df_zambia</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="nf">st_crs</span><span class="p">(</span><span class="n">solar</span><span class="p">))</span>
 <span class="n">solar_zambia</span> <span class="o">&lt;-</span> <span class="nf">crop</span><span class="p">(</span><span class="n">solar</span><span class="p">,</span> <span class="n">df_zambia_4326</span><span class="p">)</span>
 
 <span class="nf">plot</span><span class="p">(</span><span class="n">solar_zambia</span><span class="p">)</span>
-<span class="nf">plot</span><span class="p">(</span><span class="n">df_zambia_4326</span><span class="p">,</span> <span class="n">add</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">df_zambia_4326</span><span class="p">[</span><span class="s">&#39;geometry&#39;</span><span class="p">],</span> <span class="n">add</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04) Working with Raster Data_9_0.png" src="../_images/04) Working with Raster Data_9_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">st_crs</span><span class="p">(</span><span class="n">solar</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">mask</span><span class="p">(</span><span class="n">solar</span><span class="p">,</span> <span class="n">df_zambia_4326</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://stackoverflow.com/questions/41529731/how-to-crop-raster-based-on-spatialpolygons-in-r</span>
-<span class="n">solar_zambia</span> <span class="o">&lt;-</span> <span class="nf">mask</span><span class="p">(</span><span class="n">solar</span><span class="p">,</span> <span class="n">df_zambia_4326</span><span class="p">)</span>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>Error in sp::CRS(SRS_string = from$wkt): no arguments in initialization list
+Traceback:
 
-<span class="nf">plot</span><span class="p">(</span><span class="n">solar_zambia</span><span class="p">)</span>
-<span class="nf">plot</span><span class="p">(</span><span class="n">df_zambia_4326</span><span class="p">,</span> <span class="n">add</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+1. mask(solar, df_zambia_4326)
+2. mask(solar, df_zambia_4326)
+3. .sf2sp(mask)
+4. as(from, &quot;Spatial&quot;)
+5. asMethod(object)
+6. sp::addAttrToGeom(as_Spatial(geom, IDs = row.names(from)), data.frame(from), 
+ .     match.ID = FALSE)
+7. as_Spatial(geom, IDs = row.names(from))
+8. .as_Spatial(from, cast, IDs)
+9. sfc2SpatialPolygons(from, IDs)
+10. sp::SpatialPolygons(l, proj4string = as(st_crs(from), &quot;CRS&quot;))
+11. stopifnot(is(proj4string, &quot;CRS&quot;))
+12. is(proj4string, &quot;CRS&quot;)
+13. as(st_crs(from), &quot;CRS&quot;)
+14. asMethod(object)
+15. CRS_from_crs(from)
+16. comment(sp::CRS(SRS_string = from$wkt))
+17. sp::CRS(SRS_string = from$wkt)
+18. stop(res[[2]])
 </pre></div>
 </div>
+</div>
+</div>
+<br>
+<p>When we rasterize a Polygon it will try to find an attribute (dataframe column) which can be used to fill in the values of the new raster object, in this case the only numeric column we have relates to the area of a country.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rstr_zambia_4326</span> <span class="o">&lt;-</span> <span class="nf">st_rasterize</span><span class="p">(</span><span class="n">df_zambia_4326</span><span class="p">)</span>
+
+<span class="nf">plot</span><span class="p">(</span><span class="n">rstr_zambia_4326</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04) Working with Raster Data_13_0.png" src="../_images/04) Working with Raster Data_13_0.png" />
 </div>
 </div>
 </div>
@@ -498,7 +531,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="03%29%20Working%20with%20Vector%20Data.html" title="previous page">Working with Vector Data</a>
-    <a class='right-next' id="next-link" href="../extensions/1%29%20Mapping%20with%20Ggplot.html" title="next page">Mapping with ggplot</a>
+    <a class='right-next' id="next-link" href="05%29%20Spatial%20Interpolation.html" title="next page">Spatial Statistics</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
@@ -517,7 +550,10 @@ commentsRunWhenDOMLoaded(addUtterances);
       </div>
     </div>
 
-    <script src="../_static/js/index.js"></script>
+    
+  <script src="../_static/js/index.30270b6e4c972e43c488.js"></script>
+
+
     
   </body>
 </html>
