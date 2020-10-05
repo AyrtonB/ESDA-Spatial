@@ -1,0 +1,1719 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Working with Vector Data &#8212; Spatial Analysis for Energy</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.bfb7730f9caf2ec0b46a44615585038c.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.30270b6e4c972e43c488.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "https://github.com/AyrtonB/ESDA-Spatial");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Working with Raster Data" href="04%29%20Working%20with%20Raster%20Data.html" />
+    <link rel="prev" title="UCL Energy Systems &amp; Data Analytics - Spatial Module" href="../md/Intro.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.svg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Spatial Analysis for Energy</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../md/Intro.html">
+   UCL Energy Systems &amp; Data Analytics - Spatial Module
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Working with Vector Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04%29%20Working%20with%20Raster%20Data.html">
+   Working with Raster Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05%29%20Spatial%20Interpolation.html">
+   Spatial Statistics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04%29%20Working%20with%20Raster%20Data.html">
+   Working with Raster Data
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  About
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../md/Setup.html">
+   Set-Up Instructions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../md/Jupyter-Anaconda.html">
+   What is Jupyter/Anaconda?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../md/ESDA%20Course.html">
+   ESDA Course
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/tutorials/03) Working with Vector Data.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/AyrtonB/ESDA-Spatial"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/AyrtonB/ESDA-Spatial/edit/master/tutorials/03) Working with Vector Data.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/AyrtonB/ESDA-Spatial/master?urlpath=tree/tutorials/03) Working with Vector Data.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/AyrtonB/ESDA-Spatial/blob/master/tutorials/03) Working with Vector Data.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analysis-preparation">
+   Analysis Preparation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#imports">
+     Imports
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#loading-data">
+     Loading Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#standardising-the-dataframe-crs">
+     Standardising the DataFrame CRS’
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spatial-queries">
+   Spatial Queries
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filtering">
+     Filtering
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#questions">
+       Questions
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#how-many-cities-are-there-in-tanzania">
+         How many Cities are there in Tanzania?
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#interconnector-identification">
+         Interconnector Identification
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#clipping">
+     Clipping
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#merging-spatial-features">
+     Merging Spatial Features
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Questions
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#east-african-community-high-voltage-length">
+         East African Community High Voltage Length
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#space-saving">
+         Space Saving
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#proximity-analysis">
+     Proximity Analysis
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#buffering">
+       Buffering
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#spatial-overlays">
+       Spatial Overlays
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#nearest-neighbours-analysis">
+       Nearest Neighbours Analysis
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Questions
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#percentage-of-land-suitable-for-power-plant-siting">
+         Percentage of Land Suitable for Power Plant Siting
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#suitable-land-near-the-capital">
+         Suitable Land Near the Capital
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#most-central-city">
+         Most Central City
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="working-with-vector-data">
+<h1>Working with Vector Data<a class="headerlink" href="#working-with-vector-data" title="Permalink to this headline">¶</a></h1>
+<br>
+<p>This tutorial is to get you started with spatial analysis of vector data and to apply the knowledge of coordinate systems and attribute tables you gained in the previous tutorials.</p>
+<p>The tutorial’s objectives include learning how to:</p>
+<ul class="simple">
+<li><p>Execute spatial queries</p></li>
+<li><p>Merge geometries</p></li>
+<li><p>Create and use buffers</p></li>
+<li><p>Apply spatial overlays</p></li>
+<li><p>Use nearest neighbour analysis</p></li>
+</ul>
+<p>These tools will be applied to a typical spatial analysis you might encounter in the energy field – power plant siting. We will work towards establishing the best locations for a solar power plant in the country you have chosen last time.</p>
+<p>A plant should be located in an area with relatively easy access (roads nearby), preferably not too far from an existing electric grid and near a population centre. Here we opt for a small or medium-size town/city as the preferred location for our new development.</p>
+<p>As a result, we will work with the following assumptions:</p>
+<ul class="simple">
+<li><p>The plant is to be located at a maximum of 5 km from the major roads</p></li>
+<li><p>Within 50 km of the nearest town with a population above 10,000</p></li>
+<li><p>Within a maximum distance from existing or planned electric grid proportional to line voltage.</p></li>
+</ul>
+<p>Note: these assumptions will vary depending on the project, and are by no means standard</p>
+<br>
+<p>Further Reading/Resources:</p>
+<ul class="simple">
+<li><p>https://geocompr.robinlovelace.net/spatial-operations.html</p></li>
+<li><p>https://mgimond.github.io/Spatial/vector-operations-in-r.html#subsetting</p></li>
+<li><p>Good discussion around terminology - https://www.jessesadler.com/post/simple-feature-objects/</p></li>
+</ul>
+<br>
+<div class="section" id="analysis-preparation">
+<h2>Analysis Preparation<a class="headerlink" href="#analysis-preparation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="imports">
+<h3>Imports<a class="headerlink" href="#imports" title="Permalink to this headline">¶</a></h3>
+<p>All of these libraries should have been previously installed during the environment set-up, if they have not been installed already you can use <code class="docutils literal notranslate"><span class="pre">install.packages(c(&quot;sf&quot;,</span> <span class="pre">&quot;ggplot2&quot;))</span></code>. We’ll also get back some information about the packages and any potential issues.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">sf</span><span class="p">)</span> <span class="c1"># for handling spatial features</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span> <span class="c1"># used for data manipulation</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">raster</span><span class="p">)</span> <span class="c1"># useful in some spatial operations</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span> <span class="c1"># for plotting</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">zeallot</span><span class="p">)</span> <span class="c1"># used for unpacking variables</span>
+
+<span class="nf">source</span><span class="p">(</span><span class="s">&#39;../scripts/helpers.R&#39;</span><span class="p">)</span> <span class="c1"># helper script, note that &#39;../&#39; is used to change into the directory above the directory this notebook is in</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linking to GEOS 3.8.1, GDAL 3.1.2, PROJ 7.1.0
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘dplyr’
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:stats’:
+
+    filter, lag
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: sp
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘raster’
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following object is masked from ‘package:dplyr’:
+
+    select
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+</div>
+<div class="section" id="loading-data">
+<h3>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this headline">¶</a></h3>
+<p>We’ll start by downloading the necessary data, note that if you have already downloaded this data it will not be over-written</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">download_data</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+<p>Now we can read in the country border</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_country</span> <span class="o">&lt;-</span> <span class="nf">read_sf</span><span class="p">(</span><span class="s">&#39;../data/zambia/zambia.shp&#39;</span><span class="p">)</span>
+
+<span class="n">df_country</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<caption>A sf: 1 × 5</caption>
+<thead>
+	<tr><th scope=col>ID</th><th scope=col>CODE</th><th scope=col>COUNTRY</th><th scope=col>areaQ</th><th scope=col>geometry</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;POLYGON [m]&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>761</td><td>ZAM</td><td>Zambia</td><td>777795418089</td><td>POLYGON ((716452.6 8516873,...</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<br>
+<p>To check everything has worked we’ll visualise the geometry column</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">df_country</span><span class="p">[</span><span class="s">&#39;geometry&#39;</span><span class="p">],</span> <span class="n">col</span><span class="o">=</span><span class="s">&#39;orange&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03) Working with Vector Data_7_0.png" src="../_images/03) Working with Vector Data_7_0.png" />
+</div>
+</div>
+<br>
+<p>We’ll also check that the CRS is suitable</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">st_crs</span><span class="p">(</span><span class="n">df_country</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coordinate Reference System:
+  User input: Arc 1950 / UTM zone 35S 
+  wkt:
+PROJCRS[&quot;Arc 1950 / UTM zone 35S&quot;,
+    BASEGEOGCRS[&quot;Arc 1950&quot;,
+        DATUM[&quot;Arc 1950&quot;,
+            ELLIPSOID[&quot;Clarke 1880 (Arc)&quot;,6378249.145,293.4663077,
+                LENGTHUNIT[&quot;metre&quot;,1]]],
+        PRIMEM[&quot;Greenwich&quot;,0,
+            ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],
+        ID[&quot;EPSG&quot;,4209]],
+    CONVERSION[&quot;UTM zone 35S&quot;,
+        METHOD[&quot;Transverse Mercator&quot;,
+            ID[&quot;EPSG&quot;,9807]],
+        PARAMETER[&quot;Latitude of natural origin&quot;,0,
+            ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+            ID[&quot;EPSG&quot;,8801]],
+        PARAMETER[&quot;Longitude of natural origin&quot;,27,
+            ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+            ID[&quot;EPSG&quot;,8802]],
+        PARAMETER[&quot;Scale factor at natural origin&quot;,0.9996,
+            SCALEUNIT[&quot;unity&quot;,1],
+            ID[&quot;EPSG&quot;,8805]],
+        PARAMETER[&quot;False easting&quot;,500000,
+            LENGTHUNIT[&quot;metre&quot;,1],
+            ID[&quot;EPSG&quot;,8806]],
+        PARAMETER[&quot;False northing&quot;,10000000,
+            LENGTHUNIT[&quot;metre&quot;,1],
+            ID[&quot;EPSG&quot;,8807]]],
+    CS[Cartesian,2],
+        AXIS[&quot;(E)&quot;,east,
+            ORDER[1],
+            LENGTHUNIT[&quot;metre&quot;,1]],
+        AXIS[&quot;(N)&quot;,north,
+            ORDER[2],
+            LENGTHUNIT[&quot;metre&quot;,1]],
+    USAGE[
+        SCOPE[&quot;unknown&quot;],
+        AREA[&quot;Africa - Botswana, Zambia and Zimbabwe - 24°E to 30°E&quot;],
+        BBOX[-25.84,24,-8.31,30]],
+    ID[&quot;EPSG&quot;,20935]]
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+<p>As mentioned in the previous tutorial UTM 35S is a suitable selection for Zambia as the country spans its bounding box, UTM CRS’ are also a relatively standard set to use.</p>
+<p>The image below shows how that for certain regions - for example in the east - it may be more suitable to use UTM36/34S, however as we’re analysing data for the whole country we’ll stick with UTM35S.</p>
+<center><img src="../img/md/zambia_crs.png" width="400"></img></center><br>
+<p>We’ll now read in the countries, cities, roads, and the electricity grid shapefiles spanning the entire African continent.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_africa_countries</span> <span class="o">&lt;-</span> <span class="nf">read_sf</span><span class="p">(</span><span class="s">&#39;../data/africa/countries.shp&#39;</span><span class="p">)</span>
+<span class="n">df_africa_cities</span> <span class="o">&lt;-</span> <span class="nf">read_sf</span><span class="p">(</span><span class="s">&#39;../data/africa/cities.shp&#39;</span><span class="p">)</span>
+<span class="n">df_africa_roads</span> <span class="o">&lt;-</span> <span class="nf">read_sf</span><span class="p">(</span><span class="s">&#39;../data/africa/roads.shp&#39;</span><span class="p">)</span>
+<span class="n">df_africa_grid</span> <span class="o">&lt;-</span> <span class="nf">read_sf</span><span class="p">(</span><span class="s">&#39;../data/africa/grid.shp&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+<p>We can use <em>geom_sf</em> to nicely visualise sf objects with ggplot. It will automatically use <em>stat_sf</em> to ensure that all objects are visualised in the same coordinate system, regardless of their individual CRSs. By default the CRS that will be used is the CRS attached to the first sf object plotted, a geographic lon/lat projection is then added as a background.</p>
+<p>In this example we’ll manually specify <em>coords_sf</em> so that we can narrow the plot down to the area we’re interested in, rather than the whole of Africa. We’ll also add a theme that will put the map on a transparent background.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">transparent_theme</span> <span class="o">&lt;-</span> <span class="nf">theme</span><span class="p">(</span>
+    <span class="n">panel.grid.major</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span> 
+    <span class="n">panel.grid.minor</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
+    <span class="n">panel.background</span> <span class="o">=</span> <span class="nf">element_rect</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s">&#39;transparent&#39;</span><span class="p">,</span> <span class="n">colour</span><span class="o">=</span><span class="kc">NA</span><span class="p">),</span>
+    <span class="n">plot.background</span> <span class="o">=</span> <span class="nf">element_rect</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s">&#39;transparent&#39;</span><span class="p">,</span> <span class="n">colour</span><span class="o">=</span><span class="kc">NA</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;antiquewhite&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_africa_cities</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="m">21</span><span class="p">,</span> 
+            <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;orange&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="m">3</span><span class="p">,</span> <span class="n">stroke</span><span class="o">=</span><span class="m">1</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="nf">coord_sf</span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">1220000</span><span class="p">),</span> 
+             <span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">8000000</span><span class="p">,</span> <span class="m">9100000</span><span class="p">))</span> <span class="o">+</span>
+    <span class="n">transparent_theme</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03) Working with Vector Data_14_0.png" src="../_images/03) Working with Vector Data_14_0.png" />
+</div>
+</div>
+<br>
+<p>In the previous step we manually specified the plot limits for the area we are interested in. Included in the course helper functions is <code class="docutils literal notranslate"><span class="pre">get_geo_df_plot_lims</span></code> which will accept a spatial dataframe and return the limits associated only the objects in that dataset, an example can be seen below.</p>
+<p>A detailed explanation of how this is generated can be found in the extension resource ‘Mapping with ggplot’ in the section on ‘Identifying Spatial Plotting Limits’.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">coord_lims</span> <span class="o">&lt;-</span> <span class="nf">get_geo_df_plot_lims</span><span class="p">(</span><span class="n">df_country</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;antiquewhite&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_africa_cities</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="m">21</span><span class="p">,</span> 
+            <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;orange&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="m">3</span><span class="p">,</span> <span class="n">stroke</span><span class="o">=</span><span class="m">1</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="n">coord_lims</span> <span class="o">+</span> 
+    <span class="n">transparent_theme</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03) Working with Vector Data_16_0.png" src="../_images/03) Working with Vector Data_16_0.png" />
+</div>
+</div>
+<br>
+</div>
+<div class="section" id="standardising-the-dataframe-crs">
+<h3>Standardising the DataFrame CRS’<a class="headerlink" href="#standardising-the-dataframe-crs" title="Permalink to this headline">¶</a></h3>
+<p>Before we move on with out analysis we’ll make new copies of the africa-wide datasets that are in the CRS used by our selected country. We’ll use another of the course helper functions - that extracts the epsg code from a spatial dataframe - to identify the CRS used for the cities</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">epsg</span> <span class="o">&lt;-</span> <span class="nf">extract_epsg_from_df</span><span class="p">(</span><span class="n">df_africa_cities</span><span class="p">)</span>
+
+<span class="n">epsg</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">4326</div></div>
+</div>
+<br>
+<p>Unlike the country specific shapefile we read in earlier which is in the CRS EPSG:20935 (i.e. UTM35S), the africa-wide shapefiles are in EPSG:4326 (i.e. lon/lat).</p>
+<p>We’ll now extract the epsg codes from each of the new dataframes to check what CRS they’re in as well. To do this we’ll define a function that loops over each of the dataframes, extracts their epsg code, then appends it to a list.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">extract_epsg_from_dfs</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">dfs</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">epsgs</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">()</span> <span class="c1"># We&#39;ll create an empty list which </span>
+                    <span class="c1"># the epsg codes will be put into</span>
+    
+    <span class="nf">for </span><span class="p">(</span><span class="n">df</span> <span class="n">in</span> <span class="n">dfs</span><span class="p">)</span> <span class="c1"># We&#39;ll then loop over all of the </span>
+                    <span class="c1"># dataframes we&#39;ve just loaded</span>
+    <span class="p">{</span>
+        <span class="n">epsg</span> <span class="o">&lt;-</span> <span class="nf">extract_epsg_from_df</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="c1"># Extract each epsg code</span>
+        <span class="n">epsgs</span> <span class="o">&lt;-</span> <span class="nf">append</span><span class="p">(</span><span class="n">epsgs</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="n">epsg</span><span class="p">))</span>  <span class="c1"># and append it to the epsgs list</span>
+    <span class="p">}</span>
+    
+    <span class="nf">return</span><span class="p">(</span><span class="n">epsgs</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">dfs</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">(</span><span class="n">df_africa_cities</span><span class="p">,</span> <span class="n">df_africa_roads</span><span class="p">,</span> <span class="n">df_africa_grid</span><span class="p">)</span>
+<span class="n">epsgs</span> <span class="o">&lt;-</span> <span class="nf">extract_epsg_from_dfs</span><span class="p">(</span><span class="n">dfs</span><span class="p">)</span>
+
+<span class="n">epsgs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol>
+	<li>4326</li>
+	<li>4326</li>
+	<li>4326</li>
+</ol>
+</div></div>
+</div>
+<br>
+<p>We can see that the roads and grid dataframes are in EPSG:4326 (lon/lat) as well, so we’ll convert them all to UTM35S.</p>
+<p>To transform the coordinates of a dataframe from one CRS to another requires the use of the <em>st_transform</em> function, which as well as the dataframe must be passed the new CRS that is to be used.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_africa_cities_UTM35S</span> <span class="o">&lt;-</span> <span class="nf">st_transform</span><span class="p">(</span><span class="n">df_africa_cities</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="nf">st_crs</span><span class="p">(</span><span class="m">20935</span><span class="p">))</span>
+<span class="n">df_africa_roads_UTM35S</span> <span class="o">&lt;-</span> <span class="nf">st_transform</span><span class="p">(</span><span class="n">df_africa_roads</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="nf">st_crs</span><span class="p">(</span><span class="m">20935</span><span class="p">))</span>
+<span class="n">df_africa_grid_UTM35S</span> <span class="o">&lt;-</span> <span class="nf">st_transform</span><span class="p">(</span><span class="n">df_africa_grid</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="nf">st_crs</span><span class="p">(</span><span class="m">20935</span><span class="p">))</span>
+
+<span class="n">dfs</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">(</span><span class="n">df_africa_cities_UTM35S</span><span class="p">,</span> <span class="n">df_africa_roads_UTM35S</span><span class="p">,</span> <span class="n">df_africa_grid_UTM35S</span><span class="p">)</span>
+<span class="n">epsgs</span> <span class="o">&lt;-</span> <span class="nf">extract_epsg_from_dfs</span><span class="p">(</span><span class="n">dfs</span><span class="p">)</span>
+
+<span class="n">epsgs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol>
+	<li>20935</li>
+	<li>20935</li>
+	<li>20935</li>
+</ol>
+</div></div>
+</div>
+<br>
+</div>
+</div>
+<div class="section" id="spatial-queries">
+<h2>Spatial Queries<a class="headerlink" href="#spatial-queries" title="Permalink to this headline">¶</a></h2>
+<p>In the previous tutorial, we have learned how to select features by attributes (tabular queries). Now, we will select them by spatial relationship.</p>
+<p>Spatial queries answer questions such as:</p>
+<ul class="simple">
+<li><p>Where is … ?</p></li>
+<li><p>Where’s the closest … ?</p></li>
+<li><p>What’s inside … ?</p></li>
+<li><p>What intersects … ?</p></li>
+</ul>
+<br>
+<div class="section" id="filtering">
+<h3>Filtering<a class="headerlink" href="#filtering" title="Permalink to this headline">¶</a></h3>
+<p>We’ll start by filtering for Points that fall within a specified Polygon. A good example of where this sort of question can be useful is in finding which countries the cities we have data for are located, where in our case the names of the countries in <code class="docutils literal notranslate"><span class="pre">df_africa_countries</span></code> do not fully match those in <code class="docutils literal notranslate"><span class="pre">df_africa_cities</span></code> (here ~13% remain unmatched).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">non_matching_countries</span> <span class="o">&lt;-</span> <span class="nf">setdiff</span><span class="p">(</span><span class="n">df_africa_countries</span><span class="o">$</span><span class="n">NAME</span><span class="p">,</span> <span class="n">df_africa_cities</span><span class="o">$</span><span class="n">COUNTRY</span><span class="p">)</span>
+<span class="n">pct_countries_unmatched</span> <span class="o">&lt;-</span> <span class="nf">round</span><span class="p">(</span><span class="m">100</span><span class="o">*</span><span class="nf">length</span><span class="p">(</span><span class="n">non_matching_countries</span><span class="p">)</span><span class="o">/</span><span class="nf">nrow</span><span class="p">(</span><span class="n">df_africa_countries</span><span class="p">),</span> <span class="m">2</span><span class="p">)</span>
+
+<span class="n">pct_countries_unmatched</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">12.96</div></div>
+</div>
+<br>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">st_intersects</span></code> to return TRUE/FALSE values for every geometry based on whether they intersect with the other geometries</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">intersected_cities_bool</span> <span class="o">&lt;-</span> <span class="nf">st_intersects</span><span class="p">(</span><span class="n">df_africa_cities_UTM35S</span><span class="p">,</span> <span class="n">df_country</span><span class="p">,</span> <span class="n">sparse</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">intersected_cities_bool</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<caption>A matrix: 6 × 1 of type lgl</caption>
+<tbody>
+	<tr><td>FALSE</td></tr>
+	<tr><td>FALSE</td></tr>
+	<tr><td>FALSE</td></tr>
+	<tr><td>FALSE</td></tr>
+	<tr><td>FALSE</td></tr>
+	<tr><td>FALSE</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<br>
+<p>We can then extract the indexes of cities that do intersect with our country of interest</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">intersected_cities_idxs</span> <span class="o">&lt;-</span> <span class="nf">which</span><span class="p">(</span><span class="n">intersected_cities_bool</span><span class="p">)</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">intersected_cities_idxs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>4254</li><li>4255</li><li>4256</li><li>4257</li><li>4258</li><li>4259</li></ol>
+</div></div>
+</div>
+<br>
+<p>We can do a quick check to confirm that at least one of the cities is in Zambia</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span> <span class="o">&lt;-</span> <span class="n">intersected_cities_idxs</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>
+
+<span class="n">df_africa_cities_UTM35S</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="s">&#39;COUNTRY&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<caption>A sf: 1 × 2</caption>
+<thead>
+	<tr><th scope=col>COUNTRY</th><th scope=col>geometry</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;POINT [m]&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>Zambia</td><td>POINT (617646.2 8601614)</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<br>
+<p>We can also plot all of the values on top of our country</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_zambia_cities_UTM35S</span> <span class="o">&lt;-</span> <span class="n">df_africa_cities_UTM35S</span><span class="p">[</span><span class="n">intersected_cities_idxs</span><span class="p">,</span> <span class="p">]</span>
+
+<span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;antiquewhite&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_zambia_cities_UTM35S</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="m">21</span><span class="p">,</span> 
+            <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;orange&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="m">3</span><span class="p">,</span> <span class="n">stroke</span><span class="o">=</span><span class="m">1</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="n">transparent_theme</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03) Working with Vector Data_32_0.png" src="../_images/03) Working with Vector Data_32_0.png" />
+</div>
+</div>
+<br>
+<p>There are a range of functions for producing geometric binary predicates (true/false vectors based on geometric operations), of which <code class="docutils literal notranslate"><span class="pre">st_intersects</span></code> is one. The list below outlines the functions available for carrying these out on sf dataframes, further documentation on them can be found <a href="https://r-spatial.github.io/sf/reference/geos_binary_pred.html">here</a>.</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">st_intersects</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="kc">...</span><span class="p">)</span>
+<span class="nf">st_disjoint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="kc">...</span><span class="p">)</span>
+<span class="nf">st_touches</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="kc">...</span><span class="p">)</span>
+<span class="nf">st_crosses</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="kc">...</span><span class="p">)</span>
+<span class="nf">st_within</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="kc">...</span><span class="p">)</span>
+<span class="nf">st_contains</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="kc">...</span><span class="p">)</span>
+<span class="nf">st_contains_properly</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="kc">...</span><span class="p">)</span>
+<span class="nf">st_overlaps</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="kc">...</span><span class="p">)</span>
+<span class="nf">st_equals</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="kc">...</span><span class="p">)</span>
+<span class="nf">st_covers</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="kc">...</span><span class="p">)</span>
+<span class="nf">st_covered_by</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="kc">...</span><span class="p">)</span>
+<span class="nf">st_equals_exact</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="kc">...</span><span class="p">)</span>
+<span class="nf">st_is_within_distance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="kc">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We’ll quickly create a helper function that can speed up our testing of what each of these binary predicate functions do. It accepts the function to be tested, as well as the spatial dataframe objects the function will be used with.</p>
+<p>We’ll replicate the previous step we carried out with <code class="docutils literal notranslate"><span class="pre">st_intersects</span></code> using our new function.</p>
+<p>Finally we’ll use the <code class="docutils literal notranslate"><span class="pre">identical</span></code> function to check that the returned dataframe is the same as the one we filtered on the intersection explicilty … it is!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">filter_geo_predicate</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">binary_pred_func</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">){</span>
+    <span class="n">binary_predicate</span> <span class="o">&lt;-</span> <span class="nf">binary_pred_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sparse</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+    <span class="n">x_filtered</span> <span class="o">&lt;-</span> <span class="n">x</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="n">binary_predicate</span><span class="p">),</span> <span class="p">]</span>
+    
+    <span class="nf">return</span><span class="p">(</span><span class="n">x_filtered</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">df_intersected_cities</span> <span class="o">&lt;-</span> <span class="nf">filter_geo_predicate</span><span class="p">(</span><span class="n">st_intersects</span><span class="p">,</span> <span class="n">df_africa_cities_UTM35S</span><span class="p">,</span> <span class="n">df_country</span><span class="p">)</span>
+
+<span class="nf">identical</span><span class="p">(</span><span class="n">df_intersected_cities</span><span class="p">,</span> <span class="n">df_zambia_cities_UTM35S</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">TRUE</div></div>
+</div>
+<br>
+<p>We’ll now use a different binary predicate function, <code class="docutils literal notranslate"><span class="pre">st_within</span></code>, and see if the results it returns are the same as <code class="docutils literal notranslate"><span class="pre">st_intersects</span></code>. <code class="docutils literal notranslate"><span class="pre">st_within</span></code> identifies geometries that fall within another geometry.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_within_cities</span> <span class="o">&lt;-</span> <span class="nf">filter_geo_predicate</span><span class="p">(</span><span class="n">st_within</span><span class="p">,</span> <span class="n">df_africa_cities_UTM35S</span><span class="p">,</span> <span class="n">df_country</span><span class="p">)</span>
+
+<span class="nf">identical</span><span class="p">(</span><span class="n">df_intersected_cities</span><span class="p">,</span> <span class="n">df_within_cities</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">TRUE</div></div>
+</div>
+<br>
+<p>Now let’s try using <code class="docutils literal notranslate"><span class="pre">st_within</span></code> and <code class="docutils literal notranslate"><span class="pre">st_intersects</span></code> with the grid data rather than cities</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_intersects_grid</span> <span class="o">&lt;-</span> <span class="nf">filter_geo_predicate</span><span class="p">(</span><span class="n">st_intersects</span><span class="p">,</span> <span class="n">df_africa_grid_UTM35S</span><span class="p">,</span> <span class="n">df_country</span><span class="p">)</span>
+<span class="n">df_within_grid</span> <span class="o">&lt;-</span> <span class="nf">filter_geo_predicate</span><span class="p">(</span><span class="n">st_within</span><span class="p">,</span> <span class="n">df_africa_grid_UTM35S</span><span class="p">,</span> <span class="n">df_country</span><span class="p">)</span>
+
+<span class="nf">identical</span><span class="p">(</span><span class="n">df_intersects_grid</span><span class="p">,</span> <span class="n">df_within_grid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">FALSE</div></div>
+</div>
+<br>
+<p>Why aren’t they the same, unlike when using the cities instead of grid data?</p>
+<p>We can look at the number of rows in each dataframe and see that there are an additional 10 when <code class="docutils literal notranslate"><span class="pre">st_intersects</span></code> was used instead of <code class="docutils literal notranslate"><span class="pre">st_within</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">nrow</span><span class="p">(</span><span class="n">df_within_grid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">118</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">nrow</span><span class="p">(</span><span class="n">df_intersects_grid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">130</div></div>
+</div>
+<br>
+<p>We can then use <code class="docutils literal notranslate"><span class="pre">setdiff(a,</span> <span class="pre">b)</span></code> to identify the elements inside <code class="docutils literal notranslate"><span class="pre">a</span></code> that aren’t in <code class="docutils literal notranslate"><span class="pre">b</span></code>, in our case the extra indexes included after using <code class="docutils literal notranslate"><span class="pre">st_intersects</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">within_idxs</span> <span class="o">&lt;-</span> <span class="nf">which</span><span class="p">(</span><span class="nf">st_within</span><span class="p">(</span><span class="n">df_africa_grid_UTM35S</span><span class="p">,</span> <span class="n">df_country</span><span class="p">,</span> <span class="n">sparse</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">))</span>
+<span class="n">intersects_idxs</span> <span class="o">&lt;-</span> <span class="nf">which</span><span class="p">(</span><span class="nf">st_intersects</span><span class="p">(</span><span class="n">df_africa_grid_UTM35S</span><span class="p">,</span> <span class="n">df_country</span><span class="p">,</span> <span class="n">sparse</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">))</span>
+
+<span class="n">extra_idxs</span> <span class="o">&lt;-</span> <span class="nf">setdiff</span><span class="p">(</span><span class="n">intersects_idxs</span><span class="p">,</span> <span class="n">within_idxs</span><span class="p">)</span>
+
+<span class="n">extra_idxs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>9005</li><li>9052</li><li>9299</li><li>9400</li><li>9534</li><li>9657</li><li>9670</li><li>9708</li><li>10596</li><li>11463</li><li>14205</li><li>15918</li></ol>
+</div></div>
+</div>
+<br>
+<p>When we plot the extra geometries the reason becomes a lot clearer as all of them touch the border.</p>
+<p><code class="docutils literal notranslate"><span class="pre">st_intersects</span></code> returns all geometries that cross or are inside the Polygon, unlike <code class="docutils literal notranslate"><span class="pre">st_within</span></code> which only returns those that are inside the Polygon border.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_grid_intersects_extra</span> <span class="o">&lt;-</span> <span class="n">df_africa_grid_UTM35S</span><span class="p">[</span><span class="n">extra_idxs</span><span class="p">,</span> <span class="p">]</span>
+
+<span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;antiquewhite&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_grid_intersects_extra</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="m">2</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="n">transparent_theme</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03) Working with Vector Data_45_0.png" src="../_images/03) Working with Vector Data_45_0.png" />
+</div>
+</div>
+<br>
+<div class="section" id="questions">
+<h4>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">¶</a></h4>
+<p>Now its your turn to try out some of these functions and ask your own spatial queries. As well as exploring these functions on this dataset, make sure to explore other spatial data in your own time.</p>
+<br>
+<div class="section" id="how-many-cities-are-there-in-tanzania">
+<h5>How many Cities are there in Tanzania?<a class="headerlink" href="#how-many-cities-are-there-in-tanzania" title="Permalink to this headline">¶</a></h5>
+<p>Count the number of cities that are inside Tanzanian borders</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_tanzania</span> <span class="o">&lt;-</span> <span class="n">df_africa_countries</span><span class="p">[</span><span class="n">df_africa_countries</span><span class="o">$</span><span class="n">NAME</span> <span class="o">==</span> <span class="s">&#39;Tanzania&#39;</span><span class="p">,</span> <span class="p">]</span>
+<span class="n">df_tanzania_cities</span> <span class="o">&lt;-</span> <span class="n">df_africa_cities</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="nf">st_within</span><span class="p">(</span><span class="n">df_africa_cities</span><span class="p">,</span> <span class="n">df_tanzania</span><span class="p">,</span> <span class="n">sparse</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)),</span> <span class="p">]</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">df_tanzania_cities</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>although coordinates are longitude/latitude, st_within assumes that they are planar
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] 55
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+</div>
+<div class="section" id="interconnector-identification">
+<h5>Interconnector Identification<a class="headerlink" href="#interconnector-identification" title="Permalink to this headline">¶</a></h5>
+<p>When we determined the difference between the geometries returned by <code class="docutils literal notranslate"><span class="pre">st_intersects</span></code> and <code class="docutils literal notranslate"><span class="pre">st_within</span></code> we effectively found interconnectors between our country and others. Rather than calculating both of these we could use a single binary predicate function that was mentioned earlier, can you identify which one and then plot the interconnectors?</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_crosses_grid</span> <span class="o">&lt;-</span> <span class="nf">filter_geo_predicate</span><span class="p">(</span><span class="n">st_crosses</span><span class="p">,</span> <span class="n">df_africa_grid_UTM35S</span><span class="p">,</span> <span class="n">df_country</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;antiquewhite&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_crosses_grid</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="m">2</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="n">transparent_theme</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03) Working with Vector Data_49_0.png" src="../_images/03) Working with Vector Data_49_0.png" />
+</div>
+</div>
+<br>
+</div>
+</div>
+</div>
+<div class="section" id="clipping">
+<h3>Clipping<a class="headerlink" href="#clipping" title="Permalink to this headline">¶</a></h3>
+<p>We will now select data from the continent-wide files for cities, roads, and electric grid network, to match the country of your choice.</p>
+<p>To do this we can use the <code class="docutils literal notranslate"><span class="pre">st_intersection</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_country_cities</span> <span class="o">&lt;-</span> <span class="nf">st_intersection</span><span class="p">(</span><span class="n">df_country</span><span class="p">,</span> <span class="n">df_africa_cities_UTM35S</span><span class="p">)</span>
+<span class="n">df_country_grid</span> <span class="o">&lt;-</span> <span class="nf">st_intersection</span><span class="p">(</span><span class="n">df_country</span><span class="p">,</span> <span class="n">df_africa_grid_UTM35S</span><span class="p">)</span>
+<span class="n">df_country_roads</span> <span class="o">&lt;-</span> <span class="nf">st_intersection</span><span class="p">(</span><span class="n">df_country</span><span class="p">,</span> <span class="n">df_africa_roads_UTM35S</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;antiquewhite&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country_roads</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country_grid</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country_cities</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="m">21</span><span class="p">,</span> 
+            <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;orange&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="m">3</span><span class="p">,</span> <span class="n">stroke</span><span class="o">=</span><span class="m">1</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="n">transparent_theme</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
+“attribute variables are assumed to be spatially constant throughout all geometries”
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
+“attribute variables are assumed to be spatially constant throughout all geometries”
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
+“attribute variables are assumed to be spatially constant throughout all geometries”
+</pre></div>
+</div>
+<img alt="../_images/03) Working with Vector Data_51_3.png" src="../_images/03) Working with Vector Data_51_3.png" />
+</div>
+</div>
+<br>
+<p><code class="docutils literal notranslate"><span class="pre">st_intersection</span></code> sounds remarkably like <code class="docutils literal notranslate"><span class="pre">st_intersects</span></code>, lets see if it’s just a wrapper for the function we used earlier. To do this we’ll create an alternative function that acts as a wrapper for <code class="docutils literal notranslate"><span class="pre">st_intersects</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">alt_intersection</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">){</span>
+    <span class="n">y_filtered</span> <span class="o">&lt;-</span> <span class="nf">filter_geo_predicate</span><span class="p">(</span><span class="n">st_intersects</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    
+    <span class="nf">return</span><span class="p">(</span><span class="n">y_filtered</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">df_country_cities_alt</span> <span class="o">&lt;-</span> <span class="nf">alt_intersection</span><span class="p">(</span><span class="n">df_country</span><span class="p">,</span> <span class="n">df_africa_cities_UTM35S</span><span class="p">)</span>
+<span class="n">df_country_grid_alt</span> <span class="o">&lt;-</span> <span class="nf">alt_intersection</span><span class="p">(</span><span class="n">df_country</span><span class="p">,</span> <span class="n">df_africa_grid_UTM35S</span><span class="p">)</span>
+<span class="n">df_country_roads_alt</span> <span class="o">&lt;-</span> <span class="nf">alt_intersection</span><span class="p">(</span><span class="n">df_country</span><span class="p">,</span> <span class="n">df_africa_roads_UTM35S</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;antiquewhite&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country_roads_alt</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country_grid_alt</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country_cities_alt</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="m">21</span><span class="p">,</span> 
+            <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;orange&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="m">3</span><span class="p">,</span> <span class="n">stroke</span><span class="o">=</span><span class="m">1</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="n">transparent_theme</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03) Working with Vector Data_53_0.png" src="../_images/03) Working with Vector Data_53_0.png" />
+</div>
+</div>
+<br>
+<p>That’s bizarre, we can see that some of our roads and grid lay outside the country in this plot (e.g. to the east), however in the previous one they were cut back.</p>
+<p>Rather confusingly it turns out that <code class="docutils literal notranslate"><span class="pre">st_intersection</span></code> is not simply a wrapper for <code class="docutils literal notranslate"><span class="pre">st_intersects</span></code>, instead it is more accurate to describe it as <em>clipping</em> the geometries to the Polygon provided. Clipping involves filtering the geometries (e.g. with <code class="docutils literal notranslate"><span class="pre">st_intersects</span></code>), then reshaping those that cross the boundary by removing any area that lies outside of it (this can be imagined as similar to a cookie cutter). For more discussion on this see section 5.2.5 of <a href="https://geocompr.robinlovelace.net/geometric-operations.html">Geocomputation with R</a>.</p>
+<br>
+<br>
+</div>
+<div class="section" id="merging-spatial-features">
+<h3>Merging Spatial Features<a class="headerlink" href="#merging-spatial-features" title="Permalink to this headline">¶</a></h3>
+<p>At the moment, the grid data is composed of many short sections, which could go into hundred of records for a large country. We do not require details on each section separately, instead we can merge them all into a single network.</p>
+<p>We’ll start by merging all of the electrical grid Linestrings for our selected country. To do this we can use a function called <code class="docutils literal notranslate"><span class="pre">st_union</span></code>, which will accept our dataframe then return a single geometry. In this example we’ll combine a set of Linestrings into a Multilinestring.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">grid_multilinestring</span> <span class="o">&lt;-</span> <span class="nf">st_union</span><span class="p">(</span><span class="n">df_country_grid</span><span class="p">)</span>
+
+<span class="n">grid_multilinestring</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MULTILINESTRING ((588362.5 8644618, 588361.1 86...
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Geometry set for 1 feature 
+geometry type:  MULTILINESTRING
+dimension:      XY
+bbox:           xmin: 34584.09 ymin: 8017022 xmax: 1135935 ymax: 9047022
+projected CRS:  Arc 1950 / UTM zone 35S
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+<p>That was useful but what if we wanted to dissolve the geometries based on an attribute of the data? We can do this using <code class="docutils literal notranslate"><span class="pre">group_by</span></code> and <code class="docutils literal notranslate"><span class="pre">summarize</span></code> in combination. Here we’ll group them by their voltage, then as well as creating the grouped geometries we’ll calculate their total length.</p>
+<p><code class="docutils literal notranslate"><span class="pre">group_by</span></code> and <code class="docutils literal notranslate"><span class="pre">summarize</span></code> are often used together in data analysis tasks - this will be covered in more detail as part of the Energy &amp; Data Analysis module - further information can also be found <a href="https://datacarpentry.org/R-genomics/04-dplyr.html#split-apply-combine_data_analysis_and_the_summarize()_function">here</a>.</p>
+<p>N.b. We want to sum the length of each voltage group so we’ll have to convert the ‘length_km’ column from a character to numeric data-type.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_country_grid</span> <span class="o">&lt;-</span> <span class="nf">transform</span><span class="p">(</span><span class="n">df_country_grid</span><span class="p">,</span> <span class="n">length_km</span><span class="o">=</span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">length_km</span><span class="p">))</span>
+
+<span class="n">df_grid_groups</span> <span class="o">&lt;-</span> <span class="n">df_country_grid</span> <span class="o">%&gt;%</span>
+                    <span class="nf">group_by</span><span class="p">(</span><span class="n">voltage_kV</span><span class="p">)</span> <span class="o">%&gt;%</span>
+                    <span class="nf">summarize</span><span class="p">(</span><span class="n">length_km</span><span class="o">=</span><span class="nf">sum</span><span class="p">(</span><span class="n">length_km</span><span class="p">,</span> <span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">))</span>
+
+<span class="n">df_grid_groups</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`summarise()` ungrouping output (override with `.groups` argument)
+</pre></div>
+</div>
+<div class="output text_html"><table>
+<caption>A sf: 9 × 3</caption>
+<thead>
+	<tr><th scope=col>voltage_kV</th><th scope=col>length_km</th><th scope=col>geometry</th></tr>
+	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;GEOMETRY [m]&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>  0</td><td>   0</td><td>MULTILINESTRING ((237074.3 ...</td></tr>
+	<tr><td> 33</td><td> 986</td><td>MULTILINESTRING ((1041836 8...</td></tr>
+	<tr><td> 66</td><td>3718</td><td>MULTILINESTRING ((994361.7 ...</td></tr>
+	<tr><td> 88</td><td> 462</td><td>MULTILINESTRING ((662447.9 ...</td></tr>
+	<tr><td>132</td><td> 287</td><td>MULTILINESTRING ((589924.9 ...</td></tr>
+	<tr><td>220</td><td> 737</td><td>MULTILINESTRING ((588362.5 ...</td></tr>
+	<tr><td>330</td><td>2755</td><td>MULTILINESTRING ((662611.6 ...</td></tr>
+	<tr><td>350</td><td> 993</td><td>LINESTRING (176705.4 805910...</td></tr>
+	<tr><td>400</td><td> 218</td><td>LINESTRING (1114177 8424246...</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<br>
+<p>We can compare these lengths with reported data and see that they are fairly similar.</p>
+<blockquote>
+<div><p><a href="https://openjicareport.jica.go.jp/pdf/11871019.pdf">”total circuit length of 330kV transmission lines is 2,241km, total 220kV lines 348km, total 132kV lines 202km, total 88kV lines 754km and total 66kV lines 3,033km as at the end of March 2006.”</a> - Japan International Cooperation Agency</p>
+</div></blockquote>
+<br>
+<p>What about if we wanted to do the reverse operation and convert a Multilinestring into its constituent parts? For this we can recast the datatype back into Linestrings using <code class="docutils literal notranslate"><span class="pre">st_cast</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">grid_geom_set</span> <span class="o">&lt;-</span> <span class="nf">st_cast</span><span class="p">(</span><span class="n">grid_multilinestring</span><span class="p">,</span> <span class="s">&#39;LINESTRING&#39;</span><span class="p">)</span>
+
+<span class="n">grid_geom_set</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LINESTRING (588362.5 8644618, 588361.1 8644620)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LINESTRING (589924.9 8648093, 589932.7 8648079)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LINESTRING (1135935 8466559, 1135923 8466562)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LINESTRING (1114177 8424246, 1111893 8485588)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LINESTRING (994361.7 9037434, 994367.3 9037461)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Geometry set for 280 features 
+geometry type:  LINESTRING
+dimension:      XY
+bbox:           xmin: 34584.09 ymin: 8017022 xmax: 1135935 ymax: 9047022
+projected CRS:  Arc 1950 / UTM zone 35S
+First 5 geometries:
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+<p>We can also query the length of any individual or collection of Linestrings</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">st_length</span><span class="p">(</span><span class="n">grid_multilinestring</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7917725 [m]
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+<div class="section" id="id1">
+<h4>Questions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="east-african-community-high-voltage-length">
+<h5>East African Community High Voltage Length<a class="headerlink" href="#east-african-community-high-voltage-length" title="Permalink to this headline">¶</a></h5>
+<p>What is the total length of power cable across the East African Community (EAC) that has a voltage of 132 kV or higher? The 6 members of the EAC are Burundi, Kenya, Rwanda, South Sudan, Tanzania, and Uganda.</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># </span>
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+</div>
+<div class="section" id="space-saving">
+<h5>Space Saving<a class="headerlink" href="#space-saving" title="Permalink to this headline">¶</a></h5>
+<p>Another important reason for aggregating spatial data is to reduce its size, by which we mean the amount of storage required to hold the data (nothing to do with spatial size). For example in our grid dataframe each of the 400+ geometries contains information on the CRS, despite them all being the same.</p>
+<p>In this task you should identify the reduction in data size between the merged and unmerged road data. You can use <code class="docutils literal notranslate"><span class="pre">object.size(x)</span></code> determine the size (in bytes) of any R object.</p>
+<p>As an extension task investigate the effects of simplifying your geometries with <code class="docutils literal notranslate"><span class="pre">st_simplify</span></code>, and how this impacts the object size.</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># </span>
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+</div>
+</div>
+</div>
+<div class="section" id="proximity-analysis">
+<h3>Proximity Analysis<a class="headerlink" href="#proximity-analysis" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="buffering">
+<h4>Buffering<a class="headerlink" href="#buffering" title="Permalink to this headline">¶</a></h4>
+<p>Selecting features by their proximity to other features is one of the most common operations in GIS. Of these the most used approach is buffering the features and then identifying overlaps.</p>
+<p>We’ll start by asking the question “which areas are within 5km of roads?”. To do this we can use the <code class="docutils literal notranslate"><span class="pre">st_buffer</span></code> function which accepts both a spatial object and a distance value.</p>
+<p>When providing a buffer distance, e.g. 10, the buffering will use the units specified by the CRS. To check what units your CRS is in you can check it using <code class="docutils literal notranslate"><span class="pre">st_CRS</span></code>, or more easily by looking on <a href="http://epsg.io/20935">epsg.io</a>. To emphasise this point we’ll take a single road from the dataframe and buffer it by 5km (using 5000 as UTM35S is in m).</p>
+<p>N.b. Regardless of whether the original geometry is a Point, Line or Polygon, the resulting geometry after buffering will always be a Polygon.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_road_UTM35S</span> <span class="o">&lt;-</span> <span class="n">df_africa_roads_UTM35S</span><span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="p">]</span>
+<span class="n">df_buffered_road_UTM35S</span> <span class="o">&lt;-</span> <span class="nf">st_buffer</span><span class="p">(</span><span class="n">df_road_UTM35S</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="m">5000</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_buffered_road_UTM35S</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;yellow&#39;</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_road_UTM35S</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="n">transparent_theme</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03) Working with Vector Data_67_0.png" src="../_images/03) Working with Vector Data_67_0.png" />
+</div>
+</div>
+<br>
+<p>If we were to repeat this with the roads dataframe that is in EPSG:4326 we produce very different results, in fact we can’t even see the original road. This is because the CRS is in units of degrees rather than metres (approximately the conversion is <span class="math notranslate nohighlight">\(0.001^{\circ} \rightarrow 111 m\)</span>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_road</span> <span class="o">&lt;-</span> <span class="n">df_africa_roads</span><span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="p">]</span>
+<span class="n">df_buffered_road</span> <span class="o">&lt;-</span> <span class="nf">st_buffer</span><span class="p">(</span><span class="n">df_road</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="m">5000</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_buffered_road</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;yellow&#39;</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_road</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="n">transparent_theme</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in st_buffer.sfc(st_geometry(x), dist, nQuadSegs, endCapStyle = endCapStyle, :
+“st_buffer does not correctly buffer longitude/latitude data”
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dist is assumed to be in decimal degrees (arc_degrees).
+</pre></div>
+</div>
+<img alt="../_images/03) Working with Vector Data_69_2.png" src="../_images/03) Working with Vector Data_69_2.png" />
+</div>
+</div>
+<br>
+<p>We can achieve similar results as with 5km using a buffer distance of only 0.05 degrees. However, it should be noted that it is best to carry out buffering in a projected rather than geographic coordinate system (2D not 3D).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_road</span> <span class="o">&lt;-</span> <span class="n">df_africa_roads</span><span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="p">]</span>
+<span class="n">df_buffered_road</span> <span class="o">&lt;-</span> <span class="nf">st_buffer</span><span class="p">(</span><span class="n">df_road</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="m">0.05</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_buffered_road</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;yellow&#39;</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_road</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="n">transparent_theme</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in st_buffer.sfc(st_geometry(x), dist, nQuadSegs, endCapStyle = endCapStyle, :
+“st_buffer does not correctly buffer longitude/latitude data”
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dist is assumed to be in decimal degrees (arc_degrees).
+</pre></div>
+</div>
+<img alt="../_images/03) Working with Vector Data_71_2.png" src="../_images/03) Working with Vector Data_71_2.png" />
+</div>
+</div>
+<br>
+<p>We’re now ready to ask the question we were interested in, namely what areas are within 5km of roads? to speed up the analysis we’ll first combine it into a single Multipolygon.</p>
+<p><font color='red'>N.b. Depending on the size of your country and how many roads it contains this may take up to a few minutes</font></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_buffered_roads</span> <span class="o">&lt;-</span> <span class="nf">st_buffer</span><span class="p">(</span><span class="n">df_country_roads</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="m">5000</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;antiquewhite&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_buffered_roads</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;orange&#39;</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country_roads</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="n">transparent_theme</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03) Working with Vector Data_73_0.png" src="../_images/03) Working with Vector Data_73_0.png" />
+</div>
+</div>
+<br>
+<p>We’ll repeat the same operation for the cities, except using 50km instead of 5km</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_buffered_cities</span> <span class="o">&lt;-</span> <span class="nf">st_buffer</span><span class="p">(</span><span class="n">df_country_cities</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="m">50000</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;antiquewhite&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_buffered_cities</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;orange&#39;</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country_cities</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="n">transparent_theme</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03) Working with Vector Data_75_0.png" src="../_images/03) Working with Vector Data_75_0.png" />
+</div>
+</div>
+<br>
+<p>Hmm, we could definitely take a smarter approach. Let’s instead buffer cities that have a population greater than 10,000, then combine the resulting Polygons into a single geometry.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_country_big_cities</span> <span class="o">&lt;-</span> <span class="n">df_country_cities</span><span class="p">[</span><span class="n">df_country_cities</span><span class="o">$</span><span class="n">ES00POP</span><span class="o">&gt;</span><span class="m">10000</span><span class="p">,</span> <span class="p">]</span>
+<span class="n">df_buffered_cities</span> <span class="o">&lt;-</span> <span class="nf">st_buffer</span><span class="p">(</span><span class="n">df_country_big_cities</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="m">50000</span><span class="p">)</span>
+<span class="n">df_buffered_cities_comb</span> <span class="o">&lt;-</span> <span class="nf">st_union</span><span class="p">(</span><span class="n">df_buffered_cities</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;antiquewhite&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_buffered_cities_comb</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;orange&#39;</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country_cities</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="n">transparent_theme</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03) Working with Vector Data_77_0.png" src="../_images/03) Working with Vector Data_77_0.png" />
+</div>
+</div>
+<br>
+<p>So far we have buffered all of our spatial features by a constant distance, often though we want to be more specific than that, especially when we want to buffer based on an attribute of the spatial features. A good example of this is in buffering the electricity grid - instead of using the same buffer for 33 kV lines as we do for say 400 kV ones we could buffer based on the voltage.</p>
+<p>Here we’ll buffer the grid by taking a distance 20x the voltage, as the distance used by the buffer is the radius (not diameter) we should provide a value equal to 10x the value to <code class="docutils literal notranslate"><span class="pre">st_buffer</span></code>. The key learning here is that <code class="docutils literal notranslate"><span class="pre">st_buffer</span></code> can accept either a constant, or a vector equal in length to the dataframe passed to it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dist</span> <span class="o">&lt;-</span> <span class="n">df_country_grid</span><span class="o">$</span><span class="n">voltage_kV</span> <span class="o">*</span> <span class="m">10</span>
+<span class="n">df_buffered_grid</span> <span class="o">&lt;-</span> <span class="nf">st_buffer</span><span class="p">(</span><span class="n">df_country_grid</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="n">dist</span><span class="p">)</span>
+<span class="n">df_buffered_grid_comb</span> <span class="o">&lt;-</span> <span class="nf">st_union</span><span class="p">(</span><span class="n">df_buffered_grid</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;antiquewhite&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_buffered_grid_comb</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;orange&#39;</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country_grid</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="n">transparent_theme</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03) Working with Vector Data_79_0.png" src="../_images/03) Working with Vector Data_79_0.png" />
+</div>
+</div>
+<br>
+</div>
+<div class="section" id="spatial-overlays">
+<h4>Spatial Overlays<a class="headerlink" href="#spatial-overlays" title="Permalink to this headline">¶</a></h4>
+<p>As previously discussed patial query operations subset the data in one dataset only, it changes their extent but not their attributes. To combine data from two sources based on their spatial relationship we need to use an overlay
+operation.</p>
+<p>We previously covered <code class="docutils literal notranslate"><span class="pre">st_intersection</span></code> but now we’ll go deeper into the other options available to us (shown in the diagram below). For completeness though we’ll start by taking the intersection of the grid and cities buffers.</p>
+<p><img src="../img/md/spatial_overlays.jpg"></img></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_grid_cities_intersection</span> <span class="o">&lt;-</span> <span class="nf">st_intersection</span><span class="p">(</span><span class="n">df_buffered_grid_comb</span><span class="p">,</span> <span class="n">df_buffered_cities_comb</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;antiquewhite&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_grid_cities_intersection</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;orange&#39;</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="n">transparent_theme</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03) Working with Vector Data_81_0.png" src="../_images/03) Working with Vector Data_81_0.png" />
+</div>
+</div>
+<br>
+<p>The union contains the combined geometries from both datasets</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_grid_cities_union</span> <span class="o">&lt;-</span> <span class="nf">st_union</span><span class="p">(</span><span class="n">df_buffered_grid_comb</span><span class="p">,</span> <span class="n">df_buffered_cities_comb</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;antiquewhite&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_grid_cities_union</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;orange&#39;</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="n">transparent_theme</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03) Working with Vector Data_83_0.png" src="../_images/03) Working with Vector Data_83_0.png" />
+</div>
+</div>
+<br>
+<p>Looking now at the country and buffered cities datasets we’ll test <code class="docutils literal notranslate"><span class="pre">st_difference</span></code>, where the output contains all areas of the first input that do not overlap with the second</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_country_cities_diff</span><span class="o">&lt;-</span> <span class="nf">st_difference</span><span class="p">(</span><span class="n">df_country</span><span class="p">,</span> <span class="n">df_buffered_cities_comb</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;antiquewhite&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country_cities_diff</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;orange&#39;</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="n">transparent_theme</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
+“attribute variables are assumed to be spatially constant throughout all geometries”
+</pre></div>
+</div>
+<img alt="../_images/03) Working with Vector Data_85_1.png" src="../_images/03) Working with Vector Data_85_1.png" />
+</div>
+</div>
+<br>
+<p>Taking the symmetrical difference of the same datasets returns all areas where the two input geometries do not overlap</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_country_cities_sym_diff</span> <span class="o">&lt;-</span> <span class="nf">st_sym_difference</span><span class="p">(</span><span class="n">df_country</span><span class="p">,</span> <span class="n">df_buffered_cities_comb</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;antiquewhite&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country_cities_sym_diff</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;orange&#39;</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="n">transparent_theme</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
+“attribute variables are assumed to be spatially constant throughout all geometries”
+</pre></div>
+</div>
+<img alt="../_images/03) Working with Vector Data_87_1.png" src="../_images/03) Working with Vector Data_87_1.png" />
+</div>
+</div>
+<br>
+</div>
+<div class="section" id="nearest-neighbours-analysis">
+<h4>Nearest Neighbours Analysis<a class="headerlink" href="#nearest-neighbours-analysis" title="Permalink to this headline">¶</a></h4>
+<p>Another common spatial analysis of vector data involves finding features nearest to each other. For example, you might be interested in the city which is the nearest to your country’s capital. To do this sort of operation we can create a <em>distance matrix</em> between sets of spatial features.</p>
+<p>To explore this form of analyses we’ll identify the town/city nearest to the capital. First we’ll identify the capital, in this example by identifying the city with the largest population (these are the same for Zambia but may not be for your country).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_biggest_city</span> <span class="o">&lt;-</span> <span class="n">df_country_cities</span><span class="p">[</span><span class="nf">which.max</span><span class="p">(</span><span class="n">df_country_cities</span><span class="o">$</span><span class="n">ES00POP</span><span class="p">),</span> <span class="p">]</span>
+
+<span class="n">df_biggest_city</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<caption>A sf: 1 × 33</caption>
+<thead>
+	<tr><th scope=col>ID</th><th scope=col>CODE</th><th scope=col>COUNTRY</th><th scope=col>areaQ</th><th scope=col>LATLONGID</th><th scope=col>LATITUDE</th><th scope=col>LONGITUDE</th><th scope=col>URBORRUR</th><th scope=col>YEAR</th><th scope=col>ES90POP</th><th scope=col>geometry</th><th scope=col>⋯</th><th scope=col>SCHADMNM</th><th scope=col>ADMNM1</th><th scope=col>ADMNM2</th><th scope=col>TYPE</th><th scope=col>SRCTYP</th><th scope=col>COORDSRCE</th><th scope=col>DATSRC</th><th scope=col>LOCNDATSRC</th><th scope=col>NOTES</th><th scope=col>geometry</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>⋯</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;POINT [m]&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>761</td><td>ZAM</td><td>Zambia</td><td>777795418089</td><td>46</td><td>-15.433</td><td>28.333</td><td>U</td><td>1990</td><td>709353</td><td>POINT (643025.5 8293627)</td><td>⋯</td><td>LUSAKA</td><td>Lusaka</td><td>Lusaka Urban</td><td>UA</td><td>Published</td><td>UNSD</td><td>Census of Population, Housing &amp; Argriculture 1990 Descriptive Tables</td><td>UN Statistical Library</td><td>NA</td><td>POINT (643025.5 8293627)</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<br>
+<p>We’ll now create a distance matrix between the capital and all other cities</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dist_matrix</span> <span class="o">&lt;-</span> <span class="nf">st_distance</span><span class="p">(</span><span class="n">df_country_cities</span><span class="p">,</span> <span class="n">df_biggest_city</span><span class="p">)</span>
+
+<span class="n">dist_matrix</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Units: [m]
+           [,1]
+ [1,] 309030.72
+ [2,] 343446.64
+ [3,] 324959.19
+ [4,] 675983.26
+ [5,] 506882.05
+ [6,] 210353.84
+ [7,] 111311.41
+ [8,]  40234.16
+ [9,] 265245.79
+[10,] 288834.42
+[11,] 422661.72
+[12,] 386434.79
+[13,] 166560.82
+[14,] 656745.84
+[15,] 347412.25
+[16,] 428821.96
+[17,] 630322.80
+[18,] 289779.68
+[19,] 375036.81
+[20,] 751348.40
+[21,] 254509.08
+[22,] 629680.89
+[23,]      0.00
+[24,] 248412.09
+[25,] 472173.91
+[26,]  77352.34
+[27,] 802696.14
+[28,] 231570.82
+[29,] 558767.26
+[30,] 130831.06
+[31,] 522325.79
+[32,] 319103.19
+[33,] 144828.59
+[34,]  75125.36
+[35,] 204881.11
+[36,] 674308.73
+[37,] 274774.29
+[38,] 348736.38
+[39,] 548162.76
+[40,] 319923.64
+[41,] 415713.23
+[42,] 599737.39
+[43,] 470538.95
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+<p>We can see that one city is exactly 0 metres away from the capital, this is of course the capital, meaning we want to find the city that has the second lowest distance in the distance matrix.</p>
+<p>To do this we’ll sort the matrix and then take the second value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">near_capital_dist</span> <span class="o">&lt;-</span> <span class="nf">sort</span><span class="p">(</span><span class="n">dist_matrix</span><span class="p">)[</span><span class="m">2</span><span class="p">]</span>
+
+<span class="n">near_capital_dist</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>40234.16 [m]
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+<p>We can now find the city that has the same distance in the distance matrix.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">s_nearest_to_capital</span> <span class="o">&lt;-</span> <span class="nf">as.data.frame</span><span class="p">(</span><span class="n">dist_matrix</span><span class="o">==</span><span class="n">near_capital_dist</span><span class="p">)[,</span> <span class="m">1</span><span class="p">]</span>
+
+<span class="n">df_country_cities</span><span class="p">[</span><span class="n">s_nearest_to_capital</span><span class="p">,</span> <span class="s">&#39;NAME1&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<caption>A sf: 1 × 2</caption>
+<thead>
+	<tr><th scope=col>NAME1</th><th scope=col>geometry</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;POINT [m]&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>Kafue</td><td>POINT (626780.8 8256818)</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<br>
+</div>
+<div class="section" id="id2">
+<h4>Questions<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="percentage-of-land-suitable-for-power-plant-siting">
+<h5>Percentage of Land Suitable for Power Plant Siting<a class="headerlink" href="#percentage-of-land-suitable-for-power-plant-siting" title="Permalink to this headline">¶</a></h5>
+<p>You now have all of the tools required to address the problem of power plant siting posed at the begining of this tutorial. With slightly adjusted assumptions you are now tasked with carrying out the analysis and calculating the available land area. To calculate the area of a spatial feature you can use <code class="docutils literal notranslate"><span class="pre">st_area(x)</span></code> - we have now covered the three options for geometric measurements (area, length, and distance).</p>
+<br>
+<p>New Assumptions:</p>
+<ul class="simple">
+<li><p>The plant is to be located at a maximum of 7.5 km from the major roads</p></li>
+<li><p>Within 50 km of the nearest town with a population between 10,000 and 25,000</p></li>
+<li><p>Within a maximum distance from existing or planned electric grid proportional to 25x the line’s voltage.</p></li>
+</ul>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># </span>
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+</div>
+<div class="section" id="suitable-land-near-the-capital">
+<h5>Suitable Land Near the Capital<a class="headerlink" href="#suitable-land-near-the-capital" title="Permalink to this headline">¶</a></h5>
+<p>We want to produce our power as close to population centers as possible, what area of suitable land is situated within 100km of the capital of your country?</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># </span>
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+</div>
+<div class="section" id="most-central-city">
+<h5>Most Central City<a class="headerlink" href="#most-central-city" title="Permalink to this headline">¶</a></h5>
+<p>Your final task is to identify the city that is closest to the center of your country. To determine the center of a vector object you can use <code class="docutils literal notranslate"><span class="pre">st_centroid(x)</span></code>.</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># </span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "AyrtonB/ESDA-Spatial",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./tutorials"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../md/Intro.html" title="previous page">UCL Energy Systems &amp; Data Analytics - Spatial Module</a>
+    <a class='right-next' id="next-link" href="04%29%20Working%20with%20Raster%20Data.html" title="next page">Working with Raster Data</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Ayrton Bourn, Santiago De La Fuente, Clem Attwood, Joanna Kuleszo, Camilo Perico<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.30270b6e4c972e43c488.js"></script>
+
+
+    
+  </body>
+</html>
