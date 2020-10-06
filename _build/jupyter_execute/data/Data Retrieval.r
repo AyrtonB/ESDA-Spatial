@@ -1,3 +1,5 @@
+
+
 get_data_dir <- function(){
     cwd <- getwd()
     repo_root_dir <- gsub('(ESDA-Spatial).*', '\\1', cwd)
@@ -70,7 +72,6 @@ zambia_shp <- paste(zambia_dir, 'zambia.shp', sep='/')
 df_country <- read_sf(zambia_shp)
 
 plot(df_country['geometry'], col='orange')
-
 
 
 

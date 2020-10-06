@@ -41,3 +41,4 @@ dependencies:
       - black
       - ipypb
       - jupyter-book
+      - ghp-import

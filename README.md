@@ -24,3 +24,10 @@ The course materials can also be seen in book form <a href="https://ayrtonb.gith
 <br>
 <br>
 
+##### Book Instructions
+
+```bash
+jupyter-book build .
+```
+
+Then copy the image directory over

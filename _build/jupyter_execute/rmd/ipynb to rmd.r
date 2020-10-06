@@ -1,9 +1,23 @@
+# Converting IPython Notebooks to R-Markdown
+
+<br>
+
+### Imports
+
 library(rmarkdown)
+
+<br>
+
+### Inspecting Available Tutorials
 
 tutorial_dir <- '../tutorials'
 tutorial_files <- list.files(tutorial_dir)
 
 tutorial_files
+
+<br>
+
+### Converting them to R-Markdown
 
 for (tutorial_file in tutorial_files)
 {
