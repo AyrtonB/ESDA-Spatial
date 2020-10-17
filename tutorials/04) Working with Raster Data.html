@@ -25,40 +25,6 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script src="../_static/sphinx-book-theme.js"></script>
-    <script kind="utterances">
-
-    var commentsRunWhenDOMLoaded = cb => {
-    if (document.readyState != 'loading') {
-        cb()
-    } else if (document.addEventListener) {
-        document.addEventListener('DOMContentLoaded', cb)
-    } else {
-        document.attachEvent('onreadystatechange', function() {
-        if (document.readyState == 'complete') cb()
-        })
-    }
-}
-
-var addUtterances = () => {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = "https://utteranc.es/client.js";
-    script.async = "async";
-
-    script.setAttribute("repo", "https://github.com/AyrtonB/ESDA-Spatial");
-    script.setAttribute("issue-term", "pathname");
-    script.setAttribute("theme", "github-light");
-    script.setAttribute("label", "💬 comment");
-    script.setAttribute("crossorigin", "anonymous");
-
-    sections = document.querySelectorAll("div.section");
-    if (sections !== null) {
-        section = sections[sections.length-1];
-        section.appendChild(script);
-    }
-}
-commentsRunWhenDOMLoaded(addUtterances);
-</script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
@@ -71,8 +37,6 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Spatial Statistics" href="05%29%20Spatial%20Interpolation.html" />
-    <link rel="prev" title="Working with Vector Data" href="03%29%20Working%20with%20Vector%20Data.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -117,25 +81,10 @@ commentsRunWhenDOMLoaded(addUtterances);
   Tutorials
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="03%29%20Working%20with%20Vector%20Data.html">
    Working with Vector Data
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Working with Raster Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05%29%20Spatial%20Interpolation.html">
-   Spatial Statistics
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Working with Raster Data
   </a>
  </li>
 </ul>
@@ -212,21 +161,6 @@ commentsRunWhenDOMLoaded(addUtterances);
     
 </div>
         <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/AyrtonB/ESDA-Spatial"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        <a class="edit-button" href="https://github.com/AyrtonB/ESDA-Spatial/edit/master/tutorials/04) Working with Raster Data.ipynb"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
 
 
         <!-- Full screen (wrap in <a> to have style consistency -->
@@ -314,11 +248,13 @@ commentsRunWhenDOMLoaded(addUtterances);
 <h2>Analysis Preparation<a class="headerlink" href="#analysis-preparation" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="imports">
 <h3>Imports<a class="headerlink" href="#imports" title="Permalink to this headline">¶</a></h3>
-<p>All of these libraries should have been previously installed during the environment set-up, if they have not been installed already you can use <code class="docutils literal notranslate"><span class="pre">install.packages(c(&quot;sf&quot;,</span> <span class="pre">&quot;ggplot2&quot;))</span></code></p>
+<p>All of these libraries should have been previously installed during the environment set-up, if they have not been installed already you can use <code class="docutils literal notranslate"><span class="pre">install.packages(c(&quot;sf&quot;,</span> <span class="pre">&quot;ggplot2&quot;))</span></code>. The exception is <code class="docutils literal notranslate"><span class="pre">cartomisc</span></code> which we’ll install now.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">sf</span><span class="p">)</span> <span class="c1"># for handling spatial features</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">stars</span><span class="p">)</span> <span class="c1"># for converting between raster and vector data</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">remotes</span><span class="o">::</span><span class="nf">install_github</span><span class="p">(</span><span class="s">&quot;statnmap/cartomisc&quot;</span><span class="p">)</span>
+
+<span class="nf">library</span><span class="p">(</span><span class="n">cartomisc</span><span class="p">)</span> <span class="c1"># for plotting raster data with ggplot</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">sf</span><span class="p">)</span> <span class="c1"># for handling spatial features</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span> <span class="c1"># used for data manipulation</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">raster</span><span class="p">)</span> <span class="c1"># useful in some spatial operations</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span> <span class="c1"># for plotting</span>
@@ -329,41 +265,8 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>package &#39;sp&#39; successfully unpacked and MD5 sums checked
-
-The downloaded binary packages are in
-	C:\Users\Ayrto\AppData\Local\Temp\RtmpqICz71\downloaded_packages
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
-&quot;package &#39;sf&#39; was built under R version 3.6.3&quot;Linking to GEOS 3.8.0, GDAL 3.0.4, PROJ 6.3.1
-Warning message:
-&quot;package &#39;stars&#39; was built under R version 3.6.3&quot;Loading required package: abind
-
-Attaching package: &#39;dplyr&#39;
-
-The following objects are masked from &#39;package:stats&#39;:
-
-    filter, lag
-
-The following objects are masked from &#39;package:base&#39;:
-
-    intersect, setdiff, setequal, union
-
-Loading required package: sp
-Warning message:
-&quot;package &#39;sp&#39; was built under R version 3.6.3&quot;
-Attaching package: &#39;raster&#39;
-
-The following object is masked from &#39;package:dplyr&#39;:
-
-    select
-
-Registered S3 methods overwritten by &#39;ggplot2&#39;:
-  method         from 
-  [.quosures     rlang
-  c.quosures     rlang
-  print.quosures rlang
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Skipping install of &#39;cartomisc&#39; from a github remote, the SHA1 (4e88026b) has not changed since last install.
+  Use `force = TRUE` to force installation
 </pre></div>
 </div>
 </div>
@@ -392,9 +295,13 @@ Registered S3 methods overwritten by &#39;ggplot2&#39;:
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><table>
-<thead><tr><th scope=col>ID</th><th scope=col>CODE</th><th scope=col>COUNTRY</th><th scope=col>areaQ</th><th scope=col>geometry</th></tr></thead>
+<caption>A sf: 1 × 5</caption>
+<thead>
+	<tr><th scope=col>ID</th><th scope=col>CODE</th><th scope=col>COUNTRY</th><th scope=col>areaQ</th><th scope=col>geometry</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;POLYGON [m]&gt;</th></tr>
+</thead>
 <tbody>
-	<tr><td>761                           </td><td>ZAM                           </td><td>Zambia                        </td><td>777795418089                  </td><td>POLYGON ((716452.6 8516873,...</td></tr>
+	<tr><td>761</td><td>ZAM</td><td>Zambia</td><td>777795418089</td><td>POLYGON ((716452.6 8516873,...</td></tr>
 </tbody>
 </table>
 </div></div>
@@ -420,6 +327,7 @@ Registered S3 methods overwritten by &#39;ggplot2&#39;:
 <div class="section" id="raster-pre-processing">
 <h3>Raster Pre-Processing<a class="headerlink" href="#raster-pre-processing" title="Permalink to this headline">¶</a></h3>
 <p>In the same way you can clip vectors with a “cookie cutter” outline you can also clip rasters.</p>
+<p><code class="docutils literal notranslate"><span class="pre">crop</span></code> allows us to clip the raster to the extents of the vector geometry, similar to cropping an image.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_zambia_4326</span> <span class="o">&lt;-</span> <span class="nf">st_transform</span><span class="p">(</span><span class="n">df_zambia</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="nf">st_crs</span><span class="p">(</span><span class="n">solar</span><span class="p">))</span>
@@ -434,51 +342,89 @@ Registered S3 methods overwritten by &#39;ggplot2&#39;:
 <img alt="../_images/04) Working with Raster Data_9_0.png" src="../_images/04) Working with Raster Data_9_0.png" />
 </div>
 </div>
+<br>
+<p>If we want to remove all values that are outside of Zambia’s borders we can use <code class="docutils literal notranslate"><span class="pre">mask</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">mask</span><span class="p">(</span><span class="n">solar</span><span class="p">,</span> <span class="n">df_zambia_4326</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">masked_solar_zambia</span> <span class="o">&lt;-</span> <span class="nf">mask</span><span class="p">(</span><span class="n">solar_zambia</span><span class="p">,</span> <span class="n">df_zambia_4326</span><span class="p">)</span>
+
+<span class="nf">plot</span><span class="p">(</span><span class="n">masked_solar_zambia</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>Error in sp::CRS(SRS_string = from$wkt): no arguments in initialization list
-Traceback:
-
-1. mask(solar, df_zambia_4326)
-2. mask(solar, df_zambia_4326)
-3. .sf2sp(mask)
-4. as(from, &quot;Spatial&quot;)
-5. asMethod(object)
-6. sp::addAttrToGeom(as_Spatial(geom, IDs = row.names(from)), data.frame(from), 
- .     match.ID = FALSE)
-7. as_Spatial(geom, IDs = row.names(from))
-8. .as_Spatial(from, cast, IDs)
-9. sfc2SpatialPolygons(from, IDs)
-10. sp::SpatialPolygons(l, proj4string = as(st_crs(from), &quot;CRS&quot;))
-11. stopifnot(is(proj4string, &quot;CRS&quot;))
-12. is(proj4string, &quot;CRS&quot;)
-13. as(st_crs(from), &quot;CRS&quot;)
-14. asMethod(object)
-15. CRS_from_crs(from)
-16. comment(sp::CRS(SRS_string = from$wkt))
-17. sp::CRS(SRS_string = from$wkt)
-18. stop(res[[2]])
-</pre></div>
-</div>
+<img alt="../_images/04) Working with Raster Data_11_0.png" src="../_images/04) Working with Raster Data_11_0.png" />
 </div>
 </div>
 <br>
-<p>When we rasterize a Polygon it will try to find an attribute (dataframe column) which can be used to fill in the values of the new raster object, in this case the only numeric column we have relates to the area of a country.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rstr_zambia_4326</span> <span class="o">&lt;-</span> <span class="nf">st_rasterize</span><span class="p">(</span><span class="n">df_zambia_4326</span><span class="p">)</span>
-
-<span class="nf">plot</span><span class="p">(</span><span class="n">rstr_zambia_4326</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="nf">mask</span><span class="p">(</span><span class="n">solar</span><span class="p">,</span> <span class="n">df_zambia_4326</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/04) Working with Raster Data_13_0.png" src="../_images/04) Working with Raster Data_13_0.png" />
+</div>
+</div>
+<br>
+<p>Whilst the existing mask function is really useful it doesn’t give us all of the fine-grained control we might require. For example a common area for fine-tuning raster masks is deciding the cut-off point for when cells are inside/outside the border - should we include all cells that the border touches or only the ones that fall fully inside it?</p>
+<p>To enable this flexibility we’ll create our own raster mask.</p>
+<p>First we’ll rasterize the zambia polygon, passing an example raster which will be used to construct the grid, as well as the optional argument <code class="docutils literal notranslate"><span class="pre">getCover</span></code>. By setting <code class="docutils literal notranslate"><span class="pre">getCover</span></code> to <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> the values of the returned raster will be the percentage of the cell that falls inside the polygon. We’ll also set all cells that do not touch the polygon to <code class="docutils literal notranslate"><span class="pre">NA</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">zambia_raster</span> <span class="o">&lt;-</span> <span class="nf">rasterize</span><span class="p">(</span><span class="n">df_zambia_4326</span><span class="p">,</span> <span class="n">solar_zambia</span><span class="p">,</span> <span class="n">getCover</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">zambia_raster</span><span class="p">[</span><span class="n">zambia_raster</span><span class="o">==</span><span class="m">0</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="kc">NA</span>
+
+<span class="nf">plot</span><span class="p">(</span><span class="n">zambia_raster</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04) Working with Raster Data_15_0.png" src="../_images/04) Working with Raster Data_15_0.png" />
+</div>
+</div>
+<br>
+<p>For plotting with Ggplot, we’ll convert our raster into a tibble and also remove any <code class="docutils literal notranslate"><span class="pre">NA</span></code> values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">tb_zambia_raster</span> <span class="o">&lt;-</span> <span class="nf">gplot_data</span><span class="p">(</span><span class="n">zambia_raster</span><span class="p">)</span>
+<span class="n">tb_zambia_raster</span> <span class="o">&lt;-</span> <span class="nf">subset</span><span class="p">(</span><span class="n">tb_zambia_raster</span><span class="p">,</span> <span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">tb_zambia_raster</span><span class="o">$</span><span class="n">value</span><span class="p">))</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">tb_zambia_raster</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<caption>A tibble: 6 × 4</caption>
+<thead>
+	<tr><th scope=col>x</th><th scope=col>y</th><th scope=col>value</th><th scope=col>variable</th></tr>
+	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>30.44767</td><td>-8.262019</td><td>0.09</td><td>layer</td></tr>
+	<tr><td>30.49581</td><td>-8.262019</td><td>0.19</td><td>layer</td></tr>
+	<tr><td>30.54396</td><td>-8.262019</td><td>0.34</td><td>layer</td></tr>
+	<tr><td>30.59210</td><td>-8.262019</td><td>0.58</td><td>layer</td></tr>
+	<tr><td>30.64025</td><td>-8.262019</td><td>0.73</td><td>layer</td></tr>
+	<tr><td>30.68840</td><td>-8.262019</td><td>0.97</td><td>layer</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_tile</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">tb_zambia_raster</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">value</span><span class="p">))</span> <span class="o">+</span> 
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_zambia_4326</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;orange&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">coord_sf</span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">28</span><span class="p">,</span> <span class="m">30</span><span class="p">),</span> 
+             <span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">-13.5</span><span class="p">,</span> <span class="m">-11.75</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04) Working with Raster Data_19_0.png" src="../_images/04) Working with Raster Data_19_0.png" />
 </div>
 </div>
 </div>
@@ -513,8 +459,6 @@ Traceback:
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="03%29%20Working%20with%20Vector%20Data.html" title="previous page">Working with Vector Data</a>
-    <a class='right-next' id="next-link" href="05%29%20Spatial%20Interpolation.html" title="next page">Spatial Statistics</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
