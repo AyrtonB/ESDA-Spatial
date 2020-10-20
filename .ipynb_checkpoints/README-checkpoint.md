@@ -24,3 +24,12 @@ The course materials can also be seen in book form <a href="https://ayrtonb.gith
 <br>
 <br>
 
+##### Book Instructions
+
+Activate the `Spatial-Py` environment and run
+
+```bash
+jupyter-book build .
+```
+
+Then copy the image directory over

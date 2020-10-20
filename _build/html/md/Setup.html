@@ -25,40 +25,6 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script src="../_static/sphinx-book-theme.js"></script>
-    <script kind="utterances">
-
-    var commentsRunWhenDOMLoaded = cb => {
-    if (document.readyState != 'loading') {
-        cb()
-    } else if (document.addEventListener) {
-        document.addEventListener('DOMContentLoaded', cb)
-    } else {
-        document.attachEvent('onreadystatechange', function() {
-        if (document.readyState == 'complete') cb()
-        })
-    }
-}
-
-var addUtterances = () => {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = "https://utteranc.es/client.js";
-    script.async = "async";
-
-    script.setAttribute("repo", "https://github.com/AyrtonB/ESDA-Spatial");
-    script.setAttribute("issue-term", "pathname");
-    script.setAttribute("theme", "github-light");
-    script.setAttribute("label", "💬 comment");
-    script.setAttribute("crossorigin", "anonymous");
-
-    sections = document.querySelectorAll("div.section");
-    if (sections !== null) {
-        section = sections[sections.length-1];
-        section.appendChild(script);
-    }
-}
-commentsRunWhenDOMLoaded(addUtterances);
-</script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
@@ -72,7 +38,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="What is Jupyter/Anaconda?" href="Jupyter-Anaconda.html" />
-    <link rel="prev" title="Spatial Statistics" href="../tutorials/05%29%20Spatial%20Interpolation.html" />
+    <link rel="prev" title="Working with Vector Data" href="../tutorials/03%29%20Working%20with%20Vector%20Data.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -121,21 +87,6 @@ commentsRunWhenDOMLoaded(addUtterances);
  <li class="toctree-l1">
   <a class="reference internal" href="../tutorials/03%29%20Working%20with%20Vector%20Data.html">
    Working with Vector Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/04%29%20Working%20with%20Raster%20Data.html">
-   Working with Raster Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/05%29%20Spatial%20Interpolation.html">
-   Spatial Statistics
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/04%29%20Working%20with%20Raster%20Data.html">
-   Working with Raster Data
   </a>
  </li>
 </ul>
@@ -213,21 +164,6 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
         <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/AyrtonB/ESDA-Spatial"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        <a class="edit-button" href="https://github.com/AyrtonB/ESDA-Spatial/edit/master/md/Setup.md"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
 
         <!-- Full screen (wrap in <a> to have style consistency -->
         <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
@@ -303,10 +239,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <p>A Jupyter Lab session should now open up automatically in your default browser, if not you can copy the address that it prints into the command line and paste that into a browser - e.g. <code class="docutils literal notranslate"><span class="pre">http://localhost:8888/?token=6e63afag498b84292580b0332591c5775c824cc911913652</span></code>.</p>
 <p>The browser should look similar to the display shown below.</p>
 <p><img src="../img/md/jupyter-lab-home.jpg" width="75%"></img></p>
-<br>
-<p><b>Mac</b></p>
-<p>Coming soon</p>
-</div>
+<br></div>
 
     <script type="text/x-thebe-config">
     {
@@ -336,7 +269,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../tutorials/05%29%20Spatial%20Interpolation.html" title="previous page">Spatial Statistics</a>
+    <a class='left-prev' id="prev-link" href="../tutorials/03%29%20Working%20with%20Vector%20Data.html" title="previous page">Working with Vector Data</a>
     <a class='right-next' id="next-link" href="Jupyter-Anaconda.html" title="next page">What is Jupyter/Anaconda?</a>
 
     </div>

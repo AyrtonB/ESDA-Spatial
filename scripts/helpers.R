@@ -20,21 +20,7 @@ get_geo_df_limits <- function(df){
 
 extract_epsg_from_df <- function(df) {
     ## Extracts the epsg code from a spatial dataframe
-    
-    wkt <- st_crs(df)['wkt']
-    
-    epsg <- wkt %>%
-        as.character() %>%
-        strsplit('\\n') %>%
-        unlist() %>%
-        tail(1) %>%
-        strsplit(',') %>%
-        unlist() %>%
-        tail(1) %>% 
-        strsplit(']') %>%
-        unlist() %>%
-        head(1) %>%
-        strtoi()
+    epsg <- st_crs(df)$epsg
     
     return(epsg)
 }

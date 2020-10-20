@@ -3,9 +3,6 @@
 - part: Tutorials
   sections:
   - file: tutorials/03) Working with Vector Data
-  - file: tutorials/04) Working with Raster Data
-  - file: tutorials/05) Spatial Interpolation
-  - file: tutorials/04) Working with Raster Data
   
 - part: Extensions
   sections:

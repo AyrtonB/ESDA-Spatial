@@ -25,9 +25,9 @@ Note: these assumptions will vary depending on the project, and are by no means 
 <br>
 
 Further Reading/Resources:
-* https://geocompr.robinlovelace.net/spatial-operations.html
-* https://mgimond.github.io/Spatial/vector-operations-in-r.html#subsetting
-* Good discussion around terminology - https://www.jessesadler.com/post/simple-feature-objects/
+* Geocomputation in R: spatial operations - https://geocompr.robinlovelace.net/spatial-operations.html
+* Introution to vector operations in R - https://mgimond.github.io/Spatial/vector-operations-in-r.html#subsetting
+* Good discussion around terminology of sf objects - https://www.jessesadler.com/post/simple-feature-objects/
 
 <br>
 
@@ -128,9 +128,9 @@ ggplot() +
 
 <br>
 
-### Standardising the DataFrame CRS'
+### Standardising the DataFrame CRSs
 
-Before we move on with out analysis we'll make new copies of the africa-wide datasets that are in the CRS used by our selected country. We'll use another of the course helper functions - that extracts the epsg code from a spatial dataframe - to identify the CRS used for the cities
+Before we move on with our analysis we'll make new copies of the africa-wide datasets that are in the CRS used by our selected country. We'll use another of the course helper functions - that extracts the epsg code from a spatial dataframe - to identify the CRS used for the cities
 
 epsg <- extract_epsg_from_df(df_africa_cities)
 
@@ -337,10 +337,7 @@ Now its your turn to try out some of these functions and ask your own spatial qu
 
 Count the number of cities that are inside Tanzanian borders
 
-df_tanzania <- df_africa_countries[df_africa_countries$NAME == 'Tanzania', ]
-df_tanzania_cities <- df_africa_cities[which(st_within(df_africa_cities, df_tanzania, sparse=FALSE)), ]
-
-print(nrow(df_tanzania_cities))
+# 
 
 <br>
 
@@ -348,18 +345,13 @@ print(nrow(df_tanzania_cities))
 
 When we determined the difference between the geometries returned by ```st_intersects``` and ```st_within``` we effectively found interconnectors between our country and others. Rather than calculating both of these we could use a single binary predicate function that was mentioned earlier, can you identify which one and then plot the interconnectors?
 
-df_crosses_grid <- filter_geo_predicate(st_crosses, df_africa_grid_UTM35S, df_country)
-
-ggplot() +
-    geom_sf(data=df_country, fill='antiquewhite') +
-    geom_sf(data=df_crosses_grid, color='blue', size=2) + 
-    transparent_theme
+# 
 
 <br>
 
 ### Clipping
 
-We will now select data from the continent-wide files for cities, roads, and electric grid network, to match the country of your choice.
+We will now select data from the continent-wide files for cities, roads, and electric grid network, and subset them for to the specific spatial area we're interested in
 
 To do this we can use the ```st_intersection``` function.
 
@@ -580,7 +572,7 @@ ggplot() +
 
 #### Spatial Overlays
 
-As previously discussed patial query operations subset the data in one dataset only, it changes their extent but not their attributes. To combine data from two sources based on their spatial relationship we need to use an overlay
+As previously discussed, spatial query operations subset the data in one dataset only, it changes their extent but not their attributes. To combine data from two sources based on their spatial relationship we need to use an overlay
 operation.
 
 We previously covered ```st_intersection``` but now we'll go deeper into the other options available to us (shown in the diagram below). For completeness though we'll start by taking the intersection of the grid and cities buffers.

@@ -17,10 +17,12 @@ Finally, using solar potential raster (Global Horizontal Irradiance in kWh/m2/ye
 
 ### Imports
 
-All of these libraries should have been previously installed during the environment set-up, if they have not been installed already you can use ```install.packages(c("sf", "ggplot2"))```
+All of these libraries should have been previously installed during the environment set-up, if they have not been installed already you can use `install.packages(c("sf", "ggplot2"))`. The exception is `cartomisc` which we'll install now.
 
+remotes::install_github("statnmap/cartomisc")
+
+library(cartomisc) # for plotting raster data with ggplot
 library(sf) # for handling spatial features
-library(stars) # for converting between raster and vector data
 library(dplyr) # used for data manipulation
 library(raster) # useful in some spatial operations
 library(ggplot2) # for plotting
@@ -58,8 +60,9 @@ plot(solar)
 
 ### Raster Pre-Processing
 
-In the same way you can clip vectors with a “cookie cutter” outline you can also clip rasters.
+In the same way you can clip vectors with a “cookie cutter” outline you can also clip rasters. 
 
+`crop` allows us to clip the raster to the extents of the vector geometry, similar to cropping an image.
 
 df_zambia_4326 <- st_transform(df_zambia, crs=st_crs(solar))
 solar_zambia <- crop(solar, df_zambia_4326)
@@ -67,15 +70,57 @@ solar_zambia <- crop(solar, df_zambia_4326)
 plot(solar_zambia)
 plot(df_zambia_4326['geometry'], add=TRUE)
 
+<br>
 
+If we want to remove all values that are outside of Zambia's borders we can use `mask`
 
-mask(solar, df_zambia_4326)
+masked_solar_zambia <- mask(solar_zambia, df_zambia_4326)
+
+plot(masked_solar_zambia)
 
 <br>
 
-When we rasterize a Polygon it will try to find an attribute (dataframe column) which can be used to fill in the values of the new raster object, in this case the only numeric column we have relates to the area of a country. 
 
-rstr_zambia_4326 <- st_rasterize(df_zambia_4326)
 
-plot(rstr_zambia_4326)
+plot(mask(solar, df_zambia_4326))
+
+<br>
+
+Whilst the existing mask function is really useful it doesn't give us all of the fine-grained control we might require. For example a common area for fine-tuning raster masks is deciding the cut-off point for when cells are inside/outside the border - should we include all cells that the border touches or only the ones that fall fully inside it?
+
+To enable this flexibility we'll create our own raster mask. 
+
+First we'll rasterize the zambia polygon, passing an example raster which will be used to construct the grid, as well as the optional argument `getCover`. By setting `getCover` to `TRUE` the values of the returned raster will be the percentage of the cell that falls inside the polygon. We'll also set all cells that do not touch the polygon to `NA`.
+
+zambia_raster <- rasterize(df_zambia_4326, solar_zambia, getCover=TRUE)
+zambia_raster[zambia_raster==0] <- NA
+
+plot(zambia_raster) 
+
+<br>
+
+For plotting with Ggplot, we'll convert our raster into a tibble and also remove any `NA` values.
+
+tb_zambia_raster <- gplot_data(zambia_raster)
+tb_zambia_raster <- subset(tb_zambia_raster, !is.na(tb_zambia_raster$value))
+
+head(tb_zambia_raster)
+
+
+
+ggplot() +
+    geom_tile(data=tb_zambia_raster, aes(x=x, y=y, fill=value)) + 
+    geom_sf(data=df_zambia_4326, fill='orange') +
+    coord_sf(xlim=c(28, 30), 
+             ylim=c(-13.5, -11.75))
+
+
+
+
+
+
+
+
+
+
 

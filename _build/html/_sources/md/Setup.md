@@ -73,7 +73,3 @@ The browser should look similar to the display shown below.
 <img src="../img/md/jupyter-lab-home.jpg" width="75%"></img>
 
 <br>
-
-<b>Mac</b>
-
-Coming soon

@@ -25,40 +25,6 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script src="../_static/sphinx-book-theme.js"></script>
-    <script kind="utterances">
-
-    var commentsRunWhenDOMLoaded = cb => {
-    if (document.readyState != 'loading') {
-        cb()
-    } else if (document.addEventListener) {
-        document.addEventListener('DOMContentLoaded', cb)
-    } else {
-        document.attachEvent('onreadystatechange', function() {
-        if (document.readyState == 'complete') cb()
-        })
-    }
-}
-
-var addUtterances = () => {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = "https://utteranc.es/client.js";
-    script.async = "async";
-
-    script.setAttribute("repo", "https://github.com/AyrtonB/ESDA-Spatial");
-    script.setAttribute("issue-term", "pathname");
-    script.setAttribute("theme", "github-light");
-    script.setAttribute("label", "💬 comment");
-    script.setAttribute("crossorigin", "anonymous");
-
-    sections = document.querySelectorAll("div.section");
-    if (sections !== null) {
-        section = sections[sections.length-1];
-        section.appendChild(script);
-    }
-}
-commentsRunWhenDOMLoaded(addUtterances);
-</script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
@@ -71,7 +37,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Working with Raster Data" href="04%29%20Working%20with%20Raster%20Data.html" />
+    <link rel="next" title="Set-Up Instructions" href="../md/Setup.html" />
     <link rel="prev" title="UCL Energy Systems &amp; Data Analytics - Spatial Module" href="../md/Intro.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -121,21 +87,6 @@ commentsRunWhenDOMLoaded(addUtterances);
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Working with Vector Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04%29%20Working%20with%20Raster%20Data.html">
-   Working with Raster Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05%29%20Spatial%20Interpolation.html">
-   Spatial Statistics
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04%29%20Working%20with%20Raster%20Data.html">
-   Working with Raster Data
   </a>
  </li>
 </ul>
@@ -213,21 +164,6 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
         <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/AyrtonB/ESDA-Spatial"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        <a class="edit-button" href="https://github.com/AyrtonB/ESDA-Spatial/edit/master/tutorials/03) Working with Vector Data.ipynb"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
 
         <!-- Full screen (wrap in <a> to have style consistency -->
         <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
@@ -286,8 +222,8 @@ commentsRunWhenDOMLoaded(addUtterances);
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#standardising-the-dataframe-crs">
-     Standardising the DataFrame CRS’
+    <a class="reference internal nav-link" href="#standardising-the-dataframe-crss">
+     Standardising the DataFrame CRSs
     </a>
    </li>
   </ul>
@@ -430,9 +366,9 @@ commentsRunWhenDOMLoaded(addUtterances);
 <br>
 <p>Further Reading/Resources:</p>
 <ul class="simple">
-<li><p>https://geocompr.robinlovelace.net/spatial-operations.html</p></li>
-<li><p>https://mgimond.github.io/Spatial/vector-operations-in-r.html#subsetting</p></li>
-<li><p>Good discussion around terminology - https://www.jessesadler.com/post/simple-feature-objects/</p></li>
+<li><p>Geocomputation in R: spatial operations - https://geocompr.robinlovelace.net/spatial-operations.html</p></li>
+<li><p>Introution to vector operations in R - https://mgimond.github.io/Spatial/vector-operations-in-r.html#subsetting</p></li>
+<li><p>Good discussion around terminology of sf objects - https://www.jessesadler.com/post/simple-feature-objects/</p></li>
 </ul>
 <br>
 <div class="section" id="analysis-preparation">
@@ -644,9 +580,9 @@ PROJCRS[&quot;Arc 1950 / UTM zone 35S&quot;,
 </div>
 <br>
 </div>
-<div class="section" id="standardising-the-dataframe-crs">
-<h3>Standardising the DataFrame CRS’<a class="headerlink" href="#standardising-the-dataframe-crs" title="Permalink to this headline">¶</a></h3>
-<p>Before we move on with out analysis we’ll make new copies of the africa-wide datasets that are in the CRS used by our selected country. We’ll use another of the course helper functions - that extracts the epsg code from a spatial dataframe - to identify the CRS used for the cities</p>
+<div class="section" id="standardising-the-dataframe-crss">
+<h3>Standardising the DataFrame CRSs<a class="headerlink" href="#standardising-the-dataframe-crss" title="Permalink to this headline">¶</a></h3>
+<p>Before we move on with our analysis we’ll make new copies of the africa-wide datasets that are in the CRS used by our selected country. We’ll use another of the course helper functions - that extracts the epsg code from a spatial dataframe - to identify the CRS used for the cities</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">epsg</span> <span class="o">&lt;-</span> <span class="nf">extract_epsg_from_df</span><span class="p">(</span><span class="n">df_africa_cities</span><span class="p">)</span>
@@ -901,7 +837,7 @@ PROJCRS[&quot;Arc 1950 / UTM zone 35S&quot;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">119</div></div>
+<div class="output text_html">118</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -910,7 +846,7 @@ PROJCRS[&quot;Arc 1950 / UTM zone 35S&quot;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">129</div></div>
+<div class="output text_html">130</div></div>
 </div>
 <br>
 <p>We can then use <code class="docutils literal notranslate"><span class="pre">setdiff(a,</span> <span class="pre">b)</span></code> to identify the elements inside <code class="docutils literal notranslate"><span class="pre">a</span></code> that aren’t in <code class="docutils literal notranslate"><span class="pre">b</span></code>, in our case the extra indexes included after using <code class="docutils literal notranslate"><span class="pre">st_intersects</span></code></p>
@@ -932,11 +868,13 @@ PROJCRS[&quot;Arc 1950 / UTM zone 35S&quot;,
 	<li>9299</li>
 	<li>9400</li>
 	<li>9534</li>
+	<li>9657</li>
+	<li>9670</li>
 	<li>9708</li>
-	<li>9724</li>
 	<li>10596</li>
 	<li>11463</li>
 	<li>14205</li>
+	<li>15918</li>
 </ol>
 </div></div>
 </div>
@@ -968,15 +906,7 @@ PROJCRS[&quot;Arc 1950 / UTM zone 35S&quot;,
 <p>Count the number of cities that are inside Tanzanian borders</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_tanzania</span> <span class="o">&lt;-</span> <span class="n">df_africa_countries</span><span class="p">[</span><span class="n">df_africa_countries</span><span class="o">$</span><span class="n">NAME</span> <span class="o">==</span> <span class="s">&#39;Tanzania&#39;</span><span class="p">,</span> <span class="p">]</span>
-<span class="n">df_tanzania_cities</span> <span class="o">&lt;-</span> <span class="n">df_africa_cities</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="nf">st_within</span><span class="p">(</span><span class="n">df_africa_cities</span><span class="p">,</span> <span class="n">df_tanzania</span><span class="p">,</span> <span class="n">sparse</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)),</span> <span class="p">]</span>
-
-<span class="nf">print</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">df_tanzania_cities</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>although coordinates are longitude/latitude, st_within assumes that they are planar
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># </span>
 </pre></div>
 </div>
 </div>
@@ -988,17 +918,9 @@ PROJCRS[&quot;Arc 1950 / UTM zone 35S&quot;,
 <p>When we determined the difference between the geometries returned by <code class="docutils literal notranslate"><span class="pre">st_intersects</span></code> and <code class="docutils literal notranslate"><span class="pre">st_within</span></code> we effectively found interconnectors between our country and others. Rather than calculating both of these we could use a single binary predicate function that was mentioned earlier, can you identify which one and then plot the interconnectors?</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_crosses_grid</span> <span class="o">&lt;-</span> <span class="nf">filter_geo_predicate</span><span class="p">(</span><span class="n">st_crosses</span><span class="p">,</span> <span class="n">df_africa_grid_UTM35S</span><span class="p">,</span> <span class="n">df_country</span><span class="p">)</span>
-
-<span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
-    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_country</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;antiquewhite&#39;</span><span class="p">)</span> <span class="o">+</span>
-    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_crosses_grid</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="m">2</span><span class="p">)</span> <span class="o">+</span> 
-    <span class="n">transparent_theme</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># </span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/03) Working with Vector Data_49_0.png" src="../_images/03) Working with Vector Data_49_0.png" />
 </div>
 </div>
 <br>
@@ -1007,7 +929,7 @@ PROJCRS[&quot;Arc 1950 / UTM zone 35S&quot;,
 </div>
 <div class="section" id="clipping">
 <h3>Clipping<a class="headerlink" href="#clipping" title="Permalink to this headline">¶</a></h3>
-<p>We will now select data from the continent-wide files for cities, roads, and electric grid network, to match the country of your choice.</p>
+<p>We will now select data from the continent-wide files for cities, roads, and electric grid network, and subset them for to the specific spatial area we’re interested in</p>
 <p>To do this we can use the <code class="docutils literal notranslate"><span class="pre">st_intersection</span></code> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1027,10 +949,8 @@ PROJCRS[&quot;Arc 1950 / UTM zone 35S&quot;,
 </div>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
-&quot;attribute variables are assumed to be spatially constant throughout all geometries&quot;
-Warning message:
-&quot;attribute variables are assumed to be spatially constant throughout all geometries&quot;
-Warning message:
+&quot;attribute variables are assumed to be spatially constant throughout all geometries&quot;Warning message:
+&quot;attribute variables are assumed to be spatially constant throughout all geometries&quot;Warning message:
 &quot;attribute variables are assumed to be spatially constant throughout all geometries&quot;
 </pre></div>
 </div>
@@ -1084,13 +1004,13 @@ Warning message:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MULTILINESTRING ((588362.5 8644618, 588359.9 86...
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MULTILINESTRING ((588362.5 8644618, 588361.1 86...
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Geometry set for 1 feature 
 geometry type:  MULTILINESTRING
 dimension:      XY
-bbox:           xmin: 34584.09 ymin: 8016767 xmax: 1176674 ymax: 9047022
+bbox:           xmin: 34584.09 ymin: 8017022 xmax: 1135935 ymax: 9047022
 projected CRS:  Arc 1950 / UTM zone 35S
 </pre></div>
 </div>
@@ -1123,6 +1043,7 @@ projected CRS:  Arc 1950 / UTM zone 35S
 	<tr><td>132                           </td><td> 287                          </td><td>MULTILINESTRING ((589924.9 ...</td></tr>
 	<tr><td>220                           </td><td> 737                          </td><td>MULTILINESTRING ((588362.5 ...</td></tr>
 	<tr><td>330                           </td><td>2755                          </td><td>MULTILINESTRING ((662611.6 ...</td></tr>
+	<tr><td>350                           </td><td> 993                          </td><td>LINESTRING (176705.4 805910...</td></tr>
 	<tr><td>400                           </td><td> 218                          </td><td>LINESTRING (1114177 8424246...</td></tr>
 </tbody>
 </table>
@@ -1144,21 +1065,17 @@ projected CRS:  Arc 1950 / UTM zone 35S
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LINESTRING (588362.5 8644618, 588359.9 8644620)
-
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LINESTRING (588362.5 8644618, 588361.1 8644620)
 LINESTRING (589924.9 8648093, 589932.7 8648079)
-
 LINESTRING (1135935 8466559, 1135923 8466562)
-
 LINESTRING (1114177 8424246, 1111893 8485588)
-
-LINESTRING (994361.7 9037434, 994374 9037451)
+LINESTRING (994361.7 9037434, 994367.3 9037461)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Geometry set for 423 features 
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Geometry set for 280 features 
 geometry type:  LINESTRING
 dimension:      XY
-bbox:           xmin: 34584.09 ymin: 8016767 xmax: 1176674 ymax: 9047022
+bbox:           xmin: 34584.09 ymin: 8017022 xmax: 1135935 ymax: 9047022
 projected CRS:  Arc 1950 / UTM zone 35S
 First 5 geometries:
 </pre></div>
@@ -1174,7 +1091,7 @@ First 5 geometries:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8500258 [m]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7917725 [m]
 </pre></div>
 </div>
 </div>
@@ -1250,8 +1167,7 @@ First 5 geometries:
 </div>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in st_buffer.sfc(st_geometry(x), dist, nQuadSegs, endCapStyle = endCapStyle, :
-&quot;st_buffer does not correctly buffer longitude/latitude data&quot;
-dist is assumed to be in decimal degrees (arc_degrees).
+&quot;st_buffer does not correctly buffer longitude/latitude data&quot;dist is assumed to be in decimal degrees (arc_degrees).
 </pre></div>
 </div>
 <img alt="../_images/03) Working with Vector Data_69_1.png" src="../_images/03) Working with Vector Data_69_1.png" />
@@ -1273,8 +1189,7 @@ dist is assumed to be in decimal degrees (arc_degrees).
 </div>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in st_buffer.sfc(st_geometry(x), dist, nQuadSegs, endCapStyle = endCapStyle, :
-&quot;st_buffer does not correctly buffer longitude/latitude data&quot;
-dist is assumed to be in decimal degrees (arc_degrees).
+&quot;st_buffer does not correctly buffer longitude/latitude data&quot;dist is assumed to be in decimal degrees (arc_degrees).
 </pre></div>
 </div>
 <img alt="../_images/03) Working with Vector Data_71_1.png" src="../_images/03) Working with Vector Data_71_1.png" />
@@ -1362,7 +1277,7 @@ dist is assumed to be in decimal degrees (arc_degrees).
 </div>
 <div class="section" id="spatial-overlays">
 <h4>Spatial Overlays<a class="headerlink" href="#spatial-overlays" title="Permalink to this headline">¶</a></h4>
-<p>As previously discussed patial query operations subset the data in one dataset only, it changes their extent but not their attributes. To combine data from two sources based on their spatial relationship we need to use an overlay
+<p>As previously discussed, spatial query operations subset the data in one dataset only, it changes their extent but not their attributes. To combine data from two sources based on their spatial relationship we need to use an overlay
 operation.</p>
 <p>We previously covered <code class="docutils literal notranslate"><span class="pre">st_intersection</span></code> but now we’ll go deeper into the other options available to us (shown in the diagram below). For completeness though we’ll start by taking the intersection of the grid and cities buffers.</p>
 <p><img src="../img/md/spatial_overlays.jpg"></img></p>
@@ -1639,7 +1554,7 @@ operation.</p>
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="../md/Intro.html" title="previous page">UCL Energy Systems &amp; Data Analytics - Spatial Module</a>
-    <a class='right-next' id="next-link" href="04%29%20Working%20with%20Raster%20Data.html" title="next page">Working with Raster Data</a>
+    <a class='right-next' id="next-link" href="../md/Setup.html" title="next page">Set-Up Instructions</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

@@ -13,6 +13,8 @@ The course materials can also be seen in book form <a href="https://ayrtonb.gith
 
 ##### Book Instructions
 
+Activate the `Spatial-Py` environment and run
+
 ```bash
 jupyter-book build .
 ```
