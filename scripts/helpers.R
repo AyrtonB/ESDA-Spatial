@@ -119,3 +119,29 @@ download_data <- function(data_dir){
         }
     }
 }
+
+gplot_data <- function(x, maxpixels = 50000)  {
+    # taken from -> https://github.com/statnmap/cartomisc/blob/master/R/gplot_data.R
+    
+    # extract coords
+    x <- raster::sampleRegular(x, maxpixels, asRaster = TRUE)
+    coords <- raster::xyFromCell(x, seq_len(raster::ncell(x)))
+    
+    # Extract values
+    dat <- utils::stack(as.data.frame(raster::getValues(x)))
+    names(dat) <- c('value', 'variable')
+    
+    # If only one variable
+    if (dat$variable[1] == "raster::getValues(x)") {
+        dat$variable <- names(x)
+    }
+
+    dat <- dplyr::as_tibble(data.frame(coords, dat))
+
+    if (!is.null(levels(x))) {
+        dat <- dplyr::left_join(dat, levels(x)[[1]],
+                                by = c("value" = "ID"))
+    }
+    
+    return(dat)
+}
