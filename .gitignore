@@ -1,3 +1,4 @@
 data/**
+auth/**
 videos/**
 !data/Data Retrieval.ipynb
