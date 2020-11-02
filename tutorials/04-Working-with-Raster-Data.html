@@ -1,0 +1,1162 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Working with Raster Data &#8212; Spatial Analysis for Energy</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Mapping with ggplot" href="../extensions/01-Mapping-with-ggplot.html" />
+    <link rel="prev" title="Working with Vector Data" href="03-Working-with-Vector-Data.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.svg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Spatial Analysis for Energy</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../md/Intro.html">
+   UCL Energy Systems &amp; Data Analytics - Spatial Module
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="03-Working-with-Vector-Data.html">
+   Working with Vector Data
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Working with Raster Data
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Extensions
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../extensions/01-Mapping-with-ggplot.html">
+   Mapping with ggplot
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  About
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../md/Setup.html">
+   Set-Up Instructions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../md/Jupyter-Anaconda.html">
+   What is Jupyter/Anaconda?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../md/ESDA%20Course.html">
+   ESDA Course
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/tutorials/04-Working-with-Raster-Data.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/AyrtonB/ESDA-Spatial/master?urlpath=tree/tutorials/04-Working-with-Raster-Data.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analysis-preparation">
+   Analysis Preparation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#imports">
+     Imports
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#loading-data">
+     Loading Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#raster-cropping-masking">
+     Raster Cropping &amp; Masking
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#questions">
+       Questions
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#masking-based-on-grid-distance">
+         Masking Based on Grid Distance
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reprojecting-rasters">
+     Reprojecting Rasters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#raster-reclassification">
+     Raster Reclassification
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Questions
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#suitable-areas-for-floating-solar-offshore-wind">
+         Suitable Areas for Floating Solar/Offshore Wind
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#raster-resampling">
+     Raster Resampling
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#raster-algebra">
+     Raster Algebra
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Questions
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#estimating-resampling-errors">
+         Estimating Resampling Errors
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-gis-tale-rasterization-back-again">
+     A GIS Tale: Rasterization &amp; Back Again
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#zonal-statistics">
+     Zonal Statistics
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="working-with-raster-data">
+<h1>Working with Raster Data<a class="headerlink" href="#working-with-raster-data" title="Permalink to this headline">¶</a></h1>
+<br>
+<p>In this tutorial you will learn raster-specific pre-processing and analysis steps such as resampling  and reclassification. You will learn how to execute local operations of map algebra in raster calculator and how to summarise raster data using zonal statistics. You will also learn how to create distance, slope and aspect rasters.</p>
+<p>We will keep working on siting a solar power station in Zambia, this time using raster data – including the solar power potential.</p>
+<p>We will use land cover, and elevation to further optimise the location of the facility: we’d like to avoid cutting trees or building in a swamp. We’d also like to avoid the steepest slopes.</p>
+<p>Finally, using solar potential raster (Global Horizontal Irradiance in kWh/m2/year) we will be able to estimate the power which may be available in our selected zones.</p>
+<br>
+<div class="section" id="analysis-preparation">
+<h2>Analysis Preparation<a class="headerlink" href="#analysis-preparation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="imports">
+<h3>Imports<a class="headerlink" href="#imports" title="Permalink to this headline">¶</a></h3>
+<p>All of these libraries should have been previously installed during the environment set-up, if they have not been installed already you can use <code class="docutils literal notranslate"><span class="pre">install.packages(c(&quot;sf&quot;,</span> <span class="pre">&quot;ggplot2&quot;))</span></code>. The exception is <code class="docutils literal notranslate"><span class="pre">cartomisc</span></code> which we’ll install now.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">sf</span><span class="p">)</span> <span class="c1"># for handling spatial features</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span> <span class="c1"># used for data manipulation</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">raster</span><span class="p">)</span> <span class="c1"># useful in some spatial operations</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span> <span class="c1"># for plotting</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">zeallot</span><span class="p">)</span> <span class="c1"># used for unpacking variables</span>
+
+<span class="nf">source</span><span class="p">(</span><span class="s">&#39;../scripts/helpers.R&#39;</span><span class="p">)</span> <span class="c1"># helper script, note that &#39;../&#39; is used to change into the directory above the directory this notebook is in</span>
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+</div>
+<div class="section" id="loading-data">
+<h3>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this headline">¶</a></h3>
+<p>We’ll start by again checking to see if we need to download any data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">download_data</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+<p>Then by reading in a shapefile for Zambia</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_zambia</span> <span class="o">&lt;-</span> <span class="nf">read_sf</span><span class="p">(</span><span class="s">&#39;../data/zambia/zambia.shp&#39;</span><span class="p">)</span>
+
+<span class="n">df_zambia</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<caption>A sf: 1 × 5</caption>
+<thead>
+	<tr><th scope=col>ID</th><th scope=col>CODE</th><th scope=col>COUNTRY</th><th scope=col>areaQ</th><th scope=col>geometry</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;POLYGON [m]&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>761</td><td>ZAM</td><td>Zambia</td><td>777795418089</td><td>POLYGON ((716452.6 8516873,...</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<br>
+<p>We’ll also load land cover, solar radiance, and elevation raster data from .tif files</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">solar</span> <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&#39;../data/africa/solar.tif&#39;</span><span class="p">)</span>
+<span class="n">land_cover</span> <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&#39;../data/africa/land_cover.tif&#39;</span><span class="p">)</span>
+<span class="n">elevation</span> <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&#39;../data/africa/elevation.tif&#39;</span><span class="p">)</span>
+
+<span class="nf">plot</span><span class="p">(</span><span class="n">solar</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04-Working-with-Raster-Data_7_0.png" src="../_images/04-Working-with-Raster-Data_7_0.png" />
+</div>
+</div>
+<br>
+</div>
+<div class="section" id="raster-cropping-masking">
+<h3>Raster Cropping &amp; Masking<a class="headerlink" href="#raster-cropping-masking" title="Permalink to this headline">¶</a></h3>
+<p>In the same way you can clip vectors with a “cookie cutter” outline you can also clip rasters.</p>
+<p><code class="docutils literal notranslate"><span class="pre">crop</span></code> allows us to clip the raster to the extents of the vector geometry, similar to cropping an image.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_zambia_4326</span> <span class="o">&lt;-</span> <span class="nf">st_transform</span><span class="p">(</span><span class="n">df_zambia</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="nf">st_crs</span><span class="p">(</span><span class="n">solar</span><span class="p">))</span>
+<span class="n">solar_zambia</span> <span class="o">&lt;-</span> <span class="nf">crop</span><span class="p">(</span><span class="n">solar</span><span class="p">,</span> <span class="n">df_zambia_4326</span><span class="p">)</span>
+
+<span class="nf">plot</span><span class="p">(</span><span class="n">solar_zambia</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">df_zambia_4326</span><span class="p">[</span><span class="s">&#39;geometry&#39;</span><span class="p">],</span> <span class="n">add</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04-Working-with-Raster-Data_9_0.png" src="../_images/04-Working-with-Raster-Data_9_0.png" />
+</div>
+</div>
+<br>
+<p>If we want to remove all values that are outside of Zambia’s borders we can use <code class="docutils literal notranslate"><span class="pre">mask</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">masked_solar_zambia</span> <span class="o">&lt;-</span> <span class="nf">mask</span><span class="p">(</span><span class="n">solar_zambia</span><span class="p">,</span> <span class="n">df_zambia_4326</span><span class="p">)</span>
+
+<span class="nf">plot</span><span class="p">(</span><span class="n">masked_solar_zambia</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04-Working-with-Raster-Data_11_0.png" src="../_images/04-Working-with-Raster-Data_11_0.png" />
+</div>
+</div>
+<br>
+<p>It’s worth carrying out the crop before the mask as otherwise the returned raster will still go to the extent of the original data, e.g.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="nf">mask</span><span class="p">(</span><span class="n">solar</span><span class="p">,</span> <span class="n">df_zambia_4326</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04-Working-with-Raster-Data_13_0.png" src="../_images/04-Working-with-Raster-Data_13_0.png" />
+</div>
+</div>
+<br>
+<p>Whilst the existing mask function is really useful it doesn’t give us all of the fine-grained control we might require. For example a common area for fine-tuning raster masks is deciding the cut-off point for when cells are inside/outside the border - should we include all cells that the border touches or only the ones that fall fully inside it?</p>
+<p>To enable this flexibility we’ll create our own raster mask.</p>
+<p>First we’ll rasterize the zambia polygon, passing an example raster which will be used to construct the grid, as well as the optional argument <code class="docutils literal notranslate"><span class="pre">getCover</span></code>. By setting <code class="docutils literal notranslate"><span class="pre">getCover</span></code> to <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> the values of the returned raster will be the percentage of the cell that falls inside the polygon. We’ll also set all cells that do not touch the polygon to <code class="docutils literal notranslate"><span class="pre">NA</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">zambia_raster_mask</span> <span class="o">&lt;-</span> <span class="nf">rasterize</span><span class="p">(</span><span class="n">df_zambia_4326</span><span class="p">,</span> <span class="n">solar_zambia</span><span class="p">,</span> <span class="n">getCover</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">zambia_raster_mask</span><span class="p">[</span><span class="n">zambia_raster_mask</span><span class="o">==</span><span class="m">0</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="kc">NA</span>
+
+<span class="nf">plot</span><span class="p">(</span><span class="n">zambia_raster_mask</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04-Working-with-Raster-Data_15_0.png" src="../_images/04-Working-with-Raster-Data_15_0.png" />
+</div>
+</div>
+<br>
+<p>For plotting with Ggplot, we’ll convert our raster into a tibble and also remove any <code class="docutils literal notranslate"><span class="pre">NA</span></code> values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">tb_zambia_raster_mask</span> <span class="o">&lt;-</span> <span class="nf">gplot_data</span><span class="p">(</span><span class="n">zambia_raster_mask</span><span class="p">)</span>
+<span class="n">tb_zambia_raster_mask</span> <span class="o">&lt;-</span> <span class="nf">subset</span><span class="p">(</span><span class="n">tb_zambia_raster_mask</span><span class="p">,</span> <span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">tb_zambia_raster_mask</span><span class="o">$</span><span class="n">value</span><span class="p">))</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">tb_zambia_raster_mask</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<caption>A tibble: 6 × 4</caption>
+<thead>
+	<tr><th scope=col>x</th><th scope=col>y</th><th scope=col>value</th><th scope=col>variable</th></tr>
+	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>30.44767</td><td>-8.262019</td><td>0.09</td><td>layer</td></tr>
+	<tr><td>30.49581</td><td>-8.262019</td><td>0.19</td><td>layer</td></tr>
+	<tr><td>30.54396</td><td>-8.262019</td><td>0.34</td><td>layer</td></tr>
+	<tr><td>30.59210</td><td>-8.262019</td><td>0.58</td><td>layer</td></tr>
+	<tr><td>30.64025</td><td>-8.262019</td><td>0.73</td><td>layer</td></tr>
+	<tr><td>30.68840</td><td>-8.262019</td><td>0.97</td><td>layer</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<br>
+<p>We’re now ready to visualise the raster mask alongside the vector, we can see how the cells that are only slightly touched by the vector are darker with lower coverage percentages.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_tile</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">tb_zambia_raster_mask</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">value</span><span class="p">))</span> <span class="o">+</span> 
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_zambia_4326</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">&#39;orange&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">coord_sf</span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">28</span><span class="p">,</span> <span class="m">30</span><span class="p">),</span> 
+             <span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">-13.5</span><span class="p">,</span> <span class="m">-11.75</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04-Working-with-Raster-Data_19_0.png" src="../_images/04-Working-with-Raster-Data_19_0.png" />
+</div>
+</div>
+<br>
+<p>We want to use all of the raster cells that touch the country so can directly use the raster mask we just created. However, if we only wanted cells that fully lay inside the border we could set all values less than one to NA, e.g. using <code class="docutils literal notranslate"><span class="pre">zambia_raster_mask[zambia_raster_mask&lt;1]</span> <span class="pre">&lt;-</span> <span class="pre">NA</span></code>.</p>
+<p>N.b. we use the same <code class="docutils literal notranslate"><span class="pre">mask</span></code> function regardless of whether the masking feature is a raster or vector.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">masked_solar_zambia</span> <span class="o">&lt;-</span> <span class="nf">mask</span><span class="p">(</span><span class="n">solar_zambia</span><span class="p">,</span> <span class="n">zambia_raster_mask</span><span class="p">)</span>
+
+<span class="nf">plot</span><span class="p">(</span><span class="n">masked_solar_zambia</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04-Working-with-Raster-Data_21_0.png" src="../_images/04-Working-with-Raster-Data_21_0.png" />
+</div>
+</div>
+<br>
+<p>We’ll tie a number of these steps together in a single function:</p>
+<ul class="simple">
+<li><p>Reprojecting the vector data to the same CRS as the raster</p></li>
+<li><p>Cropping the raster to tthe vector extents</p></li>
+<li><p>Rasterising the vector and returning the cover percentage value</p></li>
+<li><p>Setting all cells below the defined coverage percentage to NA</p></li>
+<li><p>Finally masking the raster</p></li>
+</ul>
+<p>We’ll then apply these to both the <code class="docutils literal notranslate"><span class="pre">land_cover</span></code> and <code class="docutils literal notranslate"><span class="pre">elevation</span></code> raster datasets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">quick_mask_raster</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">raster_data</span><span class="p">,</span> <span class="n">masking_vector</span><span class="p">){</span>
+    <span class="n">masking_vector</span> <span class="o">&lt;-</span> <span class="nf">st_transform</span><span class="p">(</span><span class="n">masking_vector</span><span class="p">,</span> <span class="nf">st_crs</span><span class="p">(</span><span class="n">raster_data</span><span class="p">))</span>
+    <span class="n">cropped_raster_data</span> <span class="o">&lt;-</span> <span class="nf">crop</span><span class="p">(</span><span class="n">raster_data</span><span class="p">,</span> <span class="n">masking_vector</span><span class="p">)</span>
+    <span class="n">masked_raster_data</span> <span class="o">&lt;-</span> <span class="nf">mask</span><span class="p">(</span><span class="n">cropped_raster_data</span><span class="p">,</span> <span class="n">masking_vector</span><span class="p">)</span>
+    
+    <span class="nf">return</span><span class="p">(</span><span class="n">masked_raster_data</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">mask_raster</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">raster_data</span><span class="p">,</span> <span class="n">masking_vector</span><span class="p">,</span> <span class="n">min_mask_cover</span><span class="o">=</span><span class="m">1</span><span class="p">){</span>
+    <span class="c1"># Ensuring masking_vector is in the same proj</span>
+    <span class="n">masking_vector</span> <span class="o">&lt;-</span> <span class="nf">st_transform</span><span class="p">(</span><span class="n">masking_vector</span><span class="p">,</span> <span class="nf">st_crs</span><span class="p">(</span><span class="n">raster_data</span><span class="p">))</span>
+    
+    <span class="c1"># Cropping raster to masking_vector extents</span>
+    <span class="n">cropped_raster</span> <span class="o">&lt;-</span> <span class="nf">crop</span><span class="p">(</span><span class="n">raster_data</span><span class="p">,</span> <span class="n">masking_vector</span><span class="p">)</span>
+    
+    <span class="c1"># Creating raster mask according to specified cover percentage</span>
+    <span class="n">raster_mask</span> <span class="o">&lt;-</span> <span class="nf">rasterize</span><span class="p">(</span><span class="n">masking_vector</span><span class="p">,</span> <span class="n">cropped_raster</span><span class="p">,</span> <span class="n">getCover</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+    <span class="n">raster_mask</span><span class="p">[</span><span class="n">raster_mask</span><span class="o">&lt;</span><span class="n">min_mask_cover</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="kc">NA</span>
+
+    <span class="c1"># Masking the raster</span>
+    <span class="n">masked_raster</span> <span class="o">&lt;-</span> <span class="nf">mask</span><span class="p">(</span><span class="n">cropped_raster</span><span class="p">,</span> <span class="n">raster_mask</span><span class="p">)</span>
+    
+    <span class="nf">return</span><span class="p">(</span><span class="n">masked_raster</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">masked_elevation</span> <span class="o">&lt;-</span> <span class="nf">quick_mask_raster</span><span class="p">(</span><span class="n">elevation</span><span class="p">,</span> <span class="n">df_zambia</span><span class="p">)</span>
+<span class="n">masked_land_cover</span> <span class="o">&lt;-</span> <span class="nf">quick_mask_raster</span><span class="p">(</span><span class="n">land_cover</span><span class="p">,</span> <span class="n">df_zambia</span><span class="p">)</span>
+
+<span class="nf">plot</span><span class="p">(</span><span class="n">masked_land_cover</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04-Working-with-Raster-Data_23_0.png" src="../_images/04-Working-with-Raster-Data_23_0.png" />
+</div>
+</div>
+<br>
+<p>To free up some RAM we can now delete the original unmasked raster objects</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">rm</span><span class="p">(</span><span class="n">solar</span><span class="p">,</span> <span class="n">land_cover</span><span class="p">,</span> <span class="n">elevation</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+<div class="section" id="questions">
+<h4>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="masking-based-on-grid-distance">
+<h5>Masking Based on Grid Distance<a class="headerlink" href="#masking-based-on-grid-distance" title="Permalink to this headline">¶</a></h5>
+<p>Using the masking techniques from this tutorial and the buffering techniques from the vector tutorial you should mask the solar dataset based on whether the cells are within 10km of the Zambian electricity grid.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># </span>
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+</div>
+</div>
+</div>
+<div class="section" id="reprojecting-rasters">
+<h3>Reprojecting Rasters<a class="headerlink" href="#reprojecting-rasters" title="Permalink to this headline">¶</a></h3>
+<p>Now let’s transform the rasters to match our selected coordinate system. The <code class="docutils literal notranslate"><span class="pre">raster</span></code> package contains a useful function called <code class="docutils literal notranslate"><span class="pre">projectRaster</span></code> that lets us transform the raster from one CRS into another, in this case we’ll reproject to UTM 35S.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">crs</span> <span class="o">=</span> <span class="s">&#39;+proj=utm +zone=35 +south +a=6378249.145 +b=6356514.966398753 +towgs84=-143,-90,-294,0,0,0,0 +units=m +no_defs &#39;</span>
+<span class="n">zambia_solar_reproj</span> <span class="o">=</span> <span class="nf">projectRaster</span><span class="p">(</span><span class="n">masked_solar_zambia</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">crs</span><span class="p">)</span>
+
+<span class="nf">plot</span><span class="p">(</span><span class="n">zambia_solar_reproj</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in showSRID(uprojargs, format = &quot;PROJ&quot;, multiline = &quot;NO&quot;):
+“Discarded ellps unknown in CRS definition: +proj=utm +zone=35 +south +a=6378249.145 +b=6356514.96639875 +towgs84=-143,-90,-294,0,0,0,0 +units=m +no_defs”
+Warning message in showSRID(uprojargs, format = &quot;PROJ&quot;, multiline = &quot;NO&quot;):
+“Discarded datum unknown in CRS definition,
+ but +towgs84= values preserved”
+</pre></div>
+</div>
+<img alt="../_images/04-Working-with-Raster-Data_29_1.png" src="../_images/04-Working-with-Raster-Data_29_1.png" />
+</div>
+</div>
+<br>
+<p>Whilst the country’s shape may not appear to change we can see that the axis definitely have compared to the original data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">masked_solar_zambia</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04-Working-with-Raster-Data_31_0.png" src="../_images/04-Working-with-Raster-Data_31_0.png" />
+</div>
+</div>
+<br>
+<p>Note that we can use a number of different algorithms when reprojecting the data. <code class="docutils literal notranslate"><span class="pre">ngb</span></code> (nearest neighbor) is very useful when working with categorical variables as it ensures that all values returned are values that existed in the original dataset. <code class="docutils literal notranslate"><span class="pre">bilinear</span></code> (bilinear interpolation) is more useful when working with continuous data, it is carried out by first using linear interpolation in one direction, then using it again in the other direction. Note that by default bilinear interpolation will be used.</p>
+<p>As land-use is a categorical raster we’ll use <code class="docutils literal notranslate"><span class="pre">ngb</span></code> and conversely for elevation we’ll use <code class="docutils literal notranslate"><span class="pre">bilinear</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">zambia_elevation_reproj</span> <span class="o">=</span> <span class="nf">projectRaster</span><span class="p">(</span><span class="n">masked_elevation</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">crs</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s">&#39;bilinear&#39;</span><span class="p">)</span>
+<span class="n">zambia_land_use_reproj</span> <span class="o">=</span> <span class="nf">projectRaster</span><span class="p">(</span><span class="n">masked_land_cover</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">crs</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s">&#39;ngb&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in showSRID(uprojargs, format = &quot;PROJ&quot;, multiline = &quot;NO&quot;):
+“Discarded ellps unknown in CRS definition: +proj=utm +zone=35 +south +a=6378249.145 +b=6356514.96639875 +towgs84=-143,-90,-294,0,0,0,0 +units=m +no_defs”
+Warning message in showSRID(uprojargs, format = &quot;PROJ&quot;, multiline = &quot;NO&quot;):
+“Discarded datum unknown in CRS definition,
+ but +towgs84= values preserved”
+Warning message in showSRID(uprojargs, format = &quot;PROJ&quot;, multiline = &quot;NO&quot;):
+“Discarded ellps unknown in CRS definition: +proj=utm +zone=35 +south +a=6378249.145 +b=6356514.96639875 +towgs84=-143,-90,-294,0,0,0,0 +units=m +no_defs”
+Warning message in showSRID(uprojargs, format = &quot;PROJ&quot;, multiline = &quot;NO&quot;):
+“Discarded datum unknown in CRS definition,
+ but +towgs84= values preserved”
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+</div>
+<div class="section" id="raster-reclassification">
+<h3>Raster Reclassification<a class="headerlink" href="#raster-reclassification" title="Permalink to this headline">¶</a></h3>
+<p>In this section we’ll reclassify the land cover raster, firstly to simplify it, then to create a binary raster layer for whether or not the land is suitable to build power plants on.</p>
+<p>We’ll begin by reading in the land cover classes csv.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_land_cover_classes</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&#39;../data/africa/land_cover_classes.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">df_land_cover_classes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<caption>A data.frame: 6 × 4</caption>
+<thead>
+	<tr><th></th><th scope=col>ID</th><th scope=col>reclass</th><th scope=col>category</th><th scope=col>suitability</th></tr>
+	<tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td> 0</td><td>0</td><td>no_data</td><td>0</td></tr>
+	<tr><th scope=row>2</th><td>10</td><td>1</td><td>crop   </td><td>1</td></tr>
+	<tr><th scope=row>3</th><td>11</td><td>2</td><td>grass  </td><td>1</td></tr>
+	<tr><th scope=row>4</th><td>12</td><td>3</td><td>tree   </td><td>0</td></tr>
+	<tr><th scope=row>5</th><td>20</td><td>1</td><td>crop   </td><td>1</td></tr>
+	<tr><th scope=row>6</th><td>30</td><td>1</td><td>crop   </td><td>1</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<br>
+<p>We want to map from the <code class="docutils literal notranslate"><span class="pre">ID</span></code> classes to the new <code class="docutils literal notranslate"><span class="pre">reclass</span></code> categories, we can do this by specifying them as <code class="docutils literal notranslate"><span class="pre">by</span></code> and <code class="docutils literal notranslate"><span class="pre">which</span></code> in the <code class="docutils literal notranslate"><span class="pre">subs</span></code> function.</p>
+<p>We can see in the new <code class="docutils literal notranslate"><span class="pre">zambia_land_use_reclass</span></code> object that we only have values ranging from 1-7 now.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">zambia_land_use_reclass</span> <span class="o">&lt;-</span> <span class="nf">subs</span><span class="p">(</span><span class="n">zambia_land_use_reproj</span><span class="p">,</span> <span class="n">df_land_cover_classes</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s">&#39;ID&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s">&#39;reclass&#39;</span><span class="p">)</span>
+
+<span class="n">zambia_land_use_reclass</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in if (is.factor(object)) {:
+“the condition has length &gt; 1 and only the first element will be used”
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>class      : RasterLayer 
+dimensions : 3602, 4301, 15492202  (nrow, ncol, ncell)
+resolution : 301, 307  (x, y)
+extent     : -52854.47, 1241747, 7986847, 9092661  (xmin, xmax, ymin, ymax)
+crs        : +proj=utm +zone=35 +south +a=6378249.145 +b=6356514.96639875 +towgs84=-143,-90,-294,0,0,0,0 +units=m +no_defs 
+source     : memory
+names      : reclass 
+values     : 1, 7  (min, max)
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+<p>When we carry out this reclassification we’re also telling R that we want to define the new <code class="docutils literal notranslate"><span class="pre">RasterLayer</span></code> as a categorical variable, these are linked to their values via a Raster Attribute Table (RAT). In order to plot these categorical raster layers we must <code class="docutils literal notranslate"><span class="pre">ratify</span></code> the objects before plotting.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="nf">ratify</span><span class="p">(</span><span class="n">zambia_land_use_reclass</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04-Working-with-Raster-Data_39_0.png" src="../_images/04-Working-with-Raster-Data_39_0.png" />
+</div>
+</div>
+<br>
+<p>Now let’s take the reclassification even further. Assume we want to locate our powerplant at a site which has no tree cover - water, built-up areas, and ice are also not the best places to build the facility.</p>
+<p>We’ve included in the reclassfiication dataframe a column called <code class="docutils literal notranslate"><span class="pre">suitability</span></code>, for unsuitable land this value is 0, whereas it is 1 when the land is suitable for a power plant.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">zambia_land_use_suitability</span> <span class="o">&lt;-</span> <span class="nf">subs</span><span class="p">(</span><span class="n">zambia_land_use_reproj</span><span class="p">,</span> <span class="n">df_land_cover_classes</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s">&#39;ID&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s">&#39;suitability&#39;</span><span class="p">)</span>
+
+<span class="n">zambia_land_use_suitability</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in if (is.factor(object)) {:
+“the condition has length &gt; 1 and only the first element will be used”
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>class      : RasterLayer 
+dimensions : 3602, 4301, 15492202  (nrow, ncol, ncell)
+resolution : 301, 307  (x, y)
+extent     : -52854.47, 1241747, 7986847, 9092661  (xmin, xmax, ymin, ymax)
+crs        : +proj=utm +zone=35 +south +a=6378249.145 +b=6356514.96639875 +towgs84=-143,-90,-294,0,0,0,0 +units=m +no_defs 
+source     : memory
+names      : suitability 
+values     : 0, 1  (min, max)
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+<p>When we visualise this the green areas are those that are suitable to site a plant on whilst the white areas are not.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="nf">ratify</span><span class="p">(</span><span class="n">zambia_land_use_suitability</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04-Working-with-Raster-Data_43_0.png" src="../_images/04-Working-with-Raster-Data_43_0.png" />
+</div>
+</div>
+<br>
+<div class="section" id="id1">
+<h4>Questions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="suitable-areas-for-floating-solar-offshore-wind">
+<h5>Suitable Areas for Floating Solar/Offshore Wind<a class="headerlink" href="#suitable-areas-for-floating-solar-offshore-wind" title="Permalink to this headline">¶</a></h5>
+<p>Plot the suitable areas for floating solar and offshore wind, you can use any land cover category that is specified as ‘water’.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># </span>
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+</div>
+</div>
+</div>
+<div class="section" id="raster-resampling">
+<h3>Raster Resampling<a class="headerlink" href="#raster-resampling" title="Permalink to this headline">¶</a></h3>
+<p>In order to combine data from two or more rasters their cells need to be perfectly aligned. This leads to the need for resampling of the rasters. The resampling operation has two components: resizing and realignment of raster cells.</p>
+<p>Let’s resample the land cover suitability and solar potential to match the resolution and alignment of the altitude raster. To do this we can use the <code class="docutils literal notranslate"><span class="pre">resample</span></code> function which has the same algorithm method options as <code class="docutils literal notranslate"><span class="pre">projectRaster</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">zambia_land_use_suitability_regrid</span> <span class="o">&lt;-</span> <span class="nf">resample</span><span class="p">(</span><span class="n">zambia_land_use_suitability</span><span class="p">,</span> <span class="n">zambia_elevation_reproj</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s">&#39;ngb&#39;</span><span class="p">)</span>
+<span class="n">zambia_solar_reproj_regrid</span> <span class="o">&lt;-</span> <span class="nf">resample</span><span class="p">(</span><span class="n">zambia_solar_reproj</span><span class="p">,</span> <span class="n">zambia_elevation_reproj</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s">&#39;bilinear&#39;</span><span class="p">)</span>
+
+<span class="n">zambia_land_use_suitability_regrid</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>class      : RasterLayer 
+dimensions : 1207, 1441, 1739287  (nrow, ncol, ncell)
+resolution : 903, 922  (x, y)
+extent     : -55913.23, 1245310, 7983172, 9096026  (xmin, xmax, ymin, ymax)
+crs        : +proj=utm +zone=35 +south +a=6378249.145 +b=6356514.96639875 +towgs84=-143,-90,-294,0,0,0,0 +units=m +no_defs 
+source     : memory
+names      : suitability 
+values     : 0, 1  (min, max)
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+<p>One way to check that the resampling has worked is to confirm that the dimensions of each object are the same. For this we can use the <code class="docutils literal notranslate"><span class="pre">dim</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dim</span><span class="p">(</span><span class="n">zambia_elevation_reproj</span><span class="p">)</span> <span class="o">==</span> <span class="nf">dim</span><span class="p">(</span><span class="n">zambia_land_use_suitability_regrid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>TRUE</li><li>TRUE</li><li>TRUE</li></ol>
+</div></div>
+</div>
+<br>
+<p>At this point stop and have a think about some of the issues with resampling rasters:</p>
+<ul class="simple">
+<li><p>What would have happened if we’d used the default resampling method with the land_cover data?</p>
+<ul>
+<li><p>Why wouldnt this have been ideal?</p></li>
+</ul>
+</li>
+<li><p>What are some of the drawbacks of resampling to a raster that is at a much higher resolution?</p>
+<ul>
+<li><p>Is it objectively better to up or down-sample?</p></li>
+<li><p>How does this change depending on the problem your solving?</p></li>
+</ul>
+</li>
+</ul>
+<br>
+</div>
+<div class="section" id="raster-algebra">
+<h3>Raster Algebra<a class="headerlink" href="#raster-algebra" title="Permalink to this headline">¶</a></h3>
+<p>In many ways we can view a raster as a normal mathematical matrix over which we can perform calculations and statistical operations. This is useful as we can use mathematical formulae to recalculate raster cell values.</p>
+<p>A detailed list of the available operations can be found at <a href="https://rspatial.org/raster/spatial/8-rastermanip.html#raster-algebra">rspatial.org</a></p>
+<blockquote>
+<div><p>Many generic functions that allow for simple and elegant raster algebra have been implemented for <code class="docutils literal notranslate"><span class="pre">Raster</span></code> objects, including the normal algebraic operators such as <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>, logical operators such as <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">==</span></code>, <code class="docutils literal notranslate"><span class="pre">!</span></code> and functions like <code class="docutils literal notranslate"><span class="pre">abs</span></code>, <code class="docutils literal notranslate"><span class="pre">round</span></code>, <code class="docutils literal notranslate"><span class="pre">ceiling</span></code>, <code class="docutils literal notranslate"><span class="pre">floor</span></code>, <code class="docutils literal notranslate"><span class="pre">trunc</span></code>, <code class="docutils literal notranslate"><span class="pre">sqrt</span></code>, <code class="docutils literal notranslate"><span class="pre">log</span></code>, <code class="docutils literal notranslate"><span class="pre">log10</span></code>, <code class="docutils literal notranslate"><span class="pre">exp</span></code>, <code class="docutils literal notranslate"><span class="pre">cos</span></code>, <code class="docutils literal notranslate"><span class="pre">sin</span></code>, <code class="docutils literal notranslate"><span class="pre">atan</span></code>, <code class="docutils literal notranslate"><span class="pre">tan</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code>, <code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">range</span></code>, <code class="docutils literal notranslate"><span class="pre">prod</span></code>, <code class="docutils literal notranslate"><span class="pre">sum</span></code>, <code class="docutils literal notranslate"><span class="pre">any</span></code>, <code class="docutils literal notranslate"><span class="pre">all</span></code>. In these functions you can mix raster objects with numbers, as long as the first argument is a raster object.</p>
+</div></blockquote>
+<p>For example, if we wanted a raster with monthly solar power potential rather than annual we could divide all cell values by 12.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">zambia_solar_monthly</span> <span class="o">&lt;-</span> <span class="n">zambia_solar_reproj_regrid</span><span class="o">/</span><span class="m">12</span>
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+<p>When two rasters are using the same CRS and are placed on the same grid (as we did in the resampling step), we can do mathematical operations using both of them. A common area this is used is in raster masking, where we can multiply a binary raster (TRUE/FALSE) by another raster to return only the values where the binary raster was TRUE.</p>
+<p>Here we’ll mask the solar data based on the land cover suitability. The output solar potential raster will be either 0 where power cannot be obtained, or the value of potential (in kWh/m2/year), where the land cover conditions are met.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">zambia_suitable_solar</span> <span class="o">&lt;-</span> <span class="n">zambia_solar_reproj_regrid</span> <span class="o">*</span> <span class="n">zambia_land_use_suitability_regrid</span>
+<span class="n">zambia_suitable_solar</span><span class="p">[</span><span class="n">zambia_suitable_solar</span><span class="o">==</span><span class="m">0</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="kc">NA</span>
+
+<span class="nf">plot</span><span class="p">(</span><span class="n">zambia_suitable_solar</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04-Working-with-Raster-Data_53_0.png" src="../_images/04-Working-with-Raster-Data_53_0.png" />
+</div>
+</div>
+<br>
+<div class="section" id="id2">
+<h4>Questions<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="estimating-resampling-errors">
+<h5>Estimating Resampling Errors<a class="headerlink" href="#estimating-resampling-errors" title="Permalink to this headline">¶</a></h5>
+<p>When doing spatial analysis it is often useful to compare the difference between your results depending on how a spatial method is used. In this task you must determine the percentage difference between the resampled solar potential depending on whether bi-linear or ngb is used.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># </span>
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+</div>
+</div>
+</div>
+<div class="section" id="a-gis-tale-rasterization-back-again">
+<h3>A GIS Tale: Rasterization &amp; Back Again<a class="headerlink" href="#a-gis-tale-rasterization-back-again" title="Permalink to this headline">¶</a></h3>
+<p>When working with spatial data, typically, you will not work with only raster or only vector datasets. However, to carry out spatial operations between datasets we often require them to be in the same format. For this reason it is highly important that you udnerstand how we can convert from Raster -&gt; Vectors and vice versa.</p>
+<p>Before we do the rasterization we’ll load a dataset that will be more useful in explaining this visually - the country shapefiles. We’ll then create a column for the area of each country that will be used as the values in the final raster.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_countrys</span> <span class="o">&lt;-</span> <span class="nf">read_sf</span><span class="p">(</span><span class="s">&#39;../data/africa/countries.shp&#39;</span><span class="p">)</span>
+<span class="n">df_countrys</span> <span class="o">&lt;-</span> <span class="nf">st_transform</span><span class="p">(</span><span class="n">df_countrys</span><span class="p">,</span> <span class="nf">st_crs</span><span class="p">(</span><span class="n">zambia_solar_reproj_regrid</span><span class="p">))</span>
+
+<span class="n">df_countrys</span><span class="o">$</span><span class="n">area</span> <span class="o">&lt;-</span> <span class="nf">st_area</span><span class="p">(</span><span class="n">df_countrys</span><span class="p">)</span>
+
+<span class="nf">plot</span><span class="p">(</span><span class="n">df_countrys</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04-Working-with-Raster-Data_57_0.png" src="../_images/04-Working-with-Raster-Data_57_0.png" />
+</div>
+</div>
+<br>
+<p>The <code class="docutils literal notranslate"><span class="pre">raster</span></code> package contains the function <code class="docutils literal notranslate"><span class="pre">rasterize</span></code> which we’ll use to convert from the country polygons to a raster. We provide it the vector objects, the raster grid we wish to rasterize onto, as well as the column that contains the values we wish to be used in the raster.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rasterized_country_areas</span> <span class="o">&lt;-</span> <span class="nf">rasterize</span><span class="p">(</span><span class="n">df_countrys</span><span class="p">,</span> <span class="n">zambia_solar_reproj_regrid</span><span class="p">,</span> <span class="s">&#39;area&#39;</span><span class="p">)</span>
+
+<span class="nf">plot</span><span class="p">(</span><span class="n">rasterized_country_areas</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in showSRID(uprojargs, format = &quot;PROJ&quot;, multiline = &quot;NO&quot;):
+“Discarded ellps unknown in CRS definition: +proj=utm +zone=35 +south +a=6378249.145 +rf=293.466307699995 +towgs84=-143,-90,-294,0,0,0,0 +units=m +no_defs”
+Warning message in showSRID(uprojargs, format = &quot;PROJ&quot;, multiline = &quot;NO&quot;):
+“Discarded datum unknown in CRS definition,
+ but +towgs84= values preserved”
+Warning message in showSRID(SRS_string, format = &quot;PROJ&quot;, multiline = &quot;NO&quot;):
+“Discarded ellps unknown in CRS definition: +proj=utm +zone=35 +south +a=6378249.145 +rf=293.466307699995 +towgs84=-143,-90,-294,0,0,0,0 +units=m +no_defs”
+Warning message in showSRID(SRS_string, format = &quot;PROJ&quot;, multiline = &quot;NO&quot;):
+“Discarded datum unknown in CRS definition,
+ but +towgs84= values preserved”
+</pre></div>
+</div>
+<img alt="../_images/04-Working-with-Raster-Data_59_1.png" src="../_images/04-Working-with-Raster-Data_59_1.png" />
+</div>
+</div>
+<br>
+<p>What happens if we want to go in the opposite direction though?</p>
+<p>For that we can use the <code class="docutils literal notranslate"><span class="pre">polygonize</span></code> function which converts from rasters to polygons, we can set <code class="docutils literal notranslate"><span class="pre">dissolve</span></code> to <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> which will group the resulting polygons based on the raster values (as long as the cells are adjacent).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">polygonized_country_areas</span> <span class="o">&lt;-</span> <span class="nf">rasterToPolygons</span><span class="p">(</span><span class="n">rasterized_country_areas</span><span class="p">,</span> <span class="n">dissolve</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">polygonized_country_areas</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<caption>A data.frame: 6 × 1</caption>
+<thead>
+	<tr><th></th><th scope=col>layer</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>1.202574e+11</td></tr>
+	<tr><th scope=row>2</th><td>1.282970e+12</td></tr>
+	<tr><th scope=row>3</th><td>2.343754e+12</td></tr>
+	<tr><th scope=row>4</th><td>3.907642e+11</td></tr>
+	<tr><th scope=row>5</th><td>5.800564e+11</td></tr>
+	<tr><th scope=row>6</th><td>7.535634e+11</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<br>
+<p>When plotted we can see that Zambia has been grouped correctly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">polygonized_country_areas</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04-Working-with-Raster-Data_63_0.png" src="../_images/04-Working-with-Raster-Data_63_0.png" />
+</div>
+</div>
+<br>
+<p>What problems do you think rasterization could raise?</p>
+<br>
+</div>
+<div class="section" id="zonal-statistics">
+<h3>Zonal Statistics<a class="headerlink" href="#zonal-statistics" title="Permalink to this headline">¶</a></h3>
+<p><em>Zonal statistics</em> are statistics that are calculated for a given set of spatial zones and are typically defined by polygons/points based on values from a raster dataset.</p>
+<p>For example, summarising the solar power potential available in Zambia can be done using using the <code class="docutils literal notranslate"><span class="pre">extract</span></code> method which can be passed a function (in this case the mean). We could alternatively ask for other statistics such as the sum or distribution, in fact we can even pass our own custom functions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_zambia_solar_mean</span> <span class="o">&lt;-</span> <span class="nf">extract</span><span class="p">(</span><span class="n">solar_zambia</span><span class="p">,</span> <span class="n">df_zambia</span><span class="p">,</span> <span class="n">fun</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="n">df_zambia_solar_mean</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in showSRID(uprojargs, format = &quot;PROJ&quot;, multiline = &quot;NO&quot;):
+“Discarded ellps unknown in CRS definition: +proj=utm +zone=35 +south +a=6378249.145 +rf=293.4663077 +towgs84=-143,-90,-294,0,0,0,0 +units=m +no_defs”
+Warning message in showSRID(uprojargs, format = &quot;PROJ&quot;, multiline = &quot;NO&quot;):
+“Discarded datum unknown in CRS definition,
+ but +towgs84= values preserved”
+Warning message in showSRID(SRS_string, format = &quot;PROJ&quot;, multiline = &quot;NO&quot;):
+“Discarded ellps Clarke 1880 (Arc) in CRS definition: +proj=utm +zone=35 +south +a=6378249.145 +rf=293.4663077 +towgs84=-143,-90,-294,0,0,0,0 +units=m +no_defs”
+Warning message in showSRID(SRS_string, format = &quot;PROJ&quot;, multiline = &quot;NO&quot;):
+“Discarded datum Arc_1950 in CRS definition”
+Warning message in .local(x, y, ...):
+“Transforming SpatialPolygons to the CRS of the Raster”
+</pre></div>
+</div>
+<div class="output text_html"><table>
+<caption>A data.frame: 1 × 2</caption>
+<thead>
+	<tr><th scope=col>ID</th><th scope=col>solar</th></tr>
+	<tr><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>1</td><td>2331.507</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<br>
+<p>Its not particularly interesting when we only have one Polygon to use for the zonal statistics, lets carry out some analysis of the solar potential at different cities. We’ll first load the Africa-wide cities dataset and then filter it for Zambia (as described in the vector data tutorial), then get the solar potential calues at those points.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_cities</span> <span class="o">&lt;-</span> <span class="nf">read_sf</span><span class="p">(</span><span class="s">&#39;../data/africa/cities.shp&#39;</span><span class="p">)</span>
+<span class="n">df_zambia_cities</span> <span class="o">&lt;-</span> <span class="n">df_cities</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="nf">st_intersects</span><span class="p">(</span><span class="nf">st_transform</span><span class="p">(</span><span class="n">df_cities</span><span class="p">,</span> <span class="nf">st_crs</span><span class="p">(</span><span class="n">df_zambia</span><span class="p">)),</span> <span class="n">df_zambia</span><span class="p">,</span> <span class="n">sparse</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)),</span> <span class="p">]</span>
+
+<span class="n">df_zambia_cities_solar</span> <span class="o">&lt;-</span> <span class="nf">extract</span><span class="p">(</span><span class="n">solar_zambia</span><span class="p">,</span> <span class="n">df_zambia_cities</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">df_zambia_cities_solar</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<caption>A data.frame: 6 × 2</caption>
+<thead>
+	<tr><th></th><th scope=col>ID</th><th scope=col>solar</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>1</td><td>2365</td></tr>
+	<tr><th scope=row>2</th><td>2</td><td>2382</td></tr>
+	<tr><th scope=row>3</th><td>3</td><td>2373</td></tr>
+	<tr><th scope=row>4</th><td>4</td><td>2417</td></tr>
+	<tr><th scope=row>5</th><td>5</td><td>2303</td></tr>
+	<tr><th scope=row>6</th><td>6</td><td>2330</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<br>
+<p>Similarly we could extract the land cover classifications for each city as well.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="nf">extract</span><span class="p">(</span><span class="n">masked_land_cover</span><span class="p">,</span> <span class="n">df_zambia_cities</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<caption>A data.frame: 6 × 2</caption>
+<thead>
+	<tr><th></th><th scope=col>ID</th><th scope=col>land_cover</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>1</td><td>120</td></tr>
+	<tr><th scope=row>2</th><td>2</td><td>190</td></tr>
+	<tr><th scope=row>3</th><td>3</td><td>190</td></tr>
+	<tr><th scope=row>4</th><td>4</td><td> 11</td></tr>
+	<tr><th scope=row>5</th><td>5</td><td>190</td></tr>
+	<tr><th scope=row>6</th><td>6</td><td>190</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "AyrtonB/ESDA-Spatial",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./tutorials"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="03-Working-with-Vector-Data.html" title="previous page">Working with Vector Data</a>
+    <a class='right-next' id="next-link" href="../extensions/01-Mapping-with-ggplot.html" title="next page">Mapping with ggplot</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Ayrton Bourn, Santiago De La Fuente, Clem Attwood, Joanna Kuleszo, Camilo Perico<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
