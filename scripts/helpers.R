@@ -145,3 +145,30 @@ gplot_data <- function(x, maxpixels = 50000)  {
     
     return(dat)
 }
+
+hours_to_datetime <- function(hour) {
+    start_date <- ymd('1900-01-01')
+    datetime <- start_date + dhours(hour)
+    return(datetime)
+}
+
+radiation_to_power <- function(radiation, area=10, yield=0.175, pr=0.6, hours=1){
+    kWh <- radiation * area * yield * pr * (hours/3600) / 1000
+    return(kWh)
+}
+
+calc_turbine_speed <- function(speed, turbine_height=70, data_height=10, hellman_exponent=1/7){
+    turbine_speed <-  speed*(turbine_height/data_height)^hellman_exponent
+    return(turbine_speed)
+}
+
+calc_NPV <- function(annual_revenue, i=0.05, lifetime_yrs=25, CAPEX=150000000, OPEX=0){
+    costs <- rep(OPEX, lifetime_yrs)
+    costs[1] <- costs[1]  + CAPEX
+    revenue <- rep(annual_revenue, lifetime_yrs)
+
+    t <- seq(1, lifetime_yrs, 1)
+    NPV <- sum((revenue - costs)/(1 + i)**t)
+
+    return(round(NPV, 0))
+}

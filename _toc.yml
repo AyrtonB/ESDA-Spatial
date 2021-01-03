@@ -2,11 +2,13 @@
   
 - part: Tutorials
   sections:
-  - file: tutorials/03) Working with Vector Data
+  - file: tutorials/03-Working-with-Vector-Data
+  - file: tutorials/04-Working-with-Raster-Data
+  - file: tutorials/07-Coursework-Support
   
 - part: Extensions
   sections:
-  - file: extensions/1) Mapping with Ggplot
+  - file: extensions/1-Mapping-with-Ggplot
   
 - part: About
   sections:

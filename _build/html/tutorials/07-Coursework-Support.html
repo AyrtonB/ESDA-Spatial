@@ -1,0 +1,940 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coursework Support &#8212; Spatial Analysis for Energy</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Set-Up Instructions" href="../md/Setup.html" />
+    <link rel="prev" title="Working with Raster Data" href="04-Working-with-Raster-Data.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.svg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Spatial Analysis for Energy</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../md/Intro.html">
+   UCL Energy Systems &amp; Data Analytics - Spatial Module
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="03-Working-with-Vector-Data.html">
+   Working with Vector Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04-Working-with-Raster-Data.html">
+   Working with Raster Data
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Coursework Support
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  About
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../md/Setup.html">
+   Set-Up Instructions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../md/Jupyter-Anaconda.html">
+   What is Jupyter/Anaconda?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../md/ESDA%20Course.html">
+   ESDA Course
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/tutorials/07-Coursework-Support.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        
+        <a class="issues-button"
+            href="https://github.com/AyrtonB/ESDA-Spatial/issues/new?title=Issue%20on%20page%20%2Ftutorials/07-Coursework-Support.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/AyrtonB/ESDA-Spatial/master?urlpath=tree/tutorials/07-Coursework-Support.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imports">
+   Imports
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-data">
+   Loading Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#questions">
+     Questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solar-radiation-to-power-conversion">
+   Solar Radiation to Power Conversion
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wind-speed-to-power-conversion">
+   Wind Speed to Power Conversion
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#financial-modelling">
+   Financial Modelling
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Questions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="coursework-support">
+<h1>Coursework Support<a class="headerlink" href="#coursework-support" title="Permalink to this headline">¶</a></h1>
+<br>
+<div class="section" id="imports">
+<h2>Imports<a class="headerlink" href="#imports" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">RNetCDF</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidync</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ncmeta</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">lubridate</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
+&quot;package &#39;expm&#39; is in use and will not be installed&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+</div>
+<div class="section" id="loading-data">
+<h2>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this headline">¶</a></h2>
+<p>We’ll begin by loading the NetCDF file using <code class="docutils literal notranslate"><span class="pre">tidync</span></code>. When we do so we retrieve both the values of the data-array it contains as well as the metadata that describes it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">nc_filepath</span> <span class="o">=</span> <span class="s">&#39;era5.nc&#39;</span>
+
+<span class="n">nc_file</span> <span class="o">=</span> <span class="nf">tidync</span><span class="p">(</span><span class="n">nc_filepath</span><span class="p">)</span>
+
+<span class="n">nc_file</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data Source (1): era5.nc ...
+
+Grids (4) &lt;dimension family&gt; : &lt;associated variables&gt; 
+
+[1]   D0,D1,D2 : u10, v10, ssrd    **ACTIVE GRID** ( 745488  values per variable)
+[2]   D0       : longitude
+[3]   D1       : latitude
+[4]   D2       : time
+
+Dimensions 3 (all active): 
+  
+  dim   name   length      min    max start count    dmin   dmax unlim coord_dim 
+  &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt; &lt;int&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;lgl&gt; &lt;lgl&gt;     
+1 D0    longi~    501       90 1.40e2     1   501  9.00e1 1.40e2 FALSE TRUE      
+2 D1    latit~    186      -12 6.50e0     1   186 -1.20e1 6.50e0 FALSE TRUE      
+3 D2    time        8  1043144 1.05e6     1     8  1.04e6 1.05e6 FALSE TRUE      
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+<p>We can see that there are 3 dimemensions in the file, calling <code class="docutils literal notranslate"><span class="pre">hyper_dims</span></code> lets us inspect them in more detail.</p>
+<p>We can see that longitude, latitude and time are not ‘unlimited’, this means that the extent of the data is fixed. ‘coord_dim’ as True denotes that the dimension is being used is attached to the dataset, in this case they all are but think about examples where this maybe different (e.g. providing multiple versions of coordinates for different CRS’).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">hyper_dims</span><span class="p">(</span><span class="n">nc_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<thead><tr><th scope=col>name</th><th scope=col>length</th><th scope=col>start</th><th scope=col>count</th><th scope=col>id</th><th scope=col>unlim</th><th scope=col>coord_dim</th></tr></thead>
+<tbody>
+	<tr><td>longitude</td><td>501      </td><td>1        </td><td>501      </td><td>0        </td><td>FALSE    </td><td>TRUE     </td></tr>
+	<tr><td>latitude </td><td>186      </td><td>1        </td><td>186      </td><td>1        </td><td>FALSE    </td><td>TRUE     </td></tr>
+	<tr><td>time     </td><td>  8      </td><td>1        </td><td>  8      </td><td>2        </td><td>FALSE    </td><td>TRUE     </td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<br>
+<p>We can see that there are 4 grids and that 3 of them are the dimensions we just explored, what’s left over? - the variables.</p>
+<p>Here we can see that there are 3 variables, two for the u and v components of a wind vector, the other for surface solar radiation. From these we estimate solar and wind power production at different locations in Indonesia.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">hyper_vars</span><span class="p">(</span><span class="n">nc_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<thead><tr><th scope=col>id</th><th scope=col>name</th><th scope=col>type</th><th scope=col>ndims</th><th scope=col>natts</th><th scope=col>dim_coord</th></tr></thead>
+<tbody>
+	<tr><td>3       </td><td>u10     </td><td>NC_SHORT</td><td>3       </td><td>6       </td><td>FALSE   </td></tr>
+	<tr><td>4       </td><td>v10     </td><td>NC_SHORT</td><td>3       </td><td>6       </td><td>FALSE   </td></tr>
+	<tr><td>5       </td><td>ssrd    </td><td>NC_SHORT</td><td>3       </td><td>7       </td><td>FALSE   </td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<br>
+<p>This is all very useful but what about if we wanted to store additional, more general metadata about the dataset?</p>
+<p>Luckily NetCDFs allow us to store further information as ‘attributes’ to both the top-level of the file as well as for individual variables. By specifying <code class="docutils literal notranslate"><span class="pre">'NC_GLOBAL'</span></code> as the variable we can list only the attributes for the top-level of the file, this includes information such as when the file was downloaded.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">ncmeta</span><span class="o">::</span><span class="nf">nc_atts</span><span class="p">(</span><span class="n">nc_filepath</span><span class="p">,</span> <span class="s">&#39;NC_GLOBAL&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<thead><tr><th scope=col>id</th><th scope=col>name</th><th scope=col>variable</th><th scope=col>value</th></tr></thead>
+<tbody>
+	<tr><td>0          </td><td>Conventions</td><td>NC_GLOBAL  </td><td>CF-1.6     </td></tr>
+	<tr><td>1                                                                                                                                                                                                                                                                                                                 </td><td>history                                                                                                                                                                                                                                                                                                           </td><td>NC_GLOBAL                                                                                                                                                                                                                                                                                                         </td><td>2020-12-10 14:47:04 GMT by grib_to_netcdf-2.16.0: /opt/ecmwf/eccodes/bin/grib_to_netcdf -S param -o /cache/data0/adaptor.mars.internal-1607611614.7236085-5982-17-ac6b25d3-2c5a-4a80-8c51-bece0fdfbc32.nc /cache/tmp/ac6b25d3-2c5a-4a80-8c51-bece0fdfbc32-adaptor.mars.internal-1607611614.7241852-5982-5-tmp.grib</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<br>
+<p>To access the attributes for a specific variable we just pass that variable’s name to <code class="docutils literal notranslate"><span class="pre">nc_atts</span></code>. Doing this for <code class="docutils literal notranslate"><span class="pre">'u10'</span></code> provides us information such as the units and the value for missing values.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">scale_factor</span></code> and <code class="docutils literal notranslate"><span class="pre">add_offset</span></code> enable intelligent methods for compressing data, these are automatically applied to the data on loading and saving to redue the size of the stored data, you can find out more <a class="reference external" href="https://www.unidata.ucar.edu/software/netcdf/workshops/2010/bestpractices/Packing.html">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">ncmeta</span><span class="o">::</span><span class="nf">nc_atts</span><span class="p">(</span><span class="n">nc_filepath</span><span class="p">,</span> <span class="s">&#39;u10&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<thead><tr><th scope=col>id</th><th scope=col>name</th><th scope=col>variable</th><th scope=col>value</th></tr></thead>
+<tbody>
+	<tr><td>0            </td><td>scale_factor </td><td>u10          </td><td>0.0003157431 </td></tr>
+	<tr><td>1            </td><td>add_offset   </td><td>u10          </td><td>1.074366     </td></tr>
+	<tr><td>2            </td><td>_FillValue   </td><td>u10          </td><td>-32767       </td></tr>
+	<tr><td>3            </td><td>missing_value</td><td>u10          </td><td>-32767       </td></tr>
+	<tr><td>4            </td><td>units        </td><td>u10          </td><td>m s**-1      </td></tr>
+	<tr><td>5                        </td><td>long_name                </td><td>u10                      </td><td>10 metre U wind component</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<br>
+<p>Let’s dig a little deeper into the dimensions we have, what does ‘time’ look like?</p>
+<p>Before we can access the values we need to activate the correct grid, which currently is the one containing ‘u10’, ‘v10’, and ‘ssrd’. We’ll switch over to ‘time’ by activating it, then extract the values by calling <code class="docutils literal notranslate"><span class="pre">hyper_tibble</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">times</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="n">nc_file</span> <span class="o">%&gt;%</span> <span class="nf">activate</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">hyper_tibble</span><span class="p">)</span><span class="o">$</span><span class="n">time</span>
+
+<span class="n">times</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>1043144</li>
+	<li>1043148</li>
+	<li>1043152</li>
+	<li>1043156</li>
+	<li>1047488</li>
+	<li>1047492</li>
+	<li>1047496</li>
+	<li>1047500</li>
+</ol>
+</div></div>
+</div>
+<br>
+<p>Hmm these don’t like like any dates we’re used to working with, what’s going on?</p>
+<p>Let’s inspect the attributes of the time variable to find out more.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">ncmeta</span><span class="o">::</span><span class="nf">nc_atts</span><span class="p">(</span><span class="n">nc_filepath</span><span class="p">,</span> <span class="s">&#39;time&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<thead><tr><th scope=col>id</th><th scope=col>name</th><th scope=col>variable</th><th scope=col>value</th></tr></thead>
+<tbody>
+	<tr><td>0                                </td><td>units                            </td><td>time                             </td><td>hours since 1900-01-01 00:00:00.0</td></tr>
+	<tr><td>1        </td><td>long_name</td><td>time     </td><td>time     </td></tr>
+	<tr><td>2        </td><td>calendar </td><td>time     </td><td>gregorian</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<br>
+<p>Lets create a function that maps from the time dimension to the relevant date string.</p>
+<p>We can now see that we have data for 4 different hours of the day, from two separate days in the year.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">hours_to_datetime</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">hour</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">start_date</span> <span class="o">&lt;-</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;1900-01-01&#39;</span><span class="p">)</span>
+    <span class="n">datetime</span> <span class="o">&lt;-</span> <span class="n">start_date</span> <span class="o">+</span> <span class="nf">dhours</span><span class="p">(</span><span class="n">hour</span><span class="p">)</span>
+    <span class="nf">return</span><span class="p">(</span><span class="n">datetime</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">datetime</span> <span class="o">&lt;-</span> <span class="nf">hours_to_datetime</span><span class="p">(</span><span class="n">times</span><span class="p">)</span>
+
+<span class="n">datetime</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;2019-01-01 08:00:00 UTC&quot; &quot;2019-01-01 12:00:00 UTC&quot;
+[3] &quot;2019-01-01 16:00:00 UTC&quot; &quot;2019-01-01 20:00:00 UTC&quot;
+[5] &quot;2019-07-01 08:00:00 UTC&quot; &quot;2019-07-01 12:00:00 UTC&quot;
+[7] &quot;2019-07-01 16:00:00 UTC&quot; &quot;2019-07-01 20:00:00 UTC&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+<p>Now we’ll start looking at the actual data, to make things easier lets take a slice of it, filtering for only the first hour we have data for. To do this we can use the <code class="docutils literal notranslate"><span class="pre">hyper_filter</span></code> function which will filter over multiple dimensions if passed. We also have to make sure to reactivate the relevant data grid, in this case the solar radiation, using <code class="docutils literal notranslate"><span class="pre">activate</span></code>. Finally we convert the tinync object into a hyper-array using <code class="docutils literal notranslate"><span class="pre">hyper_array</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">radiation_slice</span> <span class="o">&lt;-</span> <span class="n">nc_file</span> <span class="o">%&gt;%</span> 
+                    <span class="nf">activate</span><span class="p">(</span><span class="n">ssrd</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+                    <span class="nf">hyper_filter</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="o">&lt;</span><span class="m">1043145</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+                    <span class="n">hyper_array</span>
+
+<span class="n">radiation_slice</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Class: tidync_data (list of tidync data arrays)
+Variables (1): &#39;ssrd&#39;
+Dimension (2): longitude,latitude,time (501, 186)
+Source: C:/Users/Spatial/Downloads/ESDA-Spatial-master/ESDA-Spatial-master/tutorials/era5.nc
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+<p>We’re now in a position where we can start visualising the data!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">image</span><span class="p">(</span><span class="n">radiation_slice</span><span class="p">[[</span><span class="m">1</span><span class="p">]],</span> <span class="n">useRaster</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/07-Coursework-Support_21_0.png" src="../_images/07-Coursework-Support_21_0.png" />
+</div>
+</div>
+<br>
+<p>Unfortunately the plot isn’t particularly helpful as its both oriented incorrectly and the x/y ratio is wrong.</p>
+<p>Digging a little deeper we can see that the latitude values descend (from a higher to lower value) as expected, it is the image function that reverses them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">longitudes</span> <span class="o">=</span> <span class="p">(</span><span class="n">nc_file</span> <span class="o">%&gt;%</span> <span class="nf">activate</span><span class="p">(</span><span class="n">longitude</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">hyper_tibble</span><span class="p">)</span><span class="o">$</span><span class="n">longitude</span>
+<span class="n">latitudes</span> <span class="o">=</span> <span class="p">(</span><span class="n">nc_file</span> <span class="o">%&gt;%</span> <span class="nf">activate</span><span class="p">(</span><span class="n">latitude</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">hyper_tibble</span><span class="p">)</span><span class="o">$</span><span class="n">latitude</span>
+
+<span class="n">latitudes</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>6.5</li>
+	<li>6.40000009536743</li>
+	<li>6.30000019073486</li>
+	<li>6.19999980926514</li>
+	<li>6.09999990463257</li>
+</ol>
+</div></div>
+</div>
+<br>
+<p>We’ll create a new variable where we flip the data matrix in the y direction.</p>
+<p>We’ll also add a value for <code class="docutils literal notranslate"><span class="pre">asp</span></code> which is an abbreviation of aspect ratio, if we provide the lat/lon ratio we can achieve a more realistic visualisation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># We&#39;ll reverse the matrix</span>
+<span class="n">radiation_matrix</span> <span class="o">&lt;-</span> <span class="n">radiation_slice</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
+<span class="n">radiation_matrix</span> <span class="o">&lt;-</span> <span class="n">radiation_matrix</span><span class="p">[,</span><span class="nf">length</span><span class="p">(</span><span class="n">latitudes</span><span class="p">)</span><span class="o">:</span><span class="m">1</span><span class="p">]</span>
+
+<span class="c1"># And also the latitudes values</span>
+<span class="n">latitudes</span> <span class="o">=</span> <span class="p">(</span><span class="n">nc_file</span> <span class="o">%&gt;%</span> <span class="nf">activate</span><span class="p">(</span><span class="n">latitude</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">hyper_tibble</span><span class="p">)</span><span class="o">$</span><span class="n">latitude</span>
+<span class="n">latitudes</span> <span class="o">&lt;-</span> <span class="n">latitudes</span><span class="p">[</span><span class="nf">length</span><span class="p">(</span><span class="n">latitudes</span><span class="p">)</span><span class="o">:</span><span class="m">1</span><span class="p">]</span>
+
+<span class="c1"># Calculate the lat/lon ratio</span>
+<span class="n">lat_lon_ratio</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">latitudes</span><span class="p">)</span><span class="o">/</span><span class="nf">length</span><span class="p">(</span><span class="n">longitudes</span><span class="p">)</span>
+
+<span class="c1"># And visualise them</span>
+<span class="nf">image</span><span class="p">(</span><span class="n">radiation_matrix</span><span class="p">,</span> <span class="n">asp</span><span class="o">=</span><span class="n">lat_lon_ratio</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/07-Coursework-Support_25_0.png" src="../_images/07-Coursework-Support_25_0.png" />
+</div>
+</div>
+<br>
+<p>Let’s identify the coordinates of the maximum value</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">max_rad</span> <span class="o">&lt;-</span> <span class="nf">max</span><span class="p">(</span><span class="n">radiation_matrix</span><span class="p">,</span> <span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">max_rad_idx</span> <span class="o">&lt;-</span> <span class="nf">which</span><span class="p">(</span><span class="n">radiation_matrix</span> <span class="o">==</span> <span class="n">max_rad</span><span class="p">,</span> <span class="n">arr.ind</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="n">max_rad_idx</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<thead><tr><th scope=col>row</th><th scope=col>col</th></tr></thead>
+<tbody>
+	<tr><td>378</td><td>113</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<br>
+<p>We can also convert them into longitude and latitude, from this we can determine that at this specific time the maximum solar radiation falling on indonesia was on the island of Bacan.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">max_lon</span> <span class="o">&lt;-</span> <span class="n">longitudes</span><span class="p">[</span><span class="n">max_rad_idx</span><span class="p">[</span><span class="m">1</span><span class="p">]]</span>
+<span class="n">max_lat</span> <span class="o">&lt;-</span> <span class="n">latitudes</span><span class="p">[</span><span class="n">max_rad_idx</span><span class="p">[</span><span class="m">2</span><span class="p">]]</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">max_lon</span><span class="p">,</span> <span class="n">max_lat</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] 127.7  -0.8
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+<div class="section" id="questions">
+<h3>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">¶</a></h3>
+<p>Identify the location with the lowest solar radiation</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># </span>
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+</div>
+</div>
+<div class="section" id="solar-radiation-to-power-conversion">
+<h2>Solar Radiation to Power Conversion<a class="headerlink" href="#solar-radiation-to-power-conversion" title="Permalink to this headline">¶</a></h2>
+<p>Let’s convert from solar radiation to solar power, we’ll use the standard conversion equation (further details in <a class="reference external" href="https://www.e3s-conferences.org/articles/e3sconf/pdf/2017/10/e3sconf_asee2017_00046.pdf">Filik et al</a>).</p>
+<div class="math notranslate nohighlight">
+\[E(t) = A.r(t).g(t).p(t)\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A\)</span>: Total solar panel area in <span class="math notranslate nohighlight">\(m^{2}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(r\)</span>: Panel efficiency (yield) parameter</p></li>
+<li><p><span class="math notranslate nohighlight">\(G\)</span>: Solar radiation on tilted panels</p></li>
+<li><p><span class="math notranslate nohighlight">\(p\)</span>: Performance ratio of the overall system</p></li>
+</ul>
+<p>We’ll base our calculations on a 10 <span class="math notranslate nohighlight">\(m^{2}\)</span> solar panel with 17.5% efficiency and a performace ratio of 60%.</p>
+<p>Inspecting the attributes of the solar radiation grid tells us the units are in joules per <span class="math notranslate nohighlight">\(m^{2}\)</span>, assuming that the solar radiation stays constant for the entire hour we can view the units in terms of watt-hours which will make calculations easier.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">ncmeta</span><span class="o">::</span><span class="nf">nc_atts</span><span class="p">(</span><span class="n">nc_filepath</span><span class="p">,</span> <span class="s">&#39;ssrd&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<thead><tr><th scope=col>id</th><th scope=col>name</th><th scope=col>variable</th><th scope=col>value</th></tr></thead>
+<tbody>
+	<tr><td>0            </td><td>scale_factor </td><td>ssrd         </td><td>336.1979     </td></tr>
+	<tr><td>1            </td><td>add_offset   </td><td>ssrd         </td><td>12895679     </td></tr>
+	<tr><td>2            </td><td>_FillValue   </td><td>ssrd         </td><td>-32767       </td></tr>
+	<tr><td>3            </td><td>missing_value</td><td>ssrd         </td><td>-32767       </td></tr>
+	<tr><td>4            </td><td>units        </td><td>ssrd         </td><td>J m**-2      </td></tr>
+	<tr><td>5                                </td><td>long_name                        </td><td>ssrd                             </td><td>Surface solar radiation downwards</td></tr>
+	<tr><td>6                                        </td><td>standard_name                            </td><td>ssrd                                     </td><td>surface_downwelling_shortwave_flux_in_air</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<br>
+<p>We’ll create a conversion function that calculates the kWh output for a theoretical solar panel, in this case using data from between 8 and 9 AM at the location with highest solar radiation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">radiation_to_power</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">radiation</span><span class="p">,</span> <span class="n">area</span><span class="o">=</span><span class="m">10</span><span class="p">,</span> <span class="n">yield</span><span class="o">=</span><span class="m">0.175</span><span class="p">,</span> <span class="n">pr</span><span class="o">=</span><span class="m">0.6</span><span class="p">,</span> <span class="n">hours</span><span class="o">=</span><span class="m">1</span><span class="p">){</span>
+    <span class="n">kWh</span> <span class="o">&lt;-</span> <span class="n">radiation</span> <span class="o">*</span> <span class="n">area</span> <span class="o">*</span> <span class="n">yield</span> <span class="o">*</span> <span class="n">pr</span> <span class="o">*</span> <span class="p">(</span><span class="n">hours</span><span class="o">/</span><span class="m">3600</span><span class="p">)</span> <span class="o">/</span> <span class="m">1000</span>
+    <span class="nf">return</span><span class="p">(</span><span class="n">kWh</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">max_kWh</span> <span class="o">&lt;-</span> <span class="nf">radiation_to_power</span><span class="p">(</span><span class="n">max_rad</span><span class="p">)</span>
+
+<span class="n">max_kWh</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">6.02215665332479</div></div>
+</div>
+<br>
+<div class="section" id="id1">
+<h3>Questions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Calculate the difference between this and the location with lowest solar radiation</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># </span>
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+</div>
+</div>
+<div class="section" id="wind-speed-to-power-conversion">
+<h2>Wind Speed to Power Conversion<a class="headerlink" href="#wind-speed-to-power-conversion" title="Permalink to this headline">¶</a></h2>
+<p>Wind vectors are a useful way to communicate speed and direction, in particular they allow both direction to be expressed in terms of a cyclical variable (unlike degrees which has a discontinuity) - this is often a more useful feature for ML models. However in vector form we cant convert to power output, for that we’ll have to calculate the wind speed as an intermediate.</p>
+<p>To calculate u and v from wind speed and direction we can use:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(u = speed \times cos(direction)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(v = speed \times sin(direction)\)</span></p></li>
+</ul>
+<p>To convert back to wind speed we can use:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(speed = \sqrt{u^{2}+v^{2}}\)</span></p></li>
+</ul>
+<br>
+<p>We’ll calculate wind speed and then visualise it</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">u_slice</span> <span class="o">&lt;-</span> <span class="n">nc_file</span> <span class="o">%&gt;%</span> 
+            <span class="nf">activate</span><span class="p">(</span><span class="n">u10</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+            <span class="nf">hyper_filter</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="o">&lt;</span><span class="m">1043145</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+            <span class="n">hyper_array</span>
+
+<span class="n">v_slice</span> <span class="o">&lt;-</span> <span class="n">nc_file</span> <span class="o">%&gt;%</span> 
+            <span class="nf">activate</span><span class="p">(</span><span class="n">v10</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+            <span class="nf">hyper_filter</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="o">&lt;</span><span class="m">1043145</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+            <span class="n">hyper_array</span>
+
+<span class="n">u_matrix</span> <span class="o">&lt;-</span> <span class="n">u_slice</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
+<span class="n">v_matrix</span> <span class="o">&lt;-</span> <span class="n">v_slice</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
+
+<span class="n">speed_matrix</span> <span class="o">&lt;-</span> <span class="nf">sqrt</span><span class="p">(</span><span class="n">u_matrix</span><span class="o">**</span><span class="m">2</span> <span class="o">+</span> <span class="n">v_matrix</span><span class="o">**</span><span class="m">2</span><span class="p">)</span>
+<span class="n">speed_matrix</span> <span class="o">&lt;-</span> <span class="n">speed_matrix</span><span class="p">[,</span><span class="nf">length</span><span class="p">(</span><span class="n">latitudes</span><span class="p">)</span><span class="o">:</span><span class="m">1</span><span class="p">]</span>
+
+<span class="nf">image</span><span class="p">(</span><span class="n">speed_matrix</span><span class="p">,</span> <span class="n">asp</span><span class="o">=</span><span class="n">lat_lon_ratio</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/07-Coursework-Support_39_0.png" src="../_images/07-Coursework-Support_39_0.png" />
+</div>
+</div>
+<br>
+<p>Again we’ll use the maximum value of the resource as an example</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">max_speed</span> <span class="o">&lt;-</span> <span class="nf">max</span><span class="p">(</span><span class="n">speed_matrix</span><span class="p">,</span> <span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="n">max_speed</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">11.7539165645299</div></div>
+</div>
+<br>
+<p>We’ll use the Helman equation to extrapolate from 10m up to 70m which is a more common height for wind turbines, to do this we’ll use an estimated value for the hellman exponent - 1/7. Helman Equation:</p>
+<p><b>speed at turbine = data speed x (turbine height/data height)^hellman exponent</b></p>
+<p>If you are able to obtain surface roughness data for indonesia you can calculate a more accurate helman exponent using:</p>
+<p><b>hellman exponent = 1 / ln(turbine height/roughness)</b></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">calc_turbine_speed</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">speed</span><span class="p">,</span> <span class="n">turbine_height</span><span class="o">=</span><span class="m">70</span><span class="p">,</span> <span class="n">data_height</span><span class="o">=</span><span class="m">10</span><span class="p">,</span> <span class="n">hellman_exponent</span><span class="o">=</span><span class="m">1</span><span class="o">/</span><span class="m">7</span><span class="p">){</span>
+    <span class="n">turbine_speed</span> <span class="o">&lt;-</span>  <span class="n">speed</span><span class="o">*</span><span class="p">(</span><span class="n">turbine_height</span><span class="o">/</span><span class="n">data_height</span><span class="p">)</span><span class="o">^</span><span class="n">hellman_exponent</span>
+    <span class="nf">return</span><span class="p">(</span><span class="n">turbine_speed</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">turbine_speed</span> <span class="o">&lt;-</span> <span class="nf">calc_turbine_speed</span><span class="p">(</span><span class="n">max_speed</span><span class="p">)</span>
+
+<span class="n">turbine_speed</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">15.520685364153</div></div>
+</div>
+<br>
+<p>We now need to convert the wind speed into wind power, to do so we can use a power curve. In this example we’ll use the power curve of the Gamsea G114, the turbine used in the Indonesian Sidrap wind farm. The data used for this can be found <a class="reference external" href="https://www.thewindpower.net/turbine_en_599_gamesa_g114-2500.php">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">speed_to_power</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">speed</span><span class="p">){</span>
+    <span class="n">pc</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">40</span><span class="p">,</span> <span class="m">102</span><span class="p">,</span> <span class="m">160</span><span class="p">,</span> <span class="m">257</span><span class="p">,</span> <span class="m">355</span><span class="p">,</span> <span class="m">471</span><span class="p">,</span> <span class="m">605</span><span class="p">,</span> <span class="m">750</span><span class="p">,</span> <span class="m">972</span><span class="p">,</span> <span class="m">1194</span><span class="p">,</span> <span class="m">1455</span><span class="p">,</span> <span class="m">1713</span><span class="p">,</span> <span class="m">1970</span><span class="p">,</span> <span class="m">2227</span><span class="p">,</span> <span class="m">2380</span><span class="p">,</span> <span class="m">2465</span><span class="p">,</span> <span class="m">2495</span><span class="p">,</span> <span class="m">2500</span><span class="p">,</span> <span class="m">2500</span><span class="p">,</span> <span class="m">2500</span><span class="p">,</span> <span class="m">2500</span><span class="p">,</span> <span class="m">2500</span><span class="p">,</span> <span class="m">2500</span><span class="p">,</span> <span class="m">2500</span><span class="p">,</span> <span class="m">2500</span><span class="p">,</span> <span class="m">2500</span><span class="p">,</span> <span class="m">2500</span><span class="p">,</span> <span class="m">2500</span><span class="p">,</span> <span class="m">2500</span><span class="p">,</span> <span class="m">2500</span><span class="p">,</span> <span class="m">2500</span><span class="p">,</span> <span class="m">2500</span><span class="p">,</span> <span class="m">2500</span><span class="p">,</span> <span class="m">2500</span><span class="p">,</span> <span class="m">2500</span><span class="p">,</span> <span class="m">2500</span><span class="p">,</span> <span class="m">2500</span><span class="p">,</span> <span class="m">2500</span><span class="p">,</span> <span class="m">2500</span><span class="p">,</span> <span class="m">2500</span><span class="p">,</span> <span class="m">2460</span><span class="p">,</span> <span class="m">2400</span><span class="p">,</span> <span class="m">2335</span><span class="p">,</span> <span class="m">2250</span><span class="p">)</span>
+    <span class="nf">names</span><span class="p">(</span><span class="n">pc</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="n">from</span><span class="o">=</span><span class="m">0</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="m">24</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="m">0.5</span><span class="p">)</span>
+    <span class="n">power</span> <span class="o">&lt;-</span> <span class="n">pc</span><span class="p">[</span><span class="nf">toString</span><span class="p">(</span><span class="nf">round</span><span class="p">(</span><span class="n">speed</span><span class="p">,</span> <span class="m">0</span><span class="p">))]</span>
+    <span class="nf">return</span><span class="p">(</span><span class="n">power</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">power</span> <span class="o">&lt;-</span> <span class="nf">speed_to_power</span><span class="p">(</span><span class="n">turbine_speed</span><span class="p">)</span>
+
+<span class="n">power</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><strong>16:</strong> 2500</div></div>
+</div>
+<br>
+<div class="section" id="id2">
+<h3>Questions<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Now try and calculate another layer that shows wind direction, how could this be useful in your analysis?
+For additional reading please look <a class="reference external" href="http://colaweb.gmu.edu/dev/clim301/lectures/wind/wind-uv">here</a>. You should also try to calculate power output for an offshore wind farm using a power curve of an offshore turbine.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># </span>
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+</div>
+</div>
+<div class="section" id="financial-modelling">
+<h2>Financial Modelling<a class="headerlink" href="#financial-modelling" title="Permalink to this headline">¶</a></h2>
+<p>Now that we can calcuate the power output for solar and wind farms we’ll do some financial modelling with them.</p>
+<p>First we’ll calculate the annual revenue of the wind farm, we’ll use the number of turbines and capacity from the Sidrap wind farm. We’ll assume a capacity factor of 30%, lifetime of 25 years and electricity price of $0.07/kWh.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">turbine_capacity</span> <span class="o">&lt;-</span> <span class="m">2.5</span>
+<span class="n">num_turbines</span> <span class="o">&lt;-</span> <span class="m">30</span>
+<span class="n">capacity_factor</span> <span class="o">&lt;-</span> <span class="m">0.3</span>
+<span class="n">dollars_per_kWh</span> <span class="o">&lt;-</span> <span class="m">0.07</span>
+<span class="n">lifetime_yrs</span> <span class="o">&lt;-</span> <span class="m">25</span>
+
+<span class="n">kWh</span> <span class="o">&lt;-</span> <span class="n">turbine_capacity</span> <span class="o">*</span> <span class="n">num_turbines</span> <span class="o">*</span> <span class="n">capacity_factor</span> <span class="o">*</span> <span class="m">1000</span> <span class="o">*</span> <span class="m">24</span> <span class="o">*</span> <span class="m">365</span>
+<span class="n">annual_revenue</span> <span class="o">&lt;-</span><span class="n">dollars_per_kWh</span>  <span class="o">*</span> <span class="n">kWh</span>
+
+<span class="n">annual_revenue</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">13797000</div></div>
+</div>
+<br>
+<p>We can then use this to calcute the Net Present Value (NPV).</p>
+<p>Here we’ll assume the Sidrap capital expenditure (CAPEX) of 150,000,000. We’ll assume an operating cost of 0 although in reality this would cost something. We’ll assume a discount rate of 5%.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">calc_NPV</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">annual_revenue</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="m">0.05</span><span class="p">,</span> <span class="n">lifetime_yrs</span><span class="o">=</span><span class="m">25</span><span class="p">,</span> <span class="n">CAPEX</span><span class="o">=</span><span class="m">150000000</span><span class="p">,</span> <span class="n">OPEX</span><span class="o">=</span><span class="m">0</span><span class="p">){</span>
+    <span class="n">costs</span> <span class="o">&lt;-</span> <span class="nf">rep</span><span class="p">(</span><span class="n">OPEX</span><span class="p">,</span> <span class="n">lifetime_yrs</span><span class="p">)</span>
+    <span class="n">costs</span><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="n">costs</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>  <span class="o">+</span> <span class="n">CAPEX</span>
+    <span class="n">revenue</span> <span class="o">&lt;-</span> <span class="nf">rep</span><span class="p">(</span><span class="n">annual_revenue</span><span class="p">,</span> <span class="n">lifetime_yrs</span><span class="p">)</span>
+
+    <span class="n">t</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="n">lifetime_yrs</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
+    <span class="n">NPV</span> <span class="o">&lt;-</span> <span class="nf">sum</span><span class="p">((</span><span class="n">revenue</span> <span class="o">-</span> <span class="n">costs</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">1</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span><span class="o">**</span><span class="n">t</span><span class="p">)</span>
+
+    <span class="nf">return</span><span class="p">(</span><span class="nf">round</span><span class="p">(</span><span class="n">NPV</span><span class="p">,</span> <span class="m">0</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="nf">calc_NPV</span><span class="p">(</span><span class="n">annual_revenue</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">51597010</div></div>
+</div>
+<br>
+<div class="section" id="id3">
+<h3>Questions<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>Using the assumptions provided in the coursework instructions you should try to estimate the net present value of an ammonia plant. Assume a lifetime of 25 years.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># </span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "AyrtonB/ESDA-Spatial",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./tutorials"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="04-Working-with-Raster-Data.html" title="previous page">Working with Raster Data</a>
+    <a class='right-next' id="next-link" href="../md/Setup.html" title="next page">Set-Up Instructions</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Ayrton Bourn, Santiago De La Fuente, Camilo Perico, Clem Attwood, Joanna Kuleszo<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
