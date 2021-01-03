@@ -5,7 +5,7 @@ library(tidyverse)
 library(lubridate)
 library(ggplot2)
 
-nc_filepath = 'era5.nc'
+nc_filepath = '../data/Coursework-Support/era5.nc'
 
 nc_file = tidync(nc_filepath)
 
