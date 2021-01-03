@@ -20,6 +20,10 @@ dependencies:
     - r-zeallot
     - r-tmap
     - r-rgdal
+    - r-ape
+    - r-scales
+    - r-deldir
+    - r-gstat
     - r-kernsmooth
     - pip
     
