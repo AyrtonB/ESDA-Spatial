@@ -1,4 +1,4 @@
-### Third Cohort Map Gallery
+### Third Cohort
 
 These are the visualisations produced by the third cohort of the UCL Spatial Energy Analysis module.
 
