@@ -58,7 +58,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Set-Up Instructions" href="../md/Setup.html" />
-    <link rel="prev" title="Working with Raster Data" href="04-Working-with-Raster-Data.html" />
+    <link rel="prev" title="Spatial Interpolation - Part 1" href="05-Spatial-Interpolation-Part-1.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -109,6 +109,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="04-Working-with-Raster-Data.html">
    Working with Raster Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05-Spatial-Interpolation-Part-1.html">
+   Spatial Interpolation - Part 1
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -321,12 +326,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
-&quot;package &#39;expm&#39; is in use and will not be installed&quot;
-</pre></div>
-</div>
-</div>
 </div>
 <br>
 </div>
@@ -335,7 +334,7 @@
 <p>We’ll begin by loading the NetCDF file using <code class="docutils literal notranslate"><span class="pre">tidync</span></code>. When we do so we retrieve both the values of the data-array it contains as well as the metadata that describes it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">nc_filepath</span> <span class="o">=</span> <span class="s">&#39;era5.nc&#39;</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">nc_filepath</span> <span class="o">=</span> <span class="s">&#39;../data/Coursework-Support/era5.nc&#39;</span>
 
 <span class="n">nc_file</span> <span class="o">=</span> <span class="nf">tidync</span><span class="p">(</span><span class="n">nc_filepath</span><span class="p">)</span>
 
@@ -911,7 +910,7 @@ For additional reading please look <a class="reference external" href="http://co
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="04-Working-with-Raster-Data.html" title="previous page">Working with Raster Data</a>
+    <a class='left-prev' id="prev-link" href="05-Spatial-Interpolation-Part-1.html" title="previous page">Spatial Interpolation - Part 1</a>
     <a class='right-next' id="next-link" href="../md/Setup.html" title="next page">Set-Up Instructions</a>
 
     </div>
