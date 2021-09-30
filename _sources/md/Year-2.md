@@ -1,4 +1,4 @@
-### Second Cohort
+### Second Cohort Map Gallery
 
 These are the visualisations produced by the second cohort of the UCL Spatial Energy Analysis module.
 
