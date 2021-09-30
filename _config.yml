@@ -1,12 +1,12 @@
 title: Spatial Analysis for Energy
-author: Ayrton Bourn, Santiago De La Fuente, Camilo Perico, Clem Attwood, Joanna Kuleszo
+author: Ayrton Bourn, Santiago De La Fuente, Camilo Perico, Clem Attwood, Joanna Kuleszo, Dylan Johnson, Harry Wadley
 logo: 'img/logo.svg'
 
 execute:
   execute_notebooks: 'off'
 
 repository:
-  url: https://github.com/AyrtonB/ESDA-Spatial
+  url: https://github.com/ESDA-Spatial/ESDA-Spatial
   
 html:
   use_issues_button: true
