@@ -1,23 +1,24 @@
-- file: md/Intro
-  
-- part: Tutorials
-  sections:
+root: md/Intro
+format: jb-book
+parts:
+- caption: Tutorials
+  chapters:
   - file: tutorials/03-Working-with-Vector-Data
   - file: tutorials/04-Working-with-Raster-Data
   - file: tutorials/05-Spatial-Interpolation-Part-1
   - file: tutorials/07-Coursework-Support
   
-- part: Extensions
-  sections:
+- caption: Extensions
+  chapters:
   - file: extensions/1-Mapping-with-Ggplot
   
-- part: Gallery
-  sections:
+- caption: Gallery
+  chapters:
   - file: md/Year-2
   - file: md/Year-3
   
-- part: About
-  sections:
+- caption: About
+  chapters:
   - file: md/Setup
   - file: md/Jupyter-Anaconda
   - file: md/ESDA Course
